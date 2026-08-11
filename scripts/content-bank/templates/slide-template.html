@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Slide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-primary:#8B5CF6;
+    --brand-light:#C4B5FD;
+    --brand-dark:#4C1D95;
+    --gold:#C9A24B;
+    --gold-light:#E4C97A;
+    --dark-bg:#0A0B12;
+    --dark-bg-alt:#14111F;
+    --dark-bg2:#12141F;
+    --cream:#F3EFE4;
+    --cream-soft:rgba(243,239,228,0.62);
+    --light-border:rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{width:100%;height:100%;background:#000;}
+  body{font-family:'Outfit', sans-serif;}
+  .serif{font-family:'Fraunces', serif; font-optical-sizing:auto;}
+  .sans{font-family:'Outfit', sans-serif;}
+
+  .slide{
+    width:420px;height:525px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .slide.tall{height:747px;} /* story aspect 9:16 at 420 width */
+
+  .slide::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 45%),
+               radial-gradient(140% 100% at 50% 120%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 55%);
+    pointer-events:none;
+    z-index:1;
+  }
+  .bg-dark{background:var(--dark-bg);}
+  .bg-dark-alt{background:var(--dark-bg-alt);}
+  .bg-dark2{background:var(--dark-bg2);}
+  .bg-gradient{background:linear-gradient(180deg, var(--brand-dark) 0%, var(--brand-primary) 65%, var(--brand-light) 100%);}
+  .bg-gradient-cta{background:linear-gradient(180deg, var(--brand-dark) 0%, var(--brand-primary) 55%, var(--brand-light) 100%);}
+  .bg-gold-glow{background:radial-gradient(90% 70% at 85% 15%, rgba(201,162,75,0.28) 0%, rgba(201,162,75,0) 55%), var(--dark-bg);}
+  .bg-deep-purple{background:radial-gradient(90% 70% at 15% 10%, rgba(139,92,246,0.35) 0%, rgba(139,92,246,0) 55%), #17102B;}
+  .bg-noir{background:radial-gradient(120% 80% at 50% 100%, rgba(139,92,246,0.22) 0%, rgba(0,0,0,0) 60%), var(--dark-bg);}
+
+  .watermark{
+    position:absolute;
+    z-index:1;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    color:rgba(255,255,255,0.05);
+    line-height:1;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+
+  .stat-number{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    line-height:0.95;
+    letter-spacing:-1px;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .stat-label{
+    font-size:15px;
+    font-weight:600;
+    color:var(--cream);
+    margin-bottom:6px;
+  }
+
+  .align-center{text-align:center; align-items:center;}
+  .align-center .tag{justify-content:center;}
+  .align-center .tag::before{display:none;}
+
+  .slide-content{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:0 36px 56px;
+    position:relative;
+    z-index:2;
+  }
+  .justify-center{justify-content:center;}
+  .justify-end{justify-content:flex-end;}
+
+  .tag{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:10.5px;font-weight:600;
+    letter-spacing:2.5px;
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+  .tag::before{
+    content:"";
+    width:16px;height:1.5px;
+    background:currentColor;
+    opacity:0.7;
+  }
+  .headline{
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.5px;
+    margin-bottom:14px;
+    color:var(--cream);
+  }
+  .body-text{
+    font-size:14.5px;
+    line-height:1.6;
+    font-weight:400;
+    letter-spacing:0.1px;
+    color:var(--cream-soft);
+  }
+
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 26px;
+    background:var(--gold);
+    color:var(--dark-bg);
+    font-weight:600;font-size:14px;
+    letter-spacing:0.1px;
+    border-radius:30px;
+    margin-top:22px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .badge{
+    position:absolute;
+    top:28px; right:28px;
+    z-index:3;
+    display:flex; align-items:center; gap:7px;
+    padding:6px 12px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:20px;
+    font-size:10px; font-weight:600; letter-spacing:1px;
+    color:var(--cream);
+  }
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  .progress-wrap{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:16px 28px 22px;
+    display:flex;align-items:center;gap:10px;
+    z-index:10;
+  }
+  .progress-track{flex:1;height:3px;border-radius:2px;overflow:hidden;background:rgba(255,255,255,0.1);}
+  .progress-fill{height:100%;border-radius:2px;background:var(--gold);}
+  .progress-label{font-size:11px;font-weight:500;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;}
+
+  .story-hint{
+    position:absolute; bottom:36px; left:0; right:0;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    z-index:3; color:rgba(255,255,255,0.6); font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const TAG_COLORS = {
+    "dark":"var(--gold-light)", "dark-alt":"var(--brand-light)", "dark2":"var(--gold-light)",
+    "gradient":"var(--gold-light)", "gradient-cta":"var(--gold-light)",
+    "gold-glow":"var(--gold-light)", "deep-purple":"var(--brand-light)", "noir":"var(--gold-light)"
+  };
+
+  function renderSlide(s, opts) {
+    const bgClass = "bg-" + (s.bg || "dark");
+    const tallClass = opts.tall ? "tall" : "";
+    const justify = s.justify || (opts.isStory ? "center" : "end");
+    const tagColor = s.accent === "purple" ? "var(--brand-light)" : (s.accent === "gold" ? "var(--gold-light)" : TAG_COLORS[s.bg || "dark"]);
+    const size = opts.isStory ? 34 : (s.size || 28);
+    const alignClass = s.align === "center" ? "align-center" : "";
+
+    let inner = "";
+    if (s.variant === "stat" && s.stat) {
+      const statSize = opts.isStory ? 96 : 78;
+      inner += `<div class="stat-number serif" style="font-size:${statSize}px;">${s.stat}</div>`;
+      if (s.statLabel) inner += `<div class="stat-label sans">${s.statLabel}</div>`;
+    }
+    if (s.tag) inner += `<span class="tag sans" style="color:${tagColor};">${s.tag}</span>`;
+    if (s.headline) inner += `<h2 class="serif headline" style="font-size:${size}px;">${s.headline}</h2>`;
+    if (s.body) inner += `<p class="sans body-text">${s.body}</p>`;
+    if (s.cta) inner += `<div class="cta-btn sans">${s.cta}</div>`;
+
+    let watermark = "";
+    if (s.watermark) {
+      const wmSize = opts.isStory ? 260 : 190;
+      watermark = `<div class="watermark" style="font-size:${wmSize}px; bottom:-${wmSize * 0.18}px; right:-${wmSize * 0.08}px;">${s.watermark}</div>`;
+    }
+
+    let progress = "";
+    if (opts.total > 1) {
+      const pct = ((opts.index + 1) / opts.total) * 100;
+      progress = `<div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%;"></div></div>
+        <span class="progress-label sans">${opts.index + 1}/${opts.total}</span>
+      </div>`;
+    }
+
+    let storyHint = "";
+    if (opts.isStory) {
+      storyHint = `<div class="story-hint sans">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        arraste pra cima
+      </div>`;
+    }
+
+    return `<div class="slide ${tallClass} ${bgClass}">
+      ${watermark}
+      <div class="badge sans"><span class="badge-dot"></span>davidaraujogestor</div>
+      <div class="slide-content justify-${justify} ${alignClass}">${inner}</div>
+      ${progress}
+      ${storyHint}
+    </div>`;
+  }
+
+  const DATA = __SLIDE_DATA__;
+  document.getElementById("root").innerHTML = DATA.slides
+    .map((s, i) => renderSlide(s, { tall: DATA.mode === "story", isStory: DATA.mode === "story", total: DATA.slides.length, index: i }))
+    .join("");
+</script>
+</body>
+</html>

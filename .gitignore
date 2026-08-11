@@ -1,0 +1,7 @@
+.env
+node_modules/
+scripts/daily-output/
+scripts/test-openai/
+scripts/test-render/
+scripts/carousel-trafego/
+scripts/export-tools/node_modules/
