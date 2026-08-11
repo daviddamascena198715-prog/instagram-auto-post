@@ -6,6 +6,35 @@ const os = require("os");
 
 const TEMPLATE_PATH = path.join(__dirname, "..", "content-bank", "templates", "slide-template.html");
 
+// Some sandboxed environments (e.g. cloud CI) ship a pre-installed Chromium
+// under PLAYWRIGHT_BROWSERS_PATH that doesn't match this project's Playwright
+// version, so `chromium.launch()` can't find it via the default lookup.
+// Point at it explicitly when present instead of downloading a fresh copy.
+function findPreinstalledChromium() {
+  const browsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH;
+  if (!browsersPath || !fs.existsSync(browsersPath)) return undefined;
+  const candidates = ["chrome-linux/chrome", "chrome-linux/headless_shell", "chrome-win/chrome.exe", "chrome-mac/Chromium.app/Contents/MacOS/Chromium"];
+  const stack = [browsersPath];
+  while (stack.length) {
+    const dir = stack.pop();
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(full);
+      } else if (candidates.some((c) => full.replace(/\\/g, "/").endsWith(c))) {
+        return full;
+      }
+    }
+  }
+  return undefined;
+}
+
 /**
  * slides: array de { tag, headline, body, bg, cta?, justify?, size? }
  * mode: "story" | "feed"  (story = 1080x1920 vertical, feed = 1080x1350)
@@ -26,7 +55,8 @@ async function renderSlides(slides, mode, outPaths) {
   const tmpFile = path.join(os.tmpdir(), `render_${Date.now()}.html`);
   fs.writeFileSync(tmpFile, html, "utf-8");
 
-  const browser = await chromium.launch();
+  const executablePath = findPreinstalledChromium();
+  const browser = await chromium.launch(executablePath ? { executablePath } : {});
   const page = await browser.newPage({
     viewport: { width: VIEW_W, height: VIEW_H },
     deviceScaleFactor: SCALE,
