@@ -3,7 +3,10 @@
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
-const { renderSlides } = require("./export-tools/render_slides.js");
+
+function renderSlides(...args) {
+  return require("./export-tools/render_slides.js").renderSlides(...args);
+}
 
 process.loadEnvFile(path.join(__dirname, "..", ".env"));
 
