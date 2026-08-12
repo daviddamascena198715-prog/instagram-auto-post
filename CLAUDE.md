@@ -44,6 +44,14 @@ outro perfil) ainda exige confirmação explícita do usuário.
   explicitamente "no people, no faces".
 - **Idioma**: todo texto embutido nas artes e todas as legendas em
   português do Brasil.
+- **CTA sempre volta pro usuário, em qualquer tema**: independente do
+  assunto do post (tráfego pago, artes/criativos, sites, o que for), a
+  chamada pra ação final da legenda precisa deixar claro que é o usuário
+  quem faz aquilo pro negócio de quem está lendo — nunca uma dica
+  genérica de "faça você mesmo" ou algo que a pessoa resolva sozinha.
+  Sempre terminar convidando a pessoa a chamar no direct para contratar
+  o serviço (seja gestão de tráfego, criação de arte/criativo, criação
+  de site, etc.).
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
