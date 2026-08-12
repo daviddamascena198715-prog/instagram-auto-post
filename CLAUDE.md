@@ -52,6 +52,13 @@ outro perfil) ainda exige confirmação explícita do usuário.
   Sempre terminar convidando a pessoa a chamar no direct para contratar
   o serviço (seja gestão de tráfego, criação de arte/criativo, criação
   de site, etc.).
+- **Padrão premium sempre**: todo post/carrossel gerado (automático ou sob
+  pedido) precisa ter acabamento de alto padrão — visual bonito, copy que
+  converte, nada de arte/legenda "de rascunho". Antes de criar a arte,
+  usar as skills de design disponíveis (ex.: `ui-ux-pro-max`, `dataviz`)
+  como referência de composição, tipografia, hierarquia visual e paleta,
+  mesmo quando o conteúdo é gerado via template HTML ou via IA de imagem.
+  O objetivo é sempre alta conversão, não só ficar bonito.
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
