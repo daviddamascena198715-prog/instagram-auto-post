@@ -35,7 +35,7 @@ if (!dayEntry) {
 
 const pillar = PILLARS[pillarId];
 const tema = dayEntry[pillarId];
-const capaPrompt = pillar.capaPromptTemplate.replace("{tema}", tema);
+const capaPrompt = pillar.capaPromptTemplate.split("{tema}").join(tema);
 
 console.log(JSON.stringify({
   day: dayNumber,
