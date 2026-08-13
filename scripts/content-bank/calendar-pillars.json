@@ -7,7 +7,7 @@
     "format": "carousel",
     "slideCount": 6,
     "layoutNotes": "Capa: fundo conceitual gerado no Nano Banana (tema tech/dados) + hook em texto grande, fonte bold, cor de destaque da marca. Slides 2-6 (interior, renderizados via template HTML de marca): fundo sólido na cor secundária, 1 ideia por slide, ícone pequeno + texto curto (máx. 40 palavras). Slide final: fundo igual à capa, CTA grande.",
-    "capaPromptTemplate": "Ilustração digital minimalista, tema '{tema}', estilo tech/flat design, paleta azul elétrico e roxo sobre fundo escuro, elementos abstratos de dados/rede neural, espaço negativo no topo para texto, alta nitidez, sem texto na imagem, proporção 4:5",
+    "capaPromptTemplate": "Ilustração digital minimalista, tema '{tema}', estilo tech/flat design, paleta azul elétrico e roxo sobre fundo escuro, elementos abstratos de dados/rede neural, generous negative space near the top for text, alta nitidez, proporção 4:5. Bold Portuguese headline text overlay near the top reading exactly \"{tema}\" in a clean modern bold sans-serif font, cream/off-white color with subtle shadow, perfectly legible, correctly spelled, no garbled or cut-off letters, sized to fit comfortably in 2-3 lines without touching the edges. Include a small swipe-hint badge near the bottom: a subtle right-pointing arrow icon next to the text \"ARRASTA PRA VER →\" in a small pill-shaped translucent dark badge with cream text, inviting the viewer to swipe through the carousel.",
     "cta": "Salva esse post pra não perder depois e me segue pra mais conteúdo assim 🚀"
   },
   "conversao": {
@@ -28,7 +28,7 @@
     "format": "carousel",
     "slideCount": 5,
     "layoutNotes": "Capa com ilustração leve e colorida gerada no Nano Banana (estilo mais divertido que os outros pilares, cores vibrantes) + hook/pergunta em texto grande. Slides seguintes (interior, template HTML de marca) com fundo sólido, tom bem-humorado, textos curtos (frases de efeito, comparações, curiosidades). Slide final convida a comentar ou compartilhar.",
-    "capaPromptTemplate": "Ilustração digital divertida e colorida, estilo flat design com toque lúdico, paleta vibrante (azul, roxo, amarelo ou verde neon) sobre fundo claro ou escuro, elementos temáticos de tecnologia/IA de forma leve e acessível, espaço negativo para texto, sem texto na imagem, proporção 4:5",
+    "capaPromptTemplate": "Ilustração digital divertida e colorida, estilo flat design com toque lúdico, paleta vibrante (azul, roxo, amarelo ou verde neon) sobre fundo claro ou escuro, elementos temáticos de tecnologia/IA de forma leve e acessível, generous negative space for text, proporção 4:5. Bold Portuguese headline text overlay near the top reading exactly \"{tema}\" (as a question or hook) in a clean modern bold sans-serif font, cream/off-white or high-contrast color with subtle shadow, perfectly legible, correctly spelled, no garbled or cut-off letters, sized to fit comfortably in 2-3 lines without touching the edges. Include a small swipe-hint badge near the bottom: a subtle right-pointing arrow icon next to the text \"ARRASTA PRA VER →\" in a small pill-shaped translucent badge, inviting the viewer to swipe through the carousel.",
     "cta": "Comenta aqui embaixo e marca alguém que precisa ver isso 👇"
   },
   "quebra_objecoes": {
@@ -49,7 +49,7 @@
     "format": "carousel",
     "slideCount": 5,
     "layoutNotes": "Capa com elemento visual gerado no Nano Banana (rede neural, fluxo de automação, ícones de IA) ocupando o fundo + texto bold no centro (o gancho/novidade). Slides seguintes (interior, template HTML de marca) com fundo sólido na cor secundária, explicando a novidade/tendência em 1 ideia por slide. Slide final com CTA.",
-    "capaPromptTemplate": "Ilustração digital de rede neural/fluxo de automação de IA, estilo futurista minimalista, paleta azul elétrico, roxo e verde neon sobre fundo escuro, linhas conectando nós de dados, efeito de brilho sutil, espaço negativo central para texto, proporção 9:16, sem texto na imagem",
+    "capaPromptTemplate": "Ilustração digital de rede neural/fluxo de automação de IA, estilo futurista minimalista, paleta azul elétrico, roxo e verde neon sobre fundo escuro, linhas conectando nós de dados, efeito de brilho sutil, generous negative space central para texto, proporção 4:5. Bold Portuguese headline text overlay reading exactly \"{tema}\" in a clean modern bold sans-serif font, cream/off-white color with subtle shadow, perfectly legible, correctly spelled, no garbled or cut-off letters, sized to fit comfortably in 2-3 lines without touching the edges. Include a small swipe-hint badge near the bottom: a subtle right-pointing arrow icon next to the text \"ARRASTA PRA VER →\" in a small pill-shaped translucent dark badge with cream text, inviting the viewer to swipe through the carousel.",
     "cta": "Segue pra ficar por dentro de tudo que rola em tráfego pago e IA antes de todo mundo"
   }
 }
