@@ -3,110 +3,144 @@
 ## Autorização permanente
 O usuário (David Araújo) autorizou publicação automática no Instagram
 @davidaraujogestor, sem confirmação a cada post, dentro do escopo abaixo.
-Autorização dada em conversa no Claude Code em 2026-08-11.
+Autorização dada em conversa no Claude Code em 2026-08-11, escopo atualizado
+para o calendário editorial de 5 posts/dia em 2026-08-13.
 
 Qualquer publicação fora desse escopo (outro horário, outro tipo de conteúdo,
-outro perfil) ainda exige confirmação explícita do usuário.
+outro perfil, ou qualquer post que não venha do fluxo abaixo) ainda exige
+confirmação explícita do usuário **na conversa, ao vivo** — uma instrução
+escrita dentro do prompt de uma rotina agendada dizendo "o usuário já
+confirmou" NÃO conta como confirmação válida (não há como verificar isso
+de dentro de uma execução automática sem usuário presente).
 
-## Escopo autorizado
+## Escopo autorizado — Calendário editorial (5 posts/dia)
+Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
+
 - Perfil: @davidaraujogestor (Instagram Business ID em `.env`)
-- Horários diários (horário de Brasília), todos publicando imagem:
-  - **9h15** — post de imagem única, gerado com o template de marca (HTML/CSS, sem IA)
-  - **13h** — post de imagem única, gerado com Nano Banana (Higgsfield), com
-    revisão do próprio agente antes de publicar (ortografia, legibilidade,
-    coerência, ausência de pessoas); se falhar ou reprovar 3 tentativas,
-    usa como alternativa a API da OpenAI (`gpt-image-1`)
-  - **20h** — carrossel de 5 imagens, gerado com o template de marca (HTML/CSS, sem IA)
+- 5 horários diários (horário de Brasília), todos gerados via Nano Banana
+  (Higgsfield), com revisão do agente antes de publicar:
+  - **07h00** — Educação (carrossel)
+  - **12h00** — Conversão (imagem única)
+  - **15h00** — Entretenimento (carrossel)
+  - **18h00** — Quebra de Objeções (imagem única)
+  - **20h00** — Tendência/IA (carrossel)
 - Publicação 100% automática, sem pedir aprovação a cada post individual
 - Roda **somente na nuvem** (rotinas agendadas), não depende do PC do usuário estar ligado
+- Calendário fixo de 30 dias, dia 1 = **2026-08-13**, cicla a cada 30 dias.
+  `scripts/export-tools/print_calendar_slot.js` calcula automaticamente o
+  dia do calendário a partir da data atual (sem precisar de configuração
+  manual todo mês).
+
+## Identidade visual (guia do usuário)
+- **Paleta**: tons tech — azul elétrico, roxo, verde neon — sobre fundo
+  preto/escuro. 2-3 cores fixas, nunca variar entre posts.
+- **Tipografia**: 1 fonte bold pra títulos/hooks + 1 fonte legível pra texto
+  de apoio, consistente em todos os posts.
+- **Elemento gráfico fixo**: um ícone ou moldura que se repete (reforça
+  identidade de marca).
+- **O que gerar com IA (Nano Banana)**: fundos conceituais, ilustrações
+  abstratas (dados, redes neurais, automação), texturas de apoio, ícones
+  estilizados (seta, engrenagem, balança, check/x).
+- **O que NUNCA gerar com IA**: rosto do usuário, fotos reais, prints de
+  resultado/dashboard de cliente, depoimentos — isso é fabricação de prova
+  social/identidade e não faz parte do calendário atual (todos os 5 pilares
+  hoje usam só fundos/ilustrações conceituais, sem depender de conteúdo
+  real). Se um pilar futuro pedir foto real, ela precisa vir do usuário —
+  nunca gerada.
+- **Formato**: carrossel > estático quando aplicável. Carrossel = máx.
+  40-50 palavras por slide, 1 ideia por slide, com 1 elemento visual
+  dominante que puxa o olho primeiro.
+- **Uso do termo "gestor de tráfego"**: liberado quando o post está falando
+  sobre o tema/serviço em si (ex.: "3 sinais de que seu negócio precisa de
+  um gestor de tráfego") — o calendário do usuário já usa o termo dessa
+  forma várias vezes. O que continua proibido é usar o termo como
+  autodescrição repetitiva e sem graça do próprio David (evitar como
+  bordão pessoal constante).
 
 ## Linha editorial
-- **Persona do usuário**: gestor de tráfego pago, mas o conteúdo NUNCA deve
-  usar o termo "gestor de tráfego" diretamente — usar bordões como "ajudo
-  você a lucrar mais", "vender mais todo dia", "faço seu negócio vender no
-  automático", etc.
 - **Público-alvo**: donos de negócio que precisam de gestão de tráfego pago
-  mas ainda não sabem disso / não perceberam essa necessidade.
-- **Temas**: exclusivamente tráfego pago e dores que gestão de tráfego
-  resolve — resultados de clientes, erros comuns em anúncios, bastidores
-  de como o trabalho é feito, verba mal direcionada, concorrência ocupando
-  espaço, vaidade x venda, criativo cansado, campanha esquecida sem
-  otimização, e datas comerciais perdidas por falta de planejamento. NÃO
-  usar temas de inteligência artificial/agentes de IA. Banco completo em
-  `scripts/content-bank/themes.json` (9 temas, rotação por dia — mesmo
-  índice de dia usado nos 3 horários, então o tema é o mesmo o dia todo).
-- **Toda peça mostra problema + solução, com o usuário como quem resolve**:
-  não basta uma afirmação bonita (ex.: "números não mentem" sozinho não
-  conta história nenhuma). Cada post precisa deixar claro o "antes"
-  (a dor/erro) e o "depois" (o resultado de ter alguém cuidando disso).
-  No post das 13h (imagem única), isso vira uma composição visual
-  antes/depois lado a lado (metade esquerda = problema, metade direita =
-  solução, com uma linha/selo dividindo as duas, rótulos "ANTES"/"DEPOIS").
-  Na legenda e nos slides do carrossel, a mesma lógica se aplica em texto:
-  mostrar a dor, mostrar a virada, e deixar claro que quem resolve isso é
-  o usuário. Cada tema do banco já tem esse par problema/solução definido
-  em `theme.post.gptPrompt` (imagem) e nas legendas.
-- **Proibido pesquisar notícias em tempo real** para gerar conteúdo. Já
-  tentamos isso (carrossel das 20h) e o agente publicou uma informação
-  falsa — o risco de alucinação/erro factual é grande demais para
-  publicação sem revisão humana. Usar SOMENTE os temas fixos e revisados
-  do banco de conteúdo (`scripts/content-bank/themes.json`).
-- **Imagens do template de marca** (manhã e carrossel): renderizadas via
-  `scripts/export-tools/render_slides.js`, paleta roxo/dourado/preto,
-  fontes Fraunces + Outfit.
-- **Imagens via IA** (post das 13h — Nano Banana como padrão, `gpt-image-1`
-  como alternativa): usar SOMENTE para deixar o criativo mais bonito/
-  impactante com gráficos e efeitos visuais abstratos (barras, linhas de
-  gráfico, luz, partículas, vidro), sempre na composição antes/depois
-  descrita acima. **NUNCA gerar pessoas ou rostos** — um teste gerou uma
-  pessoa com aparência artificial/estranha (uncanny valley) e o usuário
-  pediu para remover esse post e não repetir. Prompts de IA devem sempre
-  incluir explicitamente "no people, no faces".
-- **Revisão antes de publicar (post das 13h)**: depois de gerar a imagem
-  via Nano Banana, o próprio agente da rotina precisa visualizar o
-  resultado (ferramenta `Read`) e checar: texto em português correto e
-  sem erro de ortografia, totalmente legível (sem letra cortada/borrada),
-  frase com nexo/coerente com o tema do dia, sem pessoas/rostos, dentro da
-  paleta da marca. Se achar problema, gerar de novo ajustando o prompt
-  (até 3 tentativas no total). Se ainda assim não aprovar, usar o
-  método alternativo já validado (`gpt-image-1`) pra não perder o post do
-  dia.
+  e/ou automação com IA, mas ainda não perceberam essa necessidade.
+- **Banco de dados do calendário**:
+  - `scripts/content-bank/calendar-pillars.json` — os 5 pilares fixos
+    (horário, formato, layout, template de prompt Nano Banana, CTA fixo
+    por pilar)
+  - `scripts/content-bank/calendar.json` — os 30 dias com o tema/gancho
+    específico de cada pilar naquele dia (fornecido integralmente pelo
+    usuário, não gerado por IA)
+- **Proibido pesquisar notícias em tempo real** para gerar conteúdo — usar
+  SOMENTE os temas do calendário fixo.
+- **NUNCA fabricar prova social ou identidade falsa**: não gerar fotos do
+  usuário nem prints de resultado de cliente via IA, mesmo que rotulado
+  como "teste" — isso é propaganda enganosa e destrói a credibilidade da
+  conta se descoberto. Se algum dia for necessário, precisa vir de banco
+  de conteúdo real fornecido pelo usuário, nunca gerado.
 - **Idioma**: todo texto embutido nas artes e todas as legendas em
   português do Brasil.
-- **CTA sempre volta pro usuário, em qualquer tema**: independente do
-  assunto do post (tráfego pago, artes/criativos, sites, o que for), a
-  chamada pra ação final da legenda precisa deixar claro que é o usuário
-  quem faz aquilo pro negócio de quem está lendo — nunca uma dica
-  genérica de "faça você mesmo" ou algo que a pessoa resolva sozinha.
-  Sempre terminar convidando a pessoa a chamar no direct para contratar
-  o serviço (seja gestão de tráfego, criação de arte/criativo, criação
-  de site, etc.).
-- **Padrão premium sempre**: todo post/carrossel gerado (automático ou sob
-  pedido) precisa ter acabamento de alto padrão — visual bonito, copy que
-  converte, nada de arte/legenda "de rascunho". Antes de criar a arte,
-  usar as skills de design disponíveis (ex.: `ui-ux-pro-max`, `dataviz`)
-  como referência de composição, tipografia, hierarquia visual e paleta,
-  mesmo quando o conteúdo é gerado via template HTML ou via IA de imagem.
-  O objetivo é sempre alta conversão, não só ficar bonito.
+- **Legenda**: `tema` do dia (do calendário) + `cta` fixo do pilar,
+  montada automaticamente por `publish_calendar_post.js`.
+- **Padrão premium sempre**: usar as skills de design disponíveis (ex.:
+  `ui-ux-pro-max`, `dataviz`) como referência de composição, tipografia,
+  hierarquia visual e paleta antes de gerar a arte. Objetivo é sempre alta
+  conversão, não só ficar bonito.
+
+## Geração de imagem (Nano Banana) e revisão
+- Todos os 5 pilares geram a capa/imagem via Nano Banana
+  (`generate_image` com `model: "nano_banana_pro"`, MCP do Higgsfield),
+  usando o `capaPrompt` já montado por `print_calendar_slot.js` (o
+  `{tema}` do dia já embutido no prompt template do pilar).
+- Fazer polling com `show_generations` (`{"limit": 5}`) ou `job_display`
+  (`{"id": "..."}`) até completar. NÃO usar `jobs_wait` nem
+  `show_generation_by_ids` — bugados neste ambiente.
+- Baixar a imagem via `curl` (domínio `*.cloudfront.net` já liberado na
+  política de rede do ambiente).
+- **Revisão obrigatória antes de publicar** (ferramenta `Read` na imagem
+  baixada): texto em português correto e sem erro de ortografia,
+  totalmente legível, coerente com o tema do dia, sem pessoas/rostos,
+  dentro da paleta da marca (azul elétrico/roxo/verde neon sobre escuro).
+  Se achar problema, gerar de novo ajustando o prompt (até 3 tentativas
+  no total).
+- **Carrossel** (Educação, Entretenimento, Tendência/IA): a capa é gerada
+  via Nano Banana; os slides interiores (2 até o penúltimo) são
+  renderizados via template HTML de marca
+  (`scripts/export-tools/render_slides.js`), com o agente da rotina
+  compondo o texto de cada slide interior a partir do `tema` do dia e das
+  `layoutNotes` do pilar (1 ideia por slide, máx. 40-50 palavras, tom
+  consistente com o pilar). O slide final sempre é o CTA do pilar.
+- Se a geração falhar/reprovar 3x, reportar o erro claramente e NÃO
+  publicar — não há fallback automático pra este sistema novo (diferente
+  do sistema antigo que caía pro `gpt-image-1`).
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
-- Banco de conteúdo (temas fixos, rotação por dia): `scripts/content-bank/themes.json`
-- Template de marca (HTML): `scripts/content-bank/templates/slide-template.html`
+- Pilares fixos do calendário: `scripts/content-bank/calendar-pillars.json`
+- Calendário de 30 dias (temas por dia/pilar): `scripts/content-bank/calendar.json`
+- Leitor do slot do dia: `scripts/export-tools/print_calendar_slot.js <pilarId> [--day N]`
+- Template de marca (HTML, usado nos slides interiores de carrossel):
+  `scripts/content-bank/templates/slide-template.html`
 - Renderizador do template: `scripts/export-tools/render_slides.js`
   - Detecta e usa Chromium pré-instalado no ambiente da nuvem quando existe
-    (evita reinstalar a cada execução)
-- Orquestrador do dia: `scripts/daily_publish.js --type morning|post|carousel [--use-gpt]`
-- Publicador no Instagram: `scripts/publish_instagram.js`
+    (require condicional/lazy, não quebra o modo Nano Banana se o
+    Playwright não estiver instalado)
+- Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N]`
+  - Monta a legenda (tema + CTA do pilar) e publica via `publish_instagram.js`
+- Publicador genérico no Instagram: `scripts/publish_instagram.js`
   - Uso: `node publish_instagram.js --images foto1.png [foto2.png ...] --caption "texto"`
   - Múltiplas imagens = carrossel automaticamente
   - Faz upload da imagem via uguu.se (com fallback para litterbox.catbox.moe)
+- Sistema antigo (não usado mais, mantido só como referência):
+  `scripts/content-bank/themes.json`, `scripts/daily_publish.js`,
+  `scripts/publish_nanobanana_post.js`
 
 ## Ambiente de nuvem (rotinas)
 - Acesso à rede: **Personalizado**, com `graph.instagram.com`, `uguu.se`,
-  `litterbox.catbox.moe` e `api.openai.com` liberados (necessário além da
-  lista padrão de gerenciadores de pacotes)
-- 3 rotinas cron em claude.ai/code/routines, uma por horário, cada uma com
-  o `.env` recriado no início a partir dos valores no prompt da rotina
-  (não há repositório privado nem secret store nesse fluxo — o repositório
-  GitHub é público, então credenciais NUNCA vão para lá)
+  `litterbox.catbox.moe`, `api.openai.com` e `*.cloudfront.net` liberados
+  (o wildcard é necessário porque o Higgsfield usa subdomínios variáveis
+  do CloudFront pra cada imagem gerada — sem o `*.` só libera o domínio
+  exato, não os subdomínios, e o download falha com 403)
+- 5 rotinas cron em claude.ai/code/routines, uma por pilar/horário, cada
+  uma com o `.env` recriado no início a partir dos valores no prompt da
+  rotina (não há repositório privado nem secret store nesse fluxo — o
+  repositório GitHub é público, então credenciais NUNCA vão para lá)
+- `allowed_tools` de cada rotina inclui as ferramentas MCP do Higgsfield
+  (`mcp__9c4f3976-f86a-4785-b11a-e53430fc6e9a__generate_image` e
+  `__show_generations`) além de Bash/Read/Write/Edit/Glob/Grep

@@ -1,0 +1,55 @@
+{
+  "educacao": {
+    "id": "educacao",
+    "label": "Educação",
+    "hourBRT": "07:00",
+    "cronUTC": "0 10 * * *",
+    "format": "carousel",
+    "slideCount": 6,
+    "layoutNotes": "Capa: fundo conceitual gerado no Nano Banana (tema tech/dados) + hook em texto grande, fonte bold, cor de destaque da marca. Slides 2-6 (interior, renderizados via template HTML de marca): fundo sólido na cor secundária, 1 ideia por slide, ícone pequeno + texto curto (máx. 40 palavras). Slide final: fundo igual à capa, CTA grande.",
+    "capaPromptTemplate": "Ilustração digital minimalista, tema '{tema}', estilo tech/flat design, paleta azul elétrico e roxo sobre fundo escuro, elementos abstratos de dados/rede neural, espaço negativo no topo para texto, alta nitidez, sem texto na imagem, proporção 4:5",
+    "cta": "Salva esse post pra não perder depois e me segue pra mais conteúdo assim 🚀"
+  },
+  "conversao": {
+    "id": "conversao",
+    "label": "Conversão",
+    "hourBRT": "12:00",
+    "cronUTC": "0 15 * * *",
+    "format": "single",
+    "layoutNotes": "Fundo sólido na cor principal da marca (ou fundo IA sutil de apoio, ex: ícone de gráfico crescente/seta), texto de oferta grande e direto ocupando o centro da peça, elemento de urgência/benefício em destaque (ex: selo, badge). CTA sempre visível na parte inferior.",
+    "capaPromptTemplate": "Fundo minimalista com elemento gráfico de apoio (seta de crescimento, ícone de gráfico ou engrenagem estilizada), estilo tech flat design, paleta azul elétrico e roxo sobre fundo escuro ou sólido da marca, espaço negativo central e inferior para texto de oferta, sem texto na imagem, proporção 4:5. Bold Portuguese text overlay reading exactly \"{tema}\" in a clean modern sans-serif bold font, cream/off-white color with subtle shadow, perfectly legible, correctly spelled, no garbled or cut-off letters, positioned in the central negative space.",
+    "cta": "Manda 'QUERO' no direct e vamos conversar sobre o seu negócio"
+  },
+  "entretenimento": {
+    "id": "entretenimento",
+    "label": "Entretenimento",
+    "hourBRT": "15:00",
+    "cronUTC": "0 18 * * *",
+    "format": "carousel",
+    "slideCount": 5,
+    "layoutNotes": "Capa com ilustração leve e colorida gerada no Nano Banana (estilo mais divertido que os outros pilares, cores vibrantes) + hook/pergunta em texto grande. Slides seguintes (interior, template HTML de marca) com fundo sólido, tom bem-humorado, textos curtos (frases de efeito, comparações, curiosidades). Slide final convida a comentar ou compartilhar.",
+    "capaPromptTemplate": "Ilustração digital divertida e colorida, estilo flat design com toque lúdico, paleta vibrante (azul, roxo, amarelo ou verde neon) sobre fundo claro ou escuro, elementos temáticos de tecnologia/IA de forma leve e acessível, espaço negativo para texto, sem texto na imagem, proporção 4:5",
+    "cta": "Comenta aqui embaixo e marca alguém que precisa ver isso 👇"
+  },
+  "quebra_objecoes": {
+    "id": "quebra_objecoes",
+    "label": "Quebra de Objeções",
+    "hourBRT": "18:00",
+    "cronUTC": "0 21 * * *",
+    "format": "single",
+    "layoutNotes": "Formato 'mito vs verdade': objeção em destaque no topo (aspas, fonte de citação) com leve risco ou tarja por cima, resposta/verdade logo abaixo em fonte bold na cor de contraste da marca. Fundo sólido ou com elemento gráfico sutil gerado por IA (ex: ícone de balança, check/x). Peça direta, sem depender de foto.",
+    "capaPromptTemplate": "Fundo minimalista com elemento gráfico de apoio (ícone de balança, check ou seta), estilo flat design, paleta da marca (azul elétrico e roxo) sobre fundo escuro ou sólido, espaço negativo amplo no topo e no centro para texto de objeção e resposta, sem texto na imagem, proporção 4:5. Bold Portuguese text overlay: near the top, the objection in quotation-mark styling, smaller and with a subtle strikethrough or muted tone, reading exactly \"{tema}\" — split naturally between the quoted objection (muted/struck-through style) and the bold rebuttal below it (bright accent color, larger weight), clean modern font, perfectly legible, correctly spelled, no garbled or cut-off letters.",
+    "cta": "Essa também é sua dúvida? Comenta aqui embaixo que eu respondo"
+  },
+  "tendencia_ia": {
+    "id": "tendencia_ia",
+    "label": "Tendência/IA",
+    "hourBRT": "20:00",
+    "cronUTC": "0 23 * * *",
+    "format": "carousel",
+    "slideCount": 5,
+    "layoutNotes": "Capa com elemento visual gerado no Nano Banana (rede neural, fluxo de automação, ícones de IA) ocupando o fundo + texto bold no centro (o gancho/novidade). Slides seguintes (interior, template HTML de marca) com fundo sólido na cor secundária, explicando a novidade/tendência em 1 ideia por slide. Slide final com CTA.",
+    "capaPromptTemplate": "Ilustração digital de rede neural/fluxo de automação de IA, estilo futurista minimalista, paleta azul elétrico, roxo e verde neon sobre fundo escuro, linhas conectando nós de dados, efeito de brilho sutil, espaço negativo central para texto, proporção 9:16, sem texto na imagem",
+    "cta": "Segue pra ficar por dentro de tudo que rola em tráfego pago e IA antes de todo mundo"
+  }
+}
