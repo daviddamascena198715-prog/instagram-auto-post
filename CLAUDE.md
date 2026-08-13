@@ -61,10 +61,8 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   usam só os fundos `dark`, `dark-alt`, `dark2` ou `gold-glow` — nunca
   `deep-purple`, `gradient`, `gradient-cta` ou `noir` (contêm roxo, fora da
   paleta atual).
-- **Cada post no feed é automaticamente crosspostado para os Stories**
-  (a capa/imagem principal, sem legenda — Stories não exibe legenda) via
-  `publish_calendar_post.js`, sem necessidade de gerar uma arte separada em
-  9:16 nem de aprovação extra do usuário.
+- **Publicação é somente no feed** — sem crosspost automático pros Stories
+  (testado em 2026-08-13 e descartado pelo usuário, resultado não ficou bom).
 - **Uso do termo "gestor de tráfego"**: liberado quando o post está falando
   sobre o tema/serviço em si (ex.: "3 sinais de que seu negócio precisa de
   um gestor de tráfego") — o calendário do usuário já usa o termo dessa

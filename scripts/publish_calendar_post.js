@@ -74,10 +74,3 @@ console.log(`Calendário — Dia ${dayNumber} (${dayEntry.weekday}) — Pilar: $
 
 const scriptPath = path.join(__dirname, "publish_instagram.js");
 console.log(execFileSync("node", [scriptPath, "--images", ...images, "--caption", caption], { encoding: "utf-8" }));
-
-try {
-  console.log("\nCrosspostando capa para os Stories...");
-  console.log(execFileSync("node", [scriptPath, "--images", images[0], "--story"], { encoding: "utf-8" }));
-} catch (err) {
-  console.log(`AVISO: falha ao crosspostar para os Stories (post no feed já foi publicado com sucesso): ${err.message}`);
-}
