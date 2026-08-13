@@ -31,16 +31,24 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   dia do calendário a partir da data atual (sem precisar de configuração
   manual todo mês).
 
-## Identidade visual (guia do usuário)
-- **Paleta**: tons tech — azul elétrico, roxo, verde neon — sobre fundo
-  preto/escuro. 2-3 cores fixas, nunca variar entre posts.
+## Identidade visual (guia do usuário — atualizado 2026-08-13)
+- **Paleta**: fundo azul-marinho quase preto + dourado (#C9A24B) como cor
+  de destaque única + texto em creme/off-white. **Não usar mais** azul
+  elétrico, roxo ou verde neon (paleta antiga, substituída). 2 cores fixas,
+  nunca variar entre posts.
+- **Padrão de layout fixo (inspirado em referência enviada pelo usuário)**,
+  igual em todos os 5 pilares:
+  1. Um único ícone conceitual em traço fino dourado, relacionado ao tema do
+     dia (ex.: alvo, seta, engrenagem, balança, lâmpada, chip) — nunca um
+     conjunto de vários ícones, nunca ilustração cheia/carregada.
+  2. Uma linha fina dourada horizontal (divisor), logo acima do headline.
+  3. Headline em texto grande cor creme, com o gancho/tema do dia.
+  4. Logo/wordmark pequeno "davidaraujogestor" num canto (discreto).
+  5. Carrossel: selo "ARRASTA PRA VER →" no rodapé (badge dourado/translúcido).
 - **Tipografia**: 1 fonte bold pra títulos/hooks + 1 fonte legível pra texto
   de apoio, consistente em todos os posts.
-- **Elemento gráfico fixo**: um ícone ou moldura que se repete (reforça
-  identidade de marca).
-- **O que gerar com IA (Nano Banana)**: fundos conceituais, ilustrações
-  abstratas (dados, redes neurais, automação), texturas de apoio, ícones
-  estilizados (seta, engrenagem, balança, check/x).
+- **O que gerar com IA (Nano Banana)**: fundos conceituais, ícone único em
+  traço fino dourado por peça, sem fotos reais.
 - **O que NUNCA gerar com IA**: rosto do usuário, fotos reais, prints de
   resultado/dashboard de cliente, depoimentos — isso é fabricação de prova
   social/identidade e não faz parte do calendário atual (todos os 5 pilares
@@ -49,7 +57,14 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   nunca gerada.
 - **Formato**: carrossel > estático quando aplicável. Carrossel = máx.
   40-50 palavras por slide, 1 ideia por slide, com 1 elemento visual
-  dominante que puxa o olho primeiro.
+  dominante que puxa o olho primeiro. Slides interiores (template HTML)
+  usam só os fundos `dark`, `dark-alt`, `dark2` ou `gold-glow` — nunca
+  `deep-purple`, `gradient`, `gradient-cta` ou `noir` (contêm roxo, fora da
+  paleta atual).
+- **Cada post no feed é automaticamente crosspostado para os Stories**
+  (a capa/imagem principal, sem legenda — Stories não exibe legenda) via
+  `publish_calendar_post.js`, sem necessidade de gerar uma arte separada em
+  9:16 nem de aprovação extra do usuário.
 - **Uso do termo "gestor de tráfego"**: liberado quando o post está falando
   sobre o tema/serviço em si (ex.: "3 sinais de que seu negócio precisa de
   um gestor de tráfego") — o calendário do usuário já usa o termo dessa
@@ -96,7 +111,10 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
 - **Revisão obrigatória antes de publicar** (ferramenta `Read` na imagem
   baixada): texto em português correto e sem erro de ortografia,
   totalmente legível, coerente com o tema do dia, sem pessoas/rostos,
-  dentro da paleta da marca (azul elétrico/roxo/verde neon sobre escuro).
+  ícone único em traço fino dourado (nunca vários ícones/ilustração
+  carregada), linha fina dourada divisória visível acima do headline,
+  fundo azul-marinho quase preto (nunca azul elétrico/roxo/verde neon —
+  paleta antiga), logo pequeno "davidaraujogestor" visível no canto.
   Se achar problema, gerar de novo ajustando o prompt (até 3 tentativas
   no total).
 - **Carrossel** (Educação, Entretenimento, Tendência/IA): a capa é gerada
