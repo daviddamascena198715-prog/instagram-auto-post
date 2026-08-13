@@ -57,10 +57,11 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   nunca gerada.
 - **Formato**: carrossel > estático quando aplicável. Carrossel = máx.
   40-50 palavras por slide, 1 ideia por slide, com 1 elemento visual
-  dominante que puxa o olho primeiro. Slides interiores (template HTML)
-  usam só os fundos `dark`, `dark-alt`, `dark2` ou `gold-glow` — nunca
-  `deep-purple`, `gradient`, `gradient-cta` ou `noir` (contêm roxo, fora da
-  paleta atual).
+  dominante que puxa o olho primeiro.
+- **Todos os slides do carrossel são gerados via Nano Banana** (atualizado
+  2026-08-13, pra ficar mais parecido com a referência visual do usuário) —
+  não só a capa. O template HTML (`render_slides.js`) não é mais usado no
+  fluxo ativo, ficou como legado.
 - **Publicação é somente no feed** — sem crosspost automático pros Stories
   (testado em 2026-08-13 e descartado pelo usuário, resultado não ficou bom).
 - **Uso do termo "gestor de tráfego"**: liberado quando o post está falando
@@ -97,46 +98,56 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   conversão, não só ficar bonito.
 
 ## Geração de imagem (Nano Banana) e revisão
-- Todos os 5 pilares geram a capa/imagem via Nano Banana
-  (`generate_image` com `model: "nano_banana_pro"`, MCP do Higgsfield),
-  usando o `capaPrompt` já montado por `print_calendar_slot.js` (o
-  `{tema}` do dia já embutido no prompt template do pilar).
+- Todos os 5 pilares geram TODAS as imagens via Nano Banana
+  (`generate_image` com `model: "nano_banana_pro"`, MCP do Higgsfield) —
+  capa, slides interiores de carrossel e slide de CTA, cada um gerado e
+  revisado individualmente.
 - Fazer polling com `show_generations` (`{"limit": 5}`) ou `job_display`
   (`{"id": "..."}`) até completar. NÃO usar `jobs_wait` nem
   `show_generation_by_ids` — bugados neste ambiente.
 - Baixar a imagem via `curl` (domínio `*.cloudfront.net` já liberado na
   política de rede do ambiente).
-- **Revisão obrigatória antes de publicar** (ferramenta `Read` na imagem
-  baixada): texto em português correto e sem erro de ortografia,
-  totalmente legível, coerente com o tema do dia, sem pessoas/rostos,
-  ícone único em traço fino dourado (nunca vários ícones/ilustração
-  carregada), linha fina dourada divisória visível acima do headline,
-  fundo azul-marinho quase preto (nunca azul elétrico/roxo/verde neon —
-  paleta antiga), logo pequeno "davidaraujogestor" visível no canto.
-  Se achar problema, gerar de novo ajustando o prompt (até 3 tentativas
-  no total).
-- **Carrossel** (Educação, Entretenimento, Tendência/IA): a capa é gerada
-  via Nano Banana; os slides interiores (2 até o penúltimo) são
-  renderizados via template HTML de marca
-  (`scripts/export-tools/render_slides.js`), com o agente da rotina
-  compondo o texto de cada slide interior a partir do `tema` do dia e das
-  `layoutNotes` do pilar (1 ideia por slide, máx. 40-50 palavras, tom
-  consistente com o pilar). O slide final sempre é o CTA do pilar.
-- Se a geração falhar/reprovar 3x, reportar o erro claramente e NÃO
-  publicar — não há fallback automático pra este sistema novo (diferente
-  do sistema antigo que caía pro `gpt-image-1`).
+- **Capa** (pilares únicos e primeira imagem do carrossel): usa o
+  `capaPrompt` já montado por `print_calendar_slot.js` (o `{tema}` do dia
+  já embutido no prompt template do pilar).
+- **Slides interiores de carrossel** (pilares Educação, Entretenimento,
+  Tendência/IA): `print_calendar_slot.js` retorna `interiorSlidePromptTemplate`
+  e `ctaSlidePromptTemplate` (strings cruas, com placeholders `{headline}`,
+  `{body}`, `{slideNumber}`, `{slideTotal}` e `{cta}` ainda não
+  substituídos). O agente da rotina compõe o texto de cada slide (1 ideia
+  por slide, máx. 40-50 palavras, tom consistente com o pilar, a partir do
+  `tema` do dia e das `layoutNotes`), substitui os placeholders no prompt
+  correspondente e gera cada slide individualmente via `generate_image`. O
+  último slide sempre usa `ctaSlidePromptTemplate` com `{cta}` = `cta` do
+  pilar.
+- **Revisão obrigatória antes de publicar, para CADA imagem gerada**
+  (ferramenta `Read` na imagem baixada): texto em português correto e sem
+  erro de ortografia, totalmente legível, coerente com o conteúdo daquele
+  slide, sem pessoas/rostos, ícone único em traço fino dourado (nunca
+  vários ícones/ilustração carregada), linha fina dourada divisória
+  visível, fundo azul-marinho quase preto (nunca azul elétrico/roxo/verde
+  neon — paleta antiga), logo pequeno "davidaraujogestor" visível no
+  canto. Capa: selo "ARRASTA PRA VER →" visível. Slides interiores: selo
+  de contagem "N/total" visível. Se achar problema em qualquer imagem,
+  gerar de novo ajustando o prompt daquele slide (até 3 tentativas por
+  imagem).
+- Se a geração de qualquer slide falhar/reprovar 3x, reportar o erro
+  claramente e NÃO publicar nada do post — não há fallback automático pra
+  este sistema (diferente do sistema antigo que caía pro `gpt-image-1`).
+- Gerar todos os slides de um carrossel via Nano Banana é mais lento e
+  consome mais créditos do que o fluxo antigo (capa por IA + interior via
+  HTML), mas deixa o visual mais consistente com a referência do usuário.
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
 - Pilares fixos do calendário: `scripts/content-bank/calendar-pillars.json`
 - Calendário de 30 dias (temas por dia/pilar): `scripts/content-bank/calendar.json`
 - Leitor do slot do dia: `scripts/export-tools/print_calendar_slot.js <pilarId> [--day N]`
-- Template de marca (HTML, usado nos slides interiores de carrossel):
-  `scripts/content-bank/templates/slide-template.html`
-- Renderizador do template: `scripts/export-tools/render_slides.js`
-  - Detecta e usa Chromium pré-instalado no ambiente da nuvem quando existe
-    (require condicional/lazy, não quebra o modo Nano Banana se o
-    Playwright não estiver instalado)
+  - Retorna `capaPrompt` (pronto) + `interiorSlidePromptTemplate` e
+    `ctaSlidePromptTemplate` (crus, pra pilares carrossel) + `cta`
+- Template de marca HTML / renderizador (`slide-template.html`,
+  `render_slides.js`): **legado, não usado no fluxo ativo** desde
+  2026-08-13 — todos os slides agora são gerados via Nano Banana
 - Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N]`
   - Monta a legenda (tema + CTA do pilar) e publica via `publish_instagram.js`
 - Publicador genérico no Instagram: `scripts/publish_instagram.js`

@@ -47,5 +47,7 @@ console.log(JSON.stringify({
   tema,
   layoutNotes: pillar.layoutNotes,
   capaPrompt,
+  interiorSlidePromptTemplate: pillar.interiorSlidePromptTemplate || null,
+  ctaSlidePromptTemplate: pillar.ctaSlidePromptTemplate || null,
   cta: pillar.cta,
 }, null, 2));
