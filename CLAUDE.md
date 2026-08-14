@@ -31,30 +31,43 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   dia do calendário a partir da data atual (sem precisar de configuração
   manual todo mês).
 
-## Identidade visual (guia do usuário — atualizado 2026-08-13)
-- **Paleta**: fundo azul-marinho quase preto + dourado (#C9A24B) como cor
-  de destaque única + texto em creme/off-white. **Não usar mais** azul
-  elétrico, roxo ou verde neon (paleta antiga, substituída). 2 cores fixas,
-  nunca variar entre posts.
-- **Padrão de layout fixo (inspirado em referência enviada pelo usuário)**,
+## Identidade visual (guia do usuário — atualizado 2026-08-14)
+- **Paleta**: fundo preto/azul-marinho muito escuro + dourado (#C9A24B) como
+  cor de destaque + texto misturando creme/off-white e dourado (palavras-chave
+  em dourado dentro do headline). **Não usar mais** azul elétrico, roxo ou
+  verde neon (paleta antiga, substituída).
+- **Padrão de layout rico (atualizado 2026-08-14 a partir de referências
+  enviadas pelo usuário — estilo "apresentação de produto SaaS premium")**,
   igual em todos os 5 pilares:
-  1. Um único ícone conceitual em traço fino dourado, relacionado ao tema do
-     dia (ex.: alvo, seta, engrenagem, balança, lâmpada, chip) — nunca um
-     conjunto de vários ícones, nunca ilustração cheia/carregada.
-  2. Uma linha fina dourada horizontal (divisor), logo acima do headline.
-  3. Headline em texto grande cor creme, com o gancho/tema do dia.
+  1. Um elemento visual central rico e impactante (não mais um ícone único
+     simples) — escolher o que melhor comunica o conteúdo daquele slide:
+     mockup de tablet/celular exibindo um dashboard fictício com gráficos
+     reais (rosca, linha, barras) e números; uma fileira de 3-4 ícones
+     circulares dourados com legenda; uma lista de itens com ícone +
+     palavra-chave dourada; ou uma comparação lado a lado (antes/depois,
+     certo/errado). Rico em detalhes, mas sempre hierarquizado e nunca
+     poluído/confuso.
+  2. Uma linha fina dourada horizontal (divisor), separando o elemento
+     visual do bloco de texto.
+  3. Headline em texto grande misturando creme/off-white com 1-2
+     palavras-chave em destaque dourado.
   4. Logo/wordmark pequeno "davidaraujogestor" num canto (discreto).
-  5. Carrossel: selo "ARRASTA PRA VER →" no rodapé (badge dourado/translúcido).
+  5. Carrossel: capa tem selo "ARRASTA PRA VER →"; slides interiores têm
+     selo de contagem "N/total" no rodapé (badge dourado/translúcido).
 - **Tipografia**: 1 fonte bold pra títulos/hooks + 1 fonte legível pra texto
   de apoio, consistente em todos os posts.
-- **O que gerar com IA (Nano Banana)**: fundos conceituais, ícone único em
-  traço fino dourado por peça, sem fotos reais.
+- **O que gerar com IA (Nano Banana)**: mockups de dashboard/app fictícios
+  (sem marca real, sem dados reais), gráficos ilustrativos, ícones e
+  composições ricas em traço/preenchimento dourado — sempre fictício e
+  conceitual, sem fotos reais.
 - **O que NUNCA gerar com IA**: rosto do usuário, fotos reais, prints de
-  resultado/dashboard de cliente, depoimentos — isso é fabricação de prova
-  social/identidade e não faz parte do calendário atual (todos os 5 pilares
-  hoje usam só fundos/ilustrações conceituais, sem depender de conteúdo
-  real). Se um pilar futuro pedir foto real, ela precisa vir do usuário —
-  nunca gerada.
+  resultado/dashboard REAL de cliente (com dados/marca reais), depoimentos —
+  isso é fabricação de prova social/identidade. Mockups de dashboard
+  **fictícios** (sem dados reais, sem logo/marca real, claramente uma
+  ilustração conceitual gerada por IA) são permitidos como elemento de
+  design — a linha é: nunca fingir que é um print real de algo existente.
+  Se um pilar futuro pedir foto real ou print real, precisa vir do usuário —
+  nunca gerado.
 - **Formato**: carrossel > estático quando aplicável. Carrossel = máx.
   40-50 palavras por slide, 1 ideia por slide, com 1 elemento visual
   dominante que puxa o olho primeiro.
@@ -123,14 +136,15 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
 - **Revisão obrigatória antes de publicar, para CADA imagem gerada**
   (ferramenta `Read` na imagem baixada): texto em português correto e sem
   erro de ortografia, totalmente legível, coerente com o conteúdo daquele
-  slide, sem pessoas/rostos, ícone único em traço fino dourado (nunca
-  vários ícones/ilustração carregada), linha fina dourada divisória
-  visível, fundo azul-marinho quase preto (nunca azul elétrico/roxo/verde
-  neon — paleta antiga), logo pequeno "davidaraujogestor" visível no
-  canto. Capa: selo "ARRASTA PRA VER →" visível. Slides interiores: selo
-  de contagem "N/total" visível. Se achar problema em qualquer imagem,
-  gerar de novo ajustando o prompt daquele slide (até 3 tentativas por
-  imagem).
+  slide, sem pessoas/rostos, sem números/dados/marca/logo real (dashboard
+  precisa ser claramente fictício/ilustrativo), elemento visual rico mas
+  hierarquizado e legível (nunca poluído a ponto de confundir a leitura),
+  linha fina dourada divisória visível, fundo preto/azul-marinho muito
+  escuro (nunca azul elétrico/roxo/verde neon — paleta antiga), logo
+  pequeno "davidaraujogestor" visível no canto. Capa: selo "ARRASTA PRA
+  VER →" visível. Slides interiores: selo de contagem "N/total" visível.
+  Se achar problema em qualquer imagem, gerar de novo ajustando o prompt
+  daquele slide (até 3 tentativas por imagem).
 - Se a geração de qualquer slide falhar/reprovar 3x, reportar o erro
   claramente e NÃO publicar nada do post — não há fallback automático pra
   este sistema (diferente do sistema antigo que caía pro `gpt-image-1`).
