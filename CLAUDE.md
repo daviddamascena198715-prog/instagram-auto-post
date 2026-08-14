@@ -113,6 +113,12 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   texto e passa `--body-file <arquivo>` pro `publish_calendar_post.js`, que
   monta a legenda final como `tema + corpo + cta`. Nunca publicar com a
   legenda só repetindo o gancho sem cumprir a promessa dele.
+- **Conferência de nexo obrigatória antes de publicar**: depois de compor
+  a legenda, o agente relê o texto completo (tema + corpo + cta) junto com
+  a(s) imagem(ns) já aprovada(s) e confirma que fazem sentido juntas — a
+  legenda não pode prometer algo que a arte não mostra, nem contradizer o
+  tema visual. Se achar desalinhamento, reescreve o corpo da legenda (sem
+  precisar gerar imagem de novo) antes de publicar.
 - **Padrão premium sempre**: usar as skills de design disponíveis (ex.:
   `ui-ux-pro-max`, `dataviz`) como referência de composição, tipografia,
   hierarquia visual e paleta antes de gerar a arte. Objetivo é sempre alta
