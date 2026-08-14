@@ -95,7 +95,10 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
     específico de cada pilar naquele dia (fornecido integralmente pelo
     usuário, não gerado por IA)
 - **Proibido pesquisar notícias em tempo real** para gerar conteúdo — usar
-  SOMENTE os temas do calendário fixo.
+  SOMENTE os temas do calendário fixo. **Exceção única: pilar Educação
+  (7h)**, ver seção "Exceção — varredura de tendências (Educação 7h)"
+  abaixo. Os outros 4 pilares (Conversão, Entretenimento, Quebra de
+  Objeções, Tendência/IA) continuam 100% no calendário fixo, sem exceção.
 - **NUNCA fabricar prova social ou identidade falsa**: não gerar fotos do
   usuário nem prints de resultado de cliente via IA, mesmo que rotulado
   como "teste" — isso é propaganda enganosa e destrói a credibilidade da
@@ -123,6 +126,59 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   `ui-ux-pro-max`, `dataviz`) como referência de composição, tipografia,
   hierarquia visual e paleta antes de gerar a arte. Objetivo é sempre alta
   conversão, não só ficar bonito.
+
+## Exceção — varredura de tendências (Educação 7h)
+Adicionado em 2026-08-14, a pedido do usuário, pra deixar o post das 7h
+mais atual. **Só vale pro pilar `educacao`** — os outros 4 pilares nunca
+fazem isso.
+
+- Antes de rodar `print_calendar_slot.js educacao`, a rotina usa
+  `WebSearch` pra pesquisar novidade/tendência recente e relevante dentro
+  do nicho (tráfego pago, marketing digital, algoritmos/plataformas de
+  anúncio, IA aplicada a marketing). 2-3 buscas, focando em conteúdo dos
+  últimos dias.
+- **Critério pra usar o resultado da busca**: só substitui o tema fixo do
+  dia se achar algo **específico, recente (dias, não meses) e claramente
+  relevante** pro nicho (ex.: mudança anunciada numa plataforma de
+  anúncios, uma ferramenta de IA nova pra marketing, uma tendência de
+  formato/criativo comentada por várias fontes). Se a busca só trouxer
+  resultado vago, antigo ou fora do nicho, **não usa** — cai no fallback.
+- **Priorizar potencial de viralização no perfil** (atualizado 2026-08-14):
+  entre os achados que passam no critério acima, priorizar o que tem mais
+  cara de gerar engajamento/compartilhamento — algo que gere reação,
+  debate, "não sabia disso" — em vez do achado mais "seco"/institucional.
+  Isso vale só pra escolher QUAL tendência usar; os guardrails de conteúdo
+  abaixo continuam valendo do mesmo jeito.
+- **Palavras-chave e hashtags**: quando publicar com tema pesquisado, o
+  corpo da legenda (arquivo `--body-file`) termina com uma linha de 5-8
+  hashtags relevantes ao tema do dia e ao nicho (ex.: #tráfegopago
+  #marketingdigital #gestordetráfego + 2-3 específicas do assunto
+  pesquisado), pra ajudar o alcance/descoberta do post. Nos outros
+  pilares (calendário fixo) isso é opcional, não obrigatório.
+- **Fallback obrigatório**: se não achar nada que bata no critério acima,
+  usa o tema fixo do calendário normalmente (`print_calendar_slot.js
+  educacao` sem `--tema`). Nunca deixar de publicar por falta de tendência
+  — o calendário fixo é sempre a rede de segurança.
+- **Guardrails de conteúdo** (não negociáveis, mesmo com achado real):
+  - Não inventar números, estatísticas ou citações que não vieram
+    literalmente da busca. Se um número apareceu na busca, pode usar; se
+    não apareceu, não inventa pra "parecer mais concreto".
+  - Não afirmar como fato algo que a busca só sugere/especula.
+  - Continua proibido gerar fotos reais, rosto do usuáro ou prints de
+    resultado/tela reais de qualquer plataforma — o mockup de dashboard
+    fictício continua sendo sempre ilustrativo, nunca um print real
+    disfarçado do que foi encontrado na busca.
+  - Se a rotina não tiver certeza se algo é "notícia real recente" ou só
+    um boato/especulação de blog, trata como não confiável e cai no
+    fallback.
+- Quando usar tema pesquisado: rodar
+  `print_calendar_slot.js educacao --tema "<gancho escrito com base na
+  pesquisa>"` (o agente escreve o gancho, curto e no tom do pilar, a
+  partir do que encontrou) e, no final,
+  `publish_calendar_post.js educacao --images ... --body-file ... --tema
+  "<o mesmo gancho>"` (pra legenda usar o tema certo, não o do calendário).
+- O `allowed_tools` da rotina de Educação 7h inclui `WebSearch` —
+  única das 5 rotinas com essa ferramenta liberada.
 
 ## Geração de imagem (Nano Banana) e revisão
 - Todos os 5 pilares geram TODAS as imagens via Nano Banana

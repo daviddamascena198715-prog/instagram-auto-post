@@ -1,7 +1,10 @@
 // print_calendar_slot.js — Imprime os dados de um slot do calendário editorial (dia + pilar)
-// Uso: node print_calendar_slot.js <pilarId> [--day N]
+// Uso: node print_calendar_slot.js <pilarId> [--day N] [--tema "texto customizado"]
 // Dia 1 do calendário = 2026-08-13 (data de início definida pelo usuário). Sem --day, calcula
 // o dia de hoje automaticamente e cicla de 30 em 30 dias.
+// --tema: substitui o tema fixo do calendário por um texto customizado (usado
+// pelo pilar Educação quando a varredura de tendências encontra algo melhor
+// que o tema fixo do dia — ver CLAUDE.md "Exceção — varredura de tendências").
 const fs = require("fs");
 const path = require("path");
 
@@ -34,7 +37,9 @@ if (!dayEntry) {
 }
 
 const pillar = PILLARS[pillarId];
-const tema = dayEntry[pillarId];
+const temaFlagIndex = process.argv.indexOf("--tema");
+const customTema = temaFlagIndex !== -1 ? process.argv[temaFlagIndex + 1] : null;
+const tema = customTema || dayEntry[pillarId];
 const capaPrompt = pillar.capaPromptTemplate.split("{tema}").join(tema);
 
 console.log(JSON.stringify({
@@ -45,6 +50,7 @@ console.log(JSON.stringify({
   format: pillar.format,
   slideCount: pillar.slideCount || null,
   tema,
+  temaCustomizado: Boolean(customTema),
   layoutNotes: pillar.layoutNotes,
   capaPrompt,
   interiorSlidePromptTemplate: pillar.interiorSlidePromptTemplate || null,

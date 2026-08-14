@@ -85,8 +85,13 @@ function getBody() {
   return null;
 }
 
+function getTema() {
+  const idx = process.argv.indexOf("--tema");
+  return idx !== -1 && process.argv[idx + 1] ? process.argv[idx + 1] : null;
+}
+
 const pillar = PILLARS[pillarId];
-const tema = dayEntry[pillarId];
+const tema = getTema() || dayEntry[pillarId];
 const body = getBody();
 const caption = body ? `${tema}\n\n${body}\n\n${pillar.cta}` : `${tema}\n\n${pillar.cta}`;
 
