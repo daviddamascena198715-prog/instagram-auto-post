@@ -2,10 +2,16 @@
 // já gerado e aprovado. A escolha do dia usa a mesma lógica de print_calendar_slot.js.
 //
 // Uso (post único, pilares "conversao" e "quebra_objecoes"):
-//   node publish_calendar_post.js <pilarId> --image <caminho.png> [--day N]
+//   node publish_calendar_post.js <pilarId> --image <caminho.png> [--day N] [--body-file <arquivo.txt>]
 //
 // Uso (carrossel, pilares "educacao", "entretenimento", "tendencia_ia"):
-//   node publish_calendar_post.js <pilarId> --images <capa.png> <slide2.png> ... [--day N]
+//   node publish_calendar_post.js <pilarId> --images <capa.png> <slide2.png> ... [--day N] [--body-file <arquivo.txt>]
+//
+// --body-file: arquivo de texto com o corpo da legenda que ENTREGA o que o
+// gancho promete (ex: se o tema diz "3 motivos", o corpo lista os 3 motivos).
+// A legenda final fica: tema (gancho) + corpo + cta fixo do pilar. Sem
+// --body-file, a legenda cai pro formato antigo (só tema + cta) — evitar
+// isso sempre que o tema fizer uma promessa de conteúdo (números, listas).
 const path = require("path");
 const fs = require("fs");
 const { execFileSync } = require("child_process");
@@ -66,9 +72,23 @@ if (!dayEntry) {
   process.exit(1);
 }
 
+function getBody() {
+  const idx = process.argv.indexOf("--body-file");
+  if (idx !== -1 && process.argv[idx + 1]) {
+    const bodyPath = process.argv[idx + 1];
+    if (!fs.existsSync(bodyPath)) {
+      console.log(`ERRO: --body-file não encontrado: ${bodyPath}`);
+      process.exit(1);
+    }
+    return fs.readFileSync(bodyPath, "utf-8").trim();
+  }
+  return null;
+}
+
 const pillar = PILLARS[pillarId];
 const tema = dayEntry[pillarId];
-const caption = `${tema}\n\n${pillar.cta}`;
+const body = getBody();
+const caption = body ? `${tema}\n\n${body}\n\n${pillar.cta}` : `${tema}\n\n${pillar.cta}`;
 
 console.log(`Calendário — Dia ${dayNumber} (${dayEntry.weekday}) — Pilar: ${pillar.label} — modo: ${images.length > 1 ? "carrossel" : "único"}`);
 

@@ -103,8 +103,16 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   de conteúdo real fornecido pelo usuário, nunca gerado.
 - **Idioma**: todo texto embutido nas artes e todas as legendas em
   português do Brasil.
-- **Legenda**: `tema` do dia (do calendário) + `cta` fixo do pilar,
-  montada automaticamente por `publish_calendar_post.js`.
+- **Legenda**: `tema` do dia (gancho) + corpo + `cta` fixo do pilar.
+  **O corpo é obrigatório e precisa ENTREGAR o que o gancho promete**
+  (atualizado 2026-08-14, depois de um post cuja legenda dizia "3 motivos"
+  na arte mas não listava nenhum motivo no texto): se o tema é "N motivos/
+  sinais/erros/dicas", o corpo lista exatamente esses N itens; se é uma
+  pergunta, o corpo responde brevemente; se é uma afirmação/mito, o corpo
+  explica em 2-4 linhas. O agente da rotina escreve o corpo num arquivo de
+  texto e passa `--body-file <arquivo>` pro `publish_calendar_post.js`, que
+  monta a legenda final como `tema + corpo + cta`. Nunca publicar com a
+  legenda só repetindo o gancho sem cumprir a promessa dele.
 - **Padrão premium sempre**: usar as skills de design disponíveis (ex.:
   `ui-ux-pro-max`, `dataviz`) como referência de composição, tipografia,
   hierarquia visual e paleta antes de gerar a arte. Objetivo é sempre alta
