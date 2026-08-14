@@ -123,10 +123,18 @@ async function waitReady(containerId) {
 
 async function publish(containerId) {
   const body = new URLSearchParams({ access_token: TOKEN, creation_id: containerId });
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body });
-  const result = await resp.json();
-  if (!result.id) throw new Error(`Erro publicar: ${JSON.stringify(result)}`);
-  return result.id;
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    const resp = await fetch(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body });
+    const result = await resp.json();
+    if (result.id) return result.id;
+    const isNotReadyYet = result.error?.code === 9007 && result.error?.error_subcode === 2207027;
+    if (isNotReadyYet && attempt < 5) {
+      console.log(`  Mídia ainda não pronta pro Instagram (erro transitório), tentando de novo em 5s... (${attempt}/5)`);
+      await new Promise((r) => setTimeout(r, 5000));
+      continue;
+    }
+    throw new Error(`Erro publicar: ${JSON.stringify(result)}`);
+  }
 }
 
 async function run() {

@@ -159,12 +159,43 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
   VER →" visível. Slides interiores: selo de contagem "N/total" visível.
   Se achar problema em qualquer imagem, gerar de novo ajustando o prompt
   daquele slide (até 3 tentativas por imagem).
-- Se a geração de qualquer slide falhar/reprovar 3x, reportar o erro
-  claramente e NÃO publicar nada do post — não há fallback automático pra
-  este sistema (diferente do sistema antigo que caía pro `gpt-image-1`).
+- Se a geração de qualquer slide falhar/reprovar 3x (depois da válvula de
+  escape abaixo), reportar o erro claramente e NÃO publicar nada do post —
+  não há fallback pro sistema antigo (`gpt-image-1`).
 - Gerar todos os slides de um carrossel via Nano Banana é mais lento e
   consome mais créditos do que o fluxo antigo (capa por IA + interior via
   HTML), mas deixa o visual mais consistente com a referência do usuário.
+
+### Válvula de escape (atualizado 2026-08-14, depois de um caso real)
+Em 2026-08-14 a rotina das 20h reportou falha total ("3 tentativas
+travadas em in_progress") e não publicou nada — mas ao investigar depois,
+2 das 3 imagens tinham completado normalmente minutos antes, só que
+`job_display` continuou devolvendo `in_progress` pra rotina (status
+desatualizado/stale dentro daquela sessão). A rotina desistiu sem nunca
+ter, de fato, uma tentativa real fracassada. Pra isso não acontecer de
+novo, **antes de declarar qualquer tentativa como travada/falha**, seguir
+esta ordem:
+1. Se `job_display` mostrar `in_progress` por mais de ~3 minutos, NÃO
+   conte isso como tentativa fracassada ainda. Faça uma verificação
+   cruzada com `show_generations` (`{"limit": 10}`) — procure pelo mesmo
+   `id` do job na lista. Se aparecer lá com `status: "completed"` e
+   `results.rawUrl`, a imagem existe — baixe e revise normalmente, mesmo
+   que `job_display` ainda diga `in_progress`.
+2. Só depois dessa verificação cruzada (item 1) — se o job realmente não
+   aparecer como completed em lugar nenhum, ou aparecer com
+   `status: "failed"` — é que conta como uma tentativa fracassada de
+   verdade, e aí sim parte pra próxima tentativa (das 3 permitidas).
+3. **Se mesmo assim as 3 tentativas "ricas" (com mockup/dashboard/gráfico
+   detalhado) genuinamente falharem**, faça uma **4ª tentativa de
+   emergência simplificada** antes de desistir: um prompt bem mais simples
+   (só fundo escuro sólido + headline em texto grande centralizado + linha
+   dourada + logo, sem mockup/gráfico/ícones — muito menos chance de
+   travar ou falhar) só pra garantir que o dia não fique sem post. Essa
+   tentativa de emergência não compete pelo limite de 3 — é a última rede
+   de segurança.
+4. Só reportar falha total e não publicar se a tentativa de emergência
+   (item 3) também falhar de verdade (confirmada via `show_generations`).
+   Nesse caso raro, reportar claramente ao usuário o que foi tentado.
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
@@ -176,12 +207,22 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
 - Template de marca HTML / renderizador (`slide-template.html`,
   `render_slides.js`): **legado, não usado no fluxo ativo** desde
   2026-08-13 — todos os slides agora são gerados via Nano Banana
-- Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N]`
-  - Monta a legenda (tema + CTA do pilar) e publica via `publish_instagram.js`
+- Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N] [--body-file <arquivo>] [--force]`
+  - Monta a legenda (tema + corpo + CTA do pilar) e publica via `publish_instagram.js`
+  - **Checagem anti-duplicidade** (adicionada 2026-08-14, depois de um caso
+    real de duplicidade no pilar Conversão quando o disparo automático
+    atrasado rodou depois de uma publicação manual do mesmo dia): antes de
+    publicar, consulta os últimos posts do perfil (`/me/media`) e aborta se
+    achar um post das últimas 20h cuja legenda comece com o mesmo `tema` do
+    dia. Usar `--force` só se a publicação duplicada for intencional.
 - Publicador genérico no Instagram: `scripts/publish_instagram.js`
   - Uso: `node publish_instagram.js --images foto1.png [foto2.png ...] --caption "texto"`
   - Múltiplas imagens = carrossel automaticamente
   - Faz upload da imagem via uguu.se (com fallback para litterbox.catbox.moe)
+  - **Retry automático** (adicionado 2026-08-14) no erro transitório da API
+    do Instagram "Media ID is not available" (código 9007/2207027) — tenta
+    publicar de novo até 5x com 5s de intervalo antes de desistir, em vez
+    de falhar na primeira tentativa mesmo com o container já `FINISHED`.
 - Sistema antigo (não usado mais, mantido só como referência):
   `scripts/content-bank/themes.json`, `scripts/daily_publish.js`,
   `scripts/publish_nanobanana_post.js`

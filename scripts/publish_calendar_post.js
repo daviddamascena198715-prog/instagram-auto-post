@@ -90,7 +90,38 @@ const tema = dayEntry[pillarId];
 const body = getBody();
 const caption = body ? `${tema}\n\n${body}\n\n${pillar.cta}` : `${tema}\n\n${pillar.cta}`;
 
-console.log(`Calendário — Dia ${dayNumber} (${dayEntry.weekday}) — Pilar: ${pillar.label} — modo: ${images.length > 1 ? "carrossel" : "único"}`);
+// Checagem anti-duplicidade: evita publicar 2x o mesmo tema/pilar no mesmo
+// dia (ex: quando o disparo automático atrasado roda depois de uma
+// publicação manual já ter saído). Compara os primeiros 40 caracteres do
+// tema contra legendas de posts das últimas 20h.
+async function checkAlreadyPublishedToday() {
+  const GRAPH_HOST = process.env.META_GRAPH_HOST || "graph.instagram.com";
+  const API_VER = process.env.META_API_VERSION || "v21.0";
+  const TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
+  const resp = await fetch(`https://${GRAPH_HOST}/${API_VER}/me/media?fields=id,caption,timestamp&access_token=${TOKEN}&limit=10`);
+  const data = await resp.json();
+  const cutoff = Date.now() - 20 * 60 * 60 * 1000;
+  const temaStart = tema.slice(0, 40);
+  return (data.data || []).find((m) => {
+    const t = new Date(m.timestamp).getTime();
+    return t > cutoff && m.caption && m.caption.startsWith(temaStart);
+  });
+}
 
-const scriptPath = path.join(__dirname, "publish_instagram.js");
-console.log(execFileSync("node", [scriptPath, "--images", ...images, "--caption", caption], { encoding: "utf-8" }));
+async function run() {
+  if (!process.argv.includes("--force")) {
+    const dup = await checkAlreadyPublishedToday();
+    if (dup) {
+      console.log(`AVISO: já existe um post recente com o mesmo tema do dia (Post ID ${dup.id}, publicado em ${dup.timestamp}).`);
+      console.log("Abortando pra evitar duplicidade. Se quiser publicar mesmo assim, rode de novo com --force.");
+      process.exit(1);
+    }
+  }
+
+  console.log(`Calendário — Dia ${dayNumber} (${dayEntry.weekday}) — Pilar: ${pillar.label} — modo: ${images.length > 1 ? "carrossel" : "único"}`);
+
+  const scriptPath = path.join(__dirname, "publish_instagram.js");
+  console.log(execFileSync("node", [scriptPath, "--images", ...images, "--caption", caption], { encoding: "utf-8" }));
+}
+
+run();
