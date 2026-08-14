@@ -155,6 +155,13 @@ fazem isso.
   #marketingdigital #gestordetráfego + 2-3 específicas do assunto
   pesquisado), pra ajudar o alcance/descoberta do post. Nos outros
   pilares (calendário fixo) isso é opcional, não obrigatório.
+- **Menção da fonte** (atualizado 2026-08-14): quando publicar com tema
+  pesquisado, o corpo da legenda inclui uma linha citando de onde veio a
+  informação — formato simples, ex.: "Fonte: [nome do veículo/site]" (sem
+  precisar de link, Instagram não deixa link clicável na legenda mesmo).
+  Se a busca trouxe mais de uma fonte confirmando a mesma tendência, citar
+  a mais conhecida/confiável. Isso vale só pra tema pesquisado — o
+  calendário fixo não tem fonte externa pra citar.
 - **Fallback obrigatório**: se não achar nada que bata no critério acima,
   usa o tema fixo do calendário normalmente (`print_calendar_slot.js
   educacao` sem `--tema`). Nunca deixar de publicar por falta de tendência
