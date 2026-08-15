@@ -60,7 +60,10 @@ const dayFlagIndex = process.argv.indexOf("--day");
 if (dayFlagIndex !== -1 && process.argv[dayFlagIndex + 1]) {
   dayNumber = parseInt(process.argv[dayFlagIndex + 1], 10);
 } else {
-  const todayUTC = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
+  // Calcula o dia do calendário pela data em BRT (UTC-3), não pela data UTC
+  // crua — ver mesma correção em print_calendar_slot.js.
+  const nowBRT = new Date(Date.now() - 3 * 60 * 60 * 1000);
+  const todayUTC = Date.UTC(nowBRT.getUTCFullYear(), nowBRT.getUTCMonth(), nowBRT.getUTCDate());
   const diffDays = Math.floor((todayUTC - START_DATE) / 86400000);
   dayNumber = (diffDays % CALENDAR.length) + 1;
   if (dayNumber < 1) dayNumber += CALENDAR.length;
@@ -105,6 +108,10 @@ async function checkAlreadyPublishedToday() {
   const TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
   const resp = await fetch(`https://${GRAPH_HOST}/${API_VER}/me/media?fields=id,caption,timestamp&access_token=${TOKEN}&limit=10`);
   const data = await resp.json();
+  if (!resp.ok || data.error) {
+    console.log(`AVISO: não consegui verificar duplicidade (erro na API do Instagram: ${JSON.stringify(data.error || { status: resp.status })}). Prosseguindo mesmo assim — confira manualmente se já publicou hoje.`);
+    return null;
+  }
   const cutoff = Date.now() - 20 * 60 * 60 * 1000;
   const temaStart = tema.slice(0, 40);
   return (data.data || []).find((m) => {

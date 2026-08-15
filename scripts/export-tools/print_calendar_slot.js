@@ -24,7 +24,11 @@ const dayFlagIndex = process.argv.indexOf("--day");
 if (dayFlagIndex !== -1 && process.argv[dayFlagIndex + 1]) {
   dayNumber = parseInt(process.argv[dayFlagIndex + 1], 10);
 } else {
-  const todayUTC = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
+  // Calcula o dia do calendário pela data em BRT (UTC-3), não pela data UTC
+  // crua — sem isso, uma rotina que roda entre 00:00-02:59 UTC (ainda o dia
+  // anterior em BRT) calcularia o dia errado do calendário.
+  const nowBRT = new Date(Date.now() - 3 * 60 * 60 * 1000);
+  const todayUTC = Date.UTC(nowBRT.getUTCFullYear(), nowBRT.getUTCMonth(), nowBRT.getUTCDate());
   const diffDays = Math.floor((todayUTC - START_DATE) / 86400000);
   dayNumber = (diffDays % CALENDAR.length) + 1;
   if (dayNumber < 1) dayNumber += CALENDAR.length;

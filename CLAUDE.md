@@ -202,9 +202,10 @@ fazem isso.
   já embutido no prompt template do pilar).
 - **Slides interiores de carrossel** (pilares Educação, Entretenimento,
   Tendência/IA): `print_calendar_slot.js` retorna `interiorSlidePromptTemplate`
-  e `ctaSlidePromptTemplate` (strings cruas, com placeholders `{headline}`,
-  `{body}`, `{slideNumber}`, `{slideTotal}` e `{cta}` ainda não
-  substituídos). O agente da rotina compõe o texto de cada slide (1 ideia
+  (placeholders `{headline}`, `{body}`, `{slideNumber}`, `{slideTotal}`) e
+  `ctaSlidePromptTemplate` (só `{headline}` e `{cta}` — sem `{body}`,
+  `{slideNumber}` nem `{slideTotal}`), ambos crus/não substituídos. O
+  agente da rotina compõe o texto de cada slide (1 ideia
   por slide, máx. 40-50 palavras, tom consistente com o pilar, a partir do
   `tema` do dia e das `layoutNotes`), substitui os placeholders no prompt
   correspondente e gera cada slide individualmente via `generate_image`. O
