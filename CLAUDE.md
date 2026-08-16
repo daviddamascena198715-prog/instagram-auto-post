@@ -33,9 +33,18 @@ Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
 
 ## Identidade visual (guia do usuário — atualizado 2026-08-14)
 - **Paleta**: fundo preto/azul-marinho muito escuro + dourado (#C9A24B) como
-  cor de destaque + texto misturando creme/off-white e dourado (palavras-chave
-  em dourado dentro do headline). **Não usar mais** azul elétrico, roxo ou
-  verde neon (paleta antiga, substituída).
+  cor de destaque principal + texto misturando creme/off-white e dourado
+  (palavras-chave em dourado dentro do headline). **Não usar mais** azul
+  elétrico, roxo ou verde neon (paleta antiga, substituída).
+- **Cores semânticas nos elementos de dado** (adicionado 2026-08-14, a
+  partir de referência enviada pelo usuário): dentro do gráfico/mockup
+  (gauge, gráfico de pizza/rosca, badges de ícone por categoria), pode usar
+  verde (positivo), amarelo (atenção/neutro), vermelho (negativo/urgente) e
+  azul (informativo) além do dourado — como um dashboard financeiro real
+  usaria. Isso vale só pros elementos de dado dentro da peça gráfica.
+  **Headline, linha divisória, logo e botão de CTA continuam sempre em
+  dourado/creme** — essas cores extras nunca vazam pra fora do
+  gráfico/mockup nem substituem o dourado como cor de marca.
 - **Padrão de layout rico (atualizado 2026-08-14 a partir de referências
   enviadas pelo usuário — estilo "apresentação de produto SaaS premium")**,
   igual em todos os 5 pilares:
