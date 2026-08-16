@@ -187,6 +187,21 @@ fazem isso.
   - Se a rotina não tiver certeza se algo é "notícia real recente" ou só
     um boato/especulação de blog, trata como não confiável e cai no
     fallback.
+- **Pessoas citadas na tendência pesquisada** (atualizado 2026-08-14,
+  depois de discussão com o usuário sobre uso de imagem/direito autoral):
+  se a tendência menciona uma pessoa específica (especialista, executivo,
+  jornalista, figura pública), a rotina **NUNCA** usa a foto real dela
+  (nem "printada"/reaproveitada de veículo de imprensa, nem fabricada
+  pela IA tentando parecer com ela) — ser pessoa pública não muda isso: a
+  foto pertence a quem a tirou/publicou, e uma imagem fabricada
+  apresentada como se fosse real é conteúdo enganoso. Em vez disso:
+  1. Citar o nome da pessoa e seu cargo/papel **em texto**, no corpo da
+     legenda (ex.: "segundo [Nome], [cargo] na [empresa]...").
+  2. Se quiser reforçar visualmente, usar um ícone/avatar **genérico e
+     claramente estilizado** (ex.: silhueta simples, ícone de "porta-voz"
+     ou "especialista" em traço dourado, no mesmo estilo dos outros
+     ícones da peça) — nunca algo que tente parecer um rosto real ou
+     remeter à aparência específica da pessoa citada.
 - Quando usar tema pesquisado: rodar
   `print_calendar_slot.js educacao --tema "<gancho escrito com base na
   pesquisa>"` (o agente escreve o gancho, curto e no tom do pilar, a
