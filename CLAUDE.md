@@ -229,10 +229,31 @@ depender de crédito de IA).
   2. **Comercial** — uma dica/insight sobre vendas, negociação, fechamento,
      posicionamento ou relação com cliente que demonstra autoridade comercial
      (não é motivacional vazio — é tático, aplicável).
-- **Conteúdo evergreen, não precisa de pesquisa/notícia**: diferente da
-  exceção do pilar Educação 7h, aqui não há varredura de tendência nem
-  citação de fonte — é conhecimento próprio/autoral do agente sobre os dois
-  temas, variando o ângulo a cada dia pra não repetir a mesma dica.
+- **Varredura de novidade de mercado, com fallback evergreen** (atualizado
+  2026-08-17, mesmo padrão da exceção do pilar Educação 7h): antes de montar
+  cada dica, a rotina usa `WebSearch` (1-2 buscas por tema) procurando
+  novidade recente (últimos dias) e relevante:
+  - Tráfego pago: mudança/atualização em plataforma de anúncio (Meta Ads,
+    Google Ads, TikTok Ads), novo recurso de IA aplicado a mídia paga,
+    mudança de algoritmo, novidade de mercado que afeta CAC/ROAS.
+  - Comercial: tendência de vendas/negociação, mudança de comportamento de
+    compra B2B/B2C, novidade de ferramenta comercial, dado de mercado sobre
+    fechamento/funil.
+  Se achar algo específico e recente que passe no critério (mesmo critério
+  da exceção Educação 7h: específico, recente — dias não meses —,
+  claramente relevante pro tema), usa isso como base da dica e cita a fonte
+  no corpo (`body`, formato "Fonte: [veículo]"). **Se não achar nada que
+  passe no critério, cai no fallback**: dica evergreen de autoridade (sem
+  fonte), seguindo os critérios de qualidade abaixo. Nunca deixar de
+  publicar por falta de novidade — o evergreen é sempre a rede de
+  segurança, igual ao calendário fixo do pilar Educação 7h.
+  - **Guardrails da varredura** (mesmos da exceção Educação 7h): nunca
+    inventar número/estatística/citação que não veio literalmente da busca;
+    nunca afirmar como fato o que a busca só sugere; se não tiver certeza se
+    é notícia real recente, trata como não confiável e cai no fallback.
+  - **Pessoas citadas na novidade**: mesma regra de sempre — nunca foto real
+    ou fabricada de pessoa específica, mesmo pública; cita nome/cargo em
+    texto se relevante.
 - **Critério de qualidade pra cada dica**: específica (não genérica tipo
   "seja consistente"), acionável (a pessoa consegue aplicar hoje),
   demonstra know-how real (soa como quem já viveu aquilo, não como resumo de
@@ -258,7 +279,7 @@ depender de crédito de IA).
      {
        "tag": "TRÁFEGO PAGO",
        "headline": "Texto com <span class=\"hl\">palavra-chave dourada</span>",
-       "body": "2-4 linhas com a dica, específica e acionável.",
+       "body": "2-4 linhas com a dica, específica e acionável.<br><br>Fonte: [veículo] (só quando a dica usou novidade pesquisada; omitir no fallback evergreen)",
        "icon": "target",
        "badges": [
          { "label": "AUTORIDADE", "tone": "blue", "icon": "check" }
@@ -284,6 +305,8 @@ depender de crédito de IA).
 - **Publicação**: `node scripts/publish_instagram.js --images scripts/daily-output/story_<tema>.png --story`
   — um comando por tema, 2 publicações de Story no total. Sem `--caption`
   (Stories não usam legenda).
+- O `allowed_tools` da rotina de Stories 6h inclui `WebSearch` (adicionado
+  2026-08-17 junto com a varredura de novidade de mercado).
 - **Dependência de rede**: o template/script usa Playwright (Chromium
   headless), que precisa de `registry.npmjs.org` e o CDN de download do
   navegador do Playwright liberados no acesso de rede do ambiente de nuvem
