@@ -1,11 +1,14 @@
-// render_news_story.js — Renderiza 1 story de "tema do dia" (política, economia,
-// guerra, eventos naturais, tecnologia/IA) a partir do template de marca, sem IA
-// de imagem (mesmo template usado no story manual de 2026-08-17).
+// render_news_story.js — Renderiza 1 story de autoridade (tráfego pago ou
+// comercial) a partir do template de marca, sem IA de imagem (mesmo template
+// usado no story manual de 2026-08-17). Também suporta os ícones antigos de
+// notícia (política/economia/guerra/eventos naturais/tecnologia) caso
+// precisem ser reativados no futuro.
 //
 // Uso: node render_news_story.js <data.json> <outPath.png>
 //
 // data.json: { tag, headline, body, icon, badges: [{label, tone, icon}] }
-//   icon (ícone central): "dollar" | "politics" | "conflict" | "nature" | "tech"
+//   icon (ícone central): "target" (tráfego pago) | "briefcase" (comercial)
+//     | "dollar" | "politics" | "conflict" | "nature" | "tech" (legado)
 //   badges[].tone: "blue" | "green" | "red" | "yellow"
 //   badges[].icon: "check" | "trend" | "alert" | "dot"
 const { chromium } = require("playwright");

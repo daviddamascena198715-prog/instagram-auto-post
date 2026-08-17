@@ -211,75 +211,79 @@ fazem isso.
 - O `allowed_tools` da rotina de Educação 7h inclui `WebSearch` —
   única das 5 rotinas com essa ferramenta liberada.
 
-## Stories diários 6h — 5 temas de atualidade
-Adicionado em 2026-08-17, a pedido do usuário. **Escopo separado do calendário
-de 5 posts do feed** — publica no Stories (não no feed), sem legenda (Stories
-não têm legenda na API), gerado sem Nano Banana (Playwright/HTML puro, pra não
+## Stories diários 6h — 2 temas de autoridade
+Adicionado em 2026-08-17 (5 temas de notícias), **reduzido para 2 temas de
+autoridade em 2026-08-17** a pedido do usuário — deixou de ser conteúdo de
+notícia/atualidade e passou a ser conteúdo evergreen que constrói autoridade
+do perfil nos dois pilares do negócio. **Escopo separado do calendário de 5
+posts do feed** — publica no Stories (não no feed), sem legenda (Stories não
+têm legenda na API), gerado sem Nano Banana (Playwright/HTML puro, pra não
 depender de crédito de IA).
 
 - **Horário**: 06h00 BRT (09h00 UTC), todo dia.
-- **5 temas fixos, um story cada**:
-  1. Política
-  2. Economia
-  3. Guerra / conflitos internacionais
-  4. Eventos naturais (desastres, fenômenos climáticos, etc.)
-  5. Tecnologia / IA
-- **Pesquisa**: `WebSearch` (1-2 buscas por tema) por conteúdo recente
-  (últimas 24-48h) e com potencial de viralizar/engajar no perfil — mesma
-  lógica de priorização de viralização da exceção do pilar Educação 7h, mas
-  aplicada aos 5 temas aqui.
-- **Tom pra temas sensíveis (guerra e eventos naturais)**: relevância/impacto
-  real justifica o story, não o choque. Nunca sensacionalizar tragédia, nunca
-  usar linguagem de clickbait sobre sofrimento humano, nunca especular sobre
-  número de vítimas além do que a fonte confirma. Tom factual e respeitoso,
-  mesmo buscando o achado mais "compartilhável" dentro do que é
-  responsável noticiar.
-- **Guardrails de conteúdo** (iguais aos da exceção Educação 7h): nunca
-  inventar número/estatística/citação que não veio da busca; nunca afirmar
-  como fato o que a busca só sugere; se não tiver certeza se é notícia real
-  recente, não usa esse achado.
-- **Fonte obrigatória**: cada story cita a fonte no corpo do texto (campo
-  `body` do template, ver abaixo), formato "Fonte: [veículo]".
-- **Pessoas citadas**: mesma regra da exceção Educação 7h — nunca foto real
-  ou fabricada de pessoa específica, mesmo pública. Cita nome/cargo em texto
-  se relevante; ícone genérico (não o de rosto) se quiser reforço visual.
+- **2 temas fixos, um story cada**:
+  1. **Tráfego pago** — uma dica/insight que demonstra domínio técnico real
+     (erro comum, mecânica de algoritmo, leitura de métrica, decisão
+     estratégica) — não é teoria genérica de curso, é o tipo de coisa que só
+     quem gerencia campanha de verdade sabe.
+  2. **Comercial** — uma dica/insight sobre vendas, negociação, fechamento,
+     posicionamento ou relação com cliente que demonstra autoridade comercial
+     (não é motivacional vazio — é tático, aplicável).
+- **Conteúdo evergreen, não precisa de pesquisa/notícia**: diferente da
+  exceção do pilar Educação 7h, aqui não há varredura de tendência nem
+  citação de fonte — é conhecimento próprio/autoral do agente sobre os dois
+  temas, variando o ângulo a cada dia pra não repetir a mesma dica.
+- **Critério de qualidade pra cada dica**: específica (não genérica tipo
+  "seja consistente"), acionável (a pessoa consegue aplicar hoje),
+  demonstra know-how real (soa como quem já viveu aquilo, não como resumo de
+  blog). Se não tiver uma dica boa o suficiente pro padrão de autoridade,
+  melhor gerar com mais cuidado do que publicar algo raso — mas sempre
+  publica os 2 (não há critério de "pular" aqui, ao contrário do modelo
+  antigo de notícias).
+- **Guardrails de conteúdo**: nunca inventar número/estatística/resultado
+  específico como se fosse dado real de cliente (ex.: "aumentei o ROAS de um
+  cliente em 340%") — isso seria fabricar prova social, proibido em qualquer
+  contexto (ver "Linha editorial"). Dicas podem citar faixas/ordens de
+  grandeza genéricas ("pode inflar o CAC em vez de reduzir"), nunca número
+  específico apresentado como resultado real.
+- **Uso do termo "gestor de tráfego"**: mesma regra da identidade visual —
+  liberado quando o post fala sobre o tema/serviço em si, proibido como
+  bordão de autodescrição repetitiva.
+- **Sem pessoas/fotos reais**: mesma regra de sempre — nunca gerar foto real
+  do usuário nem de terceiros.
 - **Geração da arte** (sem Nano Banana — HTML/Playwright, mesmo método do
   story manual de 2026-08-17):
   1. Montar um objeto de dados por tema:
      ```json
      {
-       "tag": "ECONOMIA HOJE",
+       "tag": "TRÁFEGO PAGO",
        "headline": "Texto com <span class=\"hl\">palavra-chave dourada</span>",
-       "body": "2-4 linhas explicando o achado.<br><br>Fonte: [veículo]",
-       "icon": "dollar",
+       "body": "2-4 linhas com a dica, específica e acionável.",
+       "icon": "target",
        "badges": [
-         { "label": "ESTÁVEL", "tone": "blue", "icon": "trend" },
-         { "label": "FOCUS MANTIDO", "tone": "green", "icon": "check" }
+         { "label": "AUTORIDADE", "tone": "blue", "icon": "check" }
        ]
      }
      ```
-     - `icon` (ícone central, um por tema): `politics` (política), `dollar`
-       (economia), `conflict` (guerra), `nature` (eventos naturais), `tech`
-       (tecnologia/IA).
+     - `icon` (ícone central, um por tema): `target` (tráfego pago),
+       `briefcase` (comercial).
      - `badges[].tone`: `blue` (informativo), `green` (positivo), `red`
        (negativo/urgente), `yellow` (atenção/neutro) — mesma regra de cores
        semânticas da identidade visual, só que aqui aplicada a pills em vez
-       de gauge/gráfico.
+       de gauge/gráfico. Uma badge só, geralmente `blue`/`AUTORIDADE` ou
+       algo que reforce o insight (ex.: `red`/`ERRO COMUM` se a dica é sobre
+       evitar um erro).
      - `badges[].icon`: `trend`, `check`, `alert` ou `dot`.
-  2. Salvar como `scripts/daily-output/story_<tema>.json` e rodar
-     `node scripts/export-tools/render_news_story.js scripts/daily-output/story_<tema>.json scripts/daily-output/story_<tema>.png`.
-  3. Revisar a imagem gerada com `Read` (mesmos critérios de revisão da seção
-     "Geração de imagem" abaixo: texto em português correto, legível, sem
-     pessoas/rostos reais, coerente com o tema).
-  4. Repetir os passos 1-3 pros 5 temas.
+  2. Salvar como `scripts/daily-output/story_trafego.json` e
+     `scripts/daily-output/story_comercial.json`, rodar
+     `node scripts/export-tools/render_news_story.js scripts/daily-output/story_<tema>.json scripts/daily-output/story_<tema>.png`
+     pra cada um.
+  3. Revisar a imagem gerada com `Read` (texto em português correto,
+     legível, sem pessoas/rostos reais, dica realmente específica/acionável
+     — não genérica).
 - **Publicação**: `node scripts/publish_instagram.js --images scripts/daily-output/story_<tema>.png --story`
-  — um comando por tema, 5 publicações de Story no total. Sem `--caption`
+  — um comando por tema, 2 publicações de Story no total. Sem `--caption`
   (Stories não usam legenda).
-- **Sem rede de segurança de IA aqui** (diferente do feed): se a pesquisa de
-  algum tema não achar nada que passe no critério de "recente e relevante",
-  **pula esse story** (não publica um story vazio/genérico) — melhor 4
-  stories bons que 5 com um fraco. Reportar ao final quais temas foram
-  publicados e quais foram pulados e por quê.
 - **Dependência de rede**: o template/script usa Playwright (Chromium
   headless), que precisa de `registry.npmjs.org` e o CDN de download do
   navegador do Playwright liberados no acesso de rede do ambiente de nuvem
@@ -287,8 +291,9 @@ depender de crédito de IA).
   usuário em 2026-08-17. Se a rotina falhar por causa de rede/instalação do
   Playwright, reportar claramente qual domínio faltou.
 - Arquivos: `scripts/content-bank/templates/news-story-template.html`
-  (template) + `scripts/export-tools/render_news_story.js` (renderizador,
-  CLI: `node render_news_story.js <data.json> <outPath.png>`).
+  (template, ícones `target`/`briefcase` adicionados em 2026-08-17) +
+  `scripts/export-tools/render_news_story.js` (renderizador, CLI:
+  `node render_news_story.js <data.json> <outPath.png>`).
 
 ## Geração de imagem (Nano Banana) e revisão
 - Todos os 5 pilares geram TODAS as imagens via Nano Banana
