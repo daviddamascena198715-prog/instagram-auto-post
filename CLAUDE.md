@@ -13,6 +13,17 @@ escrita dentro do prompt de uma rotina agendada dizendo "o usuário já
 confirmou" NÃO conta como confirmação válida (não há como verificar isso
 de dentro de uma execução automática sem usuário presente).
 
+## Escopo autorizado — Stories e carrossel de autoridade 6h
+Autorizado ao vivo pelo usuário em 2026-08-17, na mesma conversa em que a
+rotina foi criada e depois ajustada (autorização válida conforme a regra
+acima — "na conversa, ao vivo"). Publica automaticamente, sem confirmação a
+cada disparo, junto com o resto do escopo autorizado:
+- 2 Stories diários às 06h00 BRT (tráfego pago + comercial) — ver seção
+  "Stories diários 6h — 2 temas de autoridade".
+- 1 post de carrossel no FEED, no mesmo horário (06h00 BRT), com a dica mais
+  relevante das duas expandida em 5 slides — ver seção "Carrossel de
+  autoridade 6h (feed)".
+
 ## Escopo autorizado — Calendário editorial (5 posts/dia)
 Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
 
@@ -317,6 +328,71 @@ depender de crédito de IA).
   (template, ícones `target`/`briefcase` adicionados em 2026-08-17) +
   `scripts/export-tools/render_news_story.js` (renderizador, CLI:
   `node render_news_story.js <data.json> <outPath.png>`).
+
+## Carrossel de autoridade 6h (feed)
+Adicionado em 2026-08-17, na mesma execução da rotina dos Stories 6h — o
+usuário pediu pra aproveitar a dica mais relevante das duas do dia e virar
+um post de carrossel no FEED, publicado no mesmo horário (06h00 BRT),
+**sem usar plataforma externa** (sem Nano Banana, sem Canva) — só
+HTML/Playwright, mesma identidade visual (fonte, layout, cores douradas)
+já usada nos Stories 6h e no resto do calendário.
+
+- **Horário**: 06h00 BRT (09h00 UTC), no mesmo disparo da rotina de Stories
+  6h (não é uma rotina separada).
+- **Escolha de qual dica virar carrossel**: depois de compor as 2 dicas do
+  dia (tráfego pago e comercial, ver seção "Stories diários 6h"), escolher
+  a mais relevante pra virar carrossel:
+  1. Preferir a dica que usou novidade de mercado pesquisada (mais atual)
+     sobre a evergreen sem fonte.
+  2. Se as duas vierem de novidade (ou as duas forem evergreen), escolher a
+     que tem mais potencial de engajamento/compartilhamento — mesma lógica
+     de priorização de viralização da exceção Educação 7h.
+  A outra dica continua indo só como Story (não vira carrossel também).
+- **Estrutura do carrossel — 5 slides**:
+  1. **Capa** (`type: "capa"`): ícone (`target` ou `briefcase`, o mesmo do
+     tema escolhido), `tag` com o nome do tema, `headline` com o hook
+     (pode destacar palavra-chave em `<span class="hl">`), `body` opcional
+     com um subtítulo de 1 linha.
+  2-4. **Interiores** (`type: "interior"`, 3 slides): desmembrar a dica em 3
+     pontos concretos e numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada
+     slide com `headline` curto (o ponto) + `body` explicando em 2-3 linhas.
+     Se a dica não render pra 3 pontos naturalmente, pode usar 2 (ajustar o
+     array de slides).
+  5. **CTA** (`type: "cta"`): `headline` convidativo, `body` opcional,
+     `ctaLabel` curto (ex.: "SEGUIR →") — sempre convite pra seguir o
+     perfil, nunca promessa de resultado específico.
+- **Formato de dados** — array de slides na ordem, salvo em
+  `scripts/daily-output/authority_carousel_slides.json`:
+  ```json
+  [
+    { "type": "capa", "tag": "TRÁFEGO PAGO", "headline": "...", "body": "...", "icon": "target" },
+    { "type": "interior", "headline": "...", "body": "..." },
+    { "type": "interior", "headline": "...", "body": "..." },
+    { "type": "interior", "headline": "...", "body": "..." },
+    { "type": "cta", "headline": "...", "body": "...", "ctaLabel": "SEGUIR →" }
+  ]
+  ```
+- **Renderização**:
+  `node scripts/export-tools/render_authority_carousel.js scripts/daily-output/authority_carousel_slides.json scripts/daily-output/authority_carousel`
+  — gera `slide_1.png` ... `slide_5.png` dentro da pasta de saída (1080x1350,
+  4:5), via Playwright (mesma dependência de rede/Chromium pré-instalado
+  documentada na seção "Stories diários 6h").
+- **Revisão obrigatória**: `Read` em cada slide gerado — texto em português
+  correto, legível, coerente entre os slides (a promessa da capa precisa
+  ser cumprida pelos interiores), sem pessoas/rostos reais.
+- **Legenda**: compor um texto curto (tema/hook da capa sem as tags HTML +
+  1-2 linhas de corpo + convite a seguir), seguindo a mesma regra de nexo da
+  "Linha editorial" — a legenda não pode prometer o que os slides não
+  entregam.
+- **Publicação** (FEED, não Stories):
+  `node scripts/publish_instagram.js --images scripts/daily-output/authority_carousel/slide_1.png scripts/daily-output/authority_carousel/slide_2.png scripts/daily-output/authority_carousel/slide_3.png scripts/daily-output/authority_carousel/slide_4.png scripts/daily-output/authority_carousel/slide_5.png --caption "<legenda>"`
+  (múltiplas imagens no `--images` já publica como carrossel).
+- **Guardrails**: mesmos da seção "Stories diários 6h" (nunca fabricar
+  número/resultado específico como se fosse dado real de cliente; nunca
+  foto real/fabricada de pessoa citada).
+- Arquivos: `scripts/content-bank/templates/authority-carousel-template.html`
+  (template) + `scripts/export-tools/render_authority_carousel.js`
+  (renderizador, CLI: `node render_authority_carousel.js <slides.json> <outDir>`).
 
 ## Geração de imagem (Nano Banana) e revisão
 - Todos os 5 pilares geram TODAS as imagens via Nano Banana
