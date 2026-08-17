@@ -211,6 +211,85 @@ fazem isso.
 - O `allowed_tools` da rotina de Educação 7h inclui `WebSearch` —
   única das 5 rotinas com essa ferramenta liberada.
 
+## Stories diários 6h — 5 temas de atualidade
+Adicionado em 2026-08-17, a pedido do usuário. **Escopo separado do calendário
+de 5 posts do feed** — publica no Stories (não no feed), sem legenda (Stories
+não têm legenda na API), gerado sem Nano Banana (Playwright/HTML puro, pra não
+depender de crédito de IA).
+
+- **Horário**: 06h00 BRT (09h00 UTC), todo dia.
+- **5 temas fixos, um story cada**:
+  1. Política
+  2. Economia
+  3. Guerra / conflitos internacionais
+  4. Eventos naturais (desastres, fenômenos climáticos, etc.)
+  5. Tecnologia / IA
+- **Pesquisa**: `WebSearch` (1-2 buscas por tema) por conteúdo recente
+  (últimas 24-48h) e com potencial de viralizar/engajar no perfil — mesma
+  lógica de priorização de viralização da exceção do pilar Educação 7h, mas
+  aplicada aos 5 temas aqui.
+- **Tom pra temas sensíveis (guerra e eventos naturais)**: relevância/impacto
+  real justifica o story, não o choque. Nunca sensacionalizar tragédia, nunca
+  usar linguagem de clickbait sobre sofrimento humano, nunca especular sobre
+  número de vítimas além do que a fonte confirma. Tom factual e respeitoso,
+  mesmo buscando o achado mais "compartilhável" dentro do que é
+  responsável noticiar.
+- **Guardrails de conteúdo** (iguais aos da exceção Educação 7h): nunca
+  inventar número/estatística/citação que não veio da busca; nunca afirmar
+  como fato o que a busca só sugere; se não tiver certeza se é notícia real
+  recente, não usa esse achado.
+- **Fonte obrigatória**: cada story cita a fonte no corpo do texto (campo
+  `body` do template, ver abaixo), formato "Fonte: [veículo]".
+- **Pessoas citadas**: mesma regra da exceção Educação 7h — nunca foto real
+  ou fabricada de pessoa específica, mesmo pública. Cita nome/cargo em texto
+  se relevante; ícone genérico (não o de rosto) se quiser reforço visual.
+- **Geração da arte** (sem Nano Banana — HTML/Playwright, mesmo método do
+  story manual de 2026-08-17):
+  1. Montar um objeto de dados por tema:
+     ```json
+     {
+       "tag": "ECONOMIA HOJE",
+       "headline": "Texto com <span class=\"hl\">palavra-chave dourada</span>",
+       "body": "2-4 linhas explicando o achado.<br><br>Fonte: [veículo]",
+       "icon": "dollar",
+       "badges": [
+         { "label": "ESTÁVEL", "tone": "blue", "icon": "trend" },
+         { "label": "FOCUS MANTIDO", "tone": "green", "icon": "check" }
+       ]
+     }
+     ```
+     - `icon` (ícone central, um por tema): `politics` (política), `dollar`
+       (economia), `conflict` (guerra), `nature` (eventos naturais), `tech`
+       (tecnologia/IA).
+     - `badges[].tone`: `blue` (informativo), `green` (positivo), `red`
+       (negativo/urgente), `yellow` (atenção/neutro) — mesma regra de cores
+       semânticas da identidade visual, só que aqui aplicada a pills em vez
+       de gauge/gráfico.
+     - `badges[].icon`: `trend`, `check`, `alert` ou `dot`.
+  2. Salvar como `scripts/daily-output/story_<tema>.json` e rodar
+     `node scripts/export-tools/render_news_story.js scripts/daily-output/story_<tema>.json scripts/daily-output/story_<tema>.png`.
+  3. Revisar a imagem gerada com `Read` (mesmos critérios de revisão da seção
+     "Geração de imagem" abaixo: texto em português correto, legível, sem
+     pessoas/rostos reais, coerente com o tema).
+  4. Repetir os passos 1-3 pros 5 temas.
+- **Publicação**: `node scripts/publish_instagram.js --images scripts/daily-output/story_<tema>.png --story`
+  — um comando por tema, 5 publicações de Story no total. Sem `--caption`
+  (Stories não usam legenda).
+- **Sem rede de segurança de IA aqui** (diferente do feed): se a pesquisa de
+  algum tema não achar nada que passe no critério de "recente e relevante",
+  **pula esse story** (não publica um story vazio/genérico) — melhor 4
+  stories bons que 5 com um fraco. Reportar ao final quais temas foram
+  publicados e quais foram pulados e por quê.
+- **Dependência de rede**: o template/script usa Playwright (Chromium
+  headless), que precisa de `registry.npmjs.org` e o CDN de download do
+  navegador do Playwright liberados no acesso de rede do ambiente de nuvem
+  (ver seção "Ambiente de nuvem" no fim deste arquivo) — configurado pelo
+  usuário em 2026-08-17. Se a rotina falhar por causa de rede/instalação do
+  Playwright, reportar claramente qual domínio faltou.
+- Arquivos: `scripts/content-bank/templates/news-story-template.html`
+  (template) + `scripts/export-tools/render_news_story.js` (renderizador,
+  CLI: `node render_news_story.js <data.json> <outPath.png>`).
+
 ## Geração de imagem (Nano Banana) e revisão
 - Todos os 5 pilares geram TODAS as imagens via Nano Banana
   (`generate_image` com `model: "nano_banana_pro"`, MCP do Higgsfield) —
@@ -293,8 +372,11 @@ esta ordem:
   - Retorna `capaPrompt` (pronto) + `interiorSlidePromptTemplate` e
     `ctaSlidePromptTemplate` (crus, pra pilares carrossel) + `cta`
 - Template de marca HTML / renderizador (`slide-template.html`,
-  `render_slides.js`): **legado, não usado no fluxo ativo** desde
-  2026-08-13 — todos os slides agora são gerados via Nano Banana
+  `render_slides.js`): **legado, não usado no fluxo do feed** desde
+  2026-08-13 — todos os slides do feed agora são gerados via Nano Banana.
+- Template/renderizador dos Stories 6h (`news-story-template.html`,
+  `render_news_story.js`, adicionados 2026-08-17): **ativo**, ver seção
+  "Stories diários 6h" acima — não usa Nano Banana.
 - Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N] [--body-file <arquivo>] [--force]`
   - Monta a legenda (tema + corpo + CTA do pilar) e publica via `publish_instagram.js`
   - **Checagem anti-duplicidade** (adicionada 2026-08-14, depois de um caso
@@ -320,8 +402,11 @@ esta ordem:
   `litterbox.catbox.moe`, `api.openai.com` e `*.cloudfront.net` liberados
   (o wildcard é necessário porque o Higgsfield usa subdomínios variáveis
   do CloudFront pra cada imagem gerada — sem o `*.` só libera o domínio
-  exato, não os subdomínios, e o download falha com 403)
-- 5 rotinas cron em claude.ai/code/routines, uma por pilar/horário, cada
+  exato, não os subdomínios, e o download falha com 403). Em 2026-08-17,
+  adicionado `registry.npmjs.org` e o CDN de download do Playwright, pra
+  rodar a rotina de Stories 6h (ver seção acima) sem depender de Nano Banana.
+- 6 rotinas cron em claude.ai/code/routines (5 do calendário de feed + 1 dos
+  Stories 6h), cada
   uma com o `.env` recriado no início a partir dos valores no prompt da
   rotina (não há repositório privado nem secret store nesse fluxo — o
   repositório GitHub é público, então credenciais NUNCA vão para lá)
