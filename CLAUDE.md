@@ -283,9 +283,37 @@ depender de crédito de IA).
   bordão de autodescrição repetitiva.
 - **Sem pessoas/fotos reais**: mesma regra de sempre — nunca gerar foto real
   do usuário nem de terceiros.
+- **Variedade visual** (adicionado 2026-08-19, a pedido do usuário — os
+  posts estavam saindo todos com o mesmo layout de ícone+badges todo dia).
+  Antes de montar o objeto de dados de cada tema, decidir o `visual.type`
+  mais adequado ao CONTEÚDO daquela dica específica, em vez de usar sempre
+  o layout padrão:
+  - Se a dica tiver 2-4 valores numéricos comparáveis (ex.: CAC antes/depois,
+    conversão A vs B, custo por lead em 2 plataformas), usar
+    `visual.type: "bar_chart"` — vira um gráfico de barras de verdade, não
+    só texto.
+  - Se a dica girar em torno de UM número/percentual central (ex.: "73% dos
+    anúncios com esse erro..."), usar `visual.type: "stat"` — número grande
+    em destaque.
+  - Se a dica for qualitativa, sem dado numérico que renderize bem em
+    gráfico, usar `visual.type: "icon"` (ou omitir `visual` — mesmo
+    comportamento, layout padrão de ícone+badges).
+  - **Nunca inventar número pra caber num gráfico** — os guardrails de
+    conteúdo abaixo continuam valendo: só usar `bar_chart`/`stat` quando o
+    dado vier de verdade da pesquisa (`WebSearch`) ou for uma faixa/ordem de
+    grandeza genérica claramente identificada como ilustrativa no texto
+    (nunca como se fosse resultado real medido de cliente).
+  - **Variar entre os 2 stories do mesmo dia**: evitar que os 2 saiam com o
+    mesmo `visual.type` sempre que o conteúdo permitir (ex.: um
+    `bar_chart` e um `icon`, ou um `stat` e um `icon`) — e variar também
+    dia a dia, não deixar vários dias seguidos com o mesmo tipo de visual
+    quando o conteúdo permitiria outro.
+  - Todo `visual.type` continua usando a mesma paleta dourado/preto e as
+    cores semânticas (`tone`: `blue`/`green`/`red`/`yellow`/`gold`) já
+    documentadas em "Identidade visual".
 - **Geração da arte** (sem Nano Banana — HTML/Playwright, mesmo método do
   story manual de 2026-08-17):
-  1. Montar um objeto de dados por tema:
+  1. Montar um objeto de dados por tema. Layout padrão (ícone+badges):
      ```json
      {
        "tag": "TRÁFEGO PAGO",
@@ -297,14 +325,33 @@ depender de crédito de IA).
        ]
      }
      ```
-     - `icon` (ícone central, um por tema): `target` (tráfego pago),
-       `briefcase` (comercial).
-     - `badges[].tone`: `blue` (informativo), `green` (positivo), `red`
-       (negativo/urgente), `yellow` (atenção/neutro) — mesma regra de cores
-       semânticas da identidade visual, só que aqui aplicada a pills em vez
-       de gauge/gráfico. Uma badge só, geralmente `blue`/`AUTORIDADE` ou
-       algo que reforce o insight (ex.: `red`/`ERRO COMUM` se a dica é sobre
-       evitar um erro).
+     Layout gráfico de barras (`visual.type: "bar_chart"`, substitui o
+     ícone+badges pelo gráfico — `icon`/`badges` ficam sem efeito):
+     ```json
+     {
+       "tag": "TRÁFEGO PAGO",
+       "headline": "...",
+       "body": "...",
+       "visual": {
+         "type": "bar_chart",
+         "unit": "%",
+         "bars": [
+           { "label": "Antes", "value": 38, "tone": "red" },
+           { "label": "Depois", "value": 20, "tone": "green" }
+         ]
+       }
+     }
+     ```
+     Layout número em destaque (`visual.type: "stat"`):
+     ```json
+     { "tag": "...", "headline": "...", "body": "...",
+       "visual": { "type": "stat", "value": "73%", "label": "das campanhas com esse erro" } }
+     ```
+     - `icon` (ícone central, só usado no layout padrão, um por tema):
+       `target` (tráfego pago), `briefcase` (comercial).
+     - `badges[].tone` / `visual.bars[].tone`: `blue` (informativo), `green`
+       (positivo), `red` (negativo/urgente), `yellow` (atenção/neutro) —
+       mesma regra de cores semânticas da identidade visual.
      - `badges[].icon`: `trend`, `check`, `alert` ou `dot`.
   2. Salvar como `scripts/daily-output/story_trafego.json` e
      `scripts/daily-output/story_comercial.json`, rodar
@@ -353,25 +400,43 @@ já usada nos Stories 6h e no resto do calendário.
      tema escolhido), `tag` com o nome do tema, `headline` com o hook
      (pode destacar palavra-chave em `<span class="hl">`), `body` opcional
      com um subtítulo de 1 linha.
-  2-4. **Interiores** (`type: "interior"`, 3 slides): desmembrar a dica em 3
-     pontos concretos e numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada
-     slide com `headline` curto (o ponto) + `body` explicando em 2-3 linhas.
-     Se a dica não render pra 3 pontos naturalmente, pode usar 2 (ajustar o
-     array de slides).
+  2-4. **Interiores** (3 slides): desmembrar a dica em 3 pontos concretos e
+     numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada slide com
+     `headline` curto (o ponto) + `body` explicando em 2-3 linhas. Se a
+     dica não render pra 3 pontos naturalmente, pode usar 2 (ajustar o
+     array de slides). Cada interior é `type: "interior"` (texto) OU
+     `type: "chart"` (mesma numeração/divisor/headline, mas com um gráfico
+     de verdade no lugar/além do texto — ver "Variedade visual" abaixo).
+     Não é obrigatório usar `chart` — só quando aquele ponto específico tem
+     dado numérico que vale a pena visualizar.
   5. **CTA** (`type: "cta"`): `headline` convidativo, `body` opcional,
      `ctaLabel` curto (ex.: "SEGUIR →") — sempre convite pra seguir o
      perfil, nunca promessa de resultado específico.
+- **Variedade visual** (adicionado 2026-08-19, mesma regra da seção "Stories
+  diários 6h"): se um dos pontos interiores tiver 2-4 valores numéricos
+  comparáveis, usar `type: "chart"` com `visual: { "type": "bar_chart", "unit": "...", "bars": [...] }`
+  em vez de `type: "interior"` puro — mesmo schema de `bars`/`tone`/`unit`
+  dos Stories. Se o ponto girar em torno de UM número central, usar
+  `visual: { "type": "stat", "value": "...", "label": "..." }`. Nunca forçar
+  gráfico em ponto que não tem dado real — texto simples (`type: "interior"`)
+  continua sendo o padrão pra pontos qualitativos. Mesmos guardrails: nunca
+  inventar número pra caber num gráfico.
 - **Formato de dados** — array de slides na ordem, salvo em
   `scripts/daily-output/authority_carousel_slides.json`:
   ```json
   [
     { "type": "capa", "tag": "TRÁFEGO PAGO", "headline": "...", "body": "...", "icon": "target" },
     { "type": "interior", "headline": "...", "body": "..." },
-    { "type": "interior", "headline": "...", "body": "..." },
+    { "type": "chart", "headline": "...", "body": "...", "visual": { "type": "bar_chart", "unit": "%", "bars": [
+      { "label": "Antes", "value": 38, "tone": "red" },
+      { "label": "Depois", "value": 20, "tone": "green" }
+    ]}},
     { "type": "interior", "headline": "...", "body": "..." },
     { "type": "cta", "headline": "...", "body": "...", "ctaLabel": "SEGUIR →" }
   ]
   ```
+  (o exemplo mistura `interior` e `chart` só pra ilustrar — usar `chart`
+  apenas quando aquele ponto específico tiver dado numérico real).
 - **Renderização**:
   `node scripts/export-tools/render_authority_carousel.js scripts/daily-output/authority_carousel_slides.json scripts/daily-output/authority_carousel`
   — gera `slide_1.png` ... `slide_5.png` dentro da pasta de saída (1080x1350,
@@ -479,7 +544,8 @@ esta ordem:
   `render_slides.js`): **legado, não usado no fluxo do feed** desde
   2026-08-13 — todos os slides do feed agora são gerados via Nano Banana.
 - Template/renderizador dos Stories 6h (`news-story-template.html`,
-  `render_news_story.js`, adicionados 2026-08-17): **ativo**, ver seção
+  `render_news_story.js`, adicionados 2026-08-17, variedade visual
+  `bar_chart`/`stat` adicionada 2026-08-19): **ativo**, ver seção
   "Stories diários 6h" acima — não usa Nano Banana.
 - Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N] [--body-file <arquivo>] [--force]`
   - Monta a legenda (tema + corpo + CTA do pilar) e publica via `publish_instagram.js`

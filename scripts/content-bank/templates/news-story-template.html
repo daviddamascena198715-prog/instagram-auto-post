@@ -62,6 +62,18 @@
   }
   .tag::before{content:"";width:16px;height:1.5px;background:currentColor;opacity:0.7;}
 
+  .chart-wrap{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;}
+  .chart-row{display:flex;flex-direction:column;gap:7px;}
+  .chart-row-top{display:flex;justify-content:space-between;align-items:baseline;}
+  .chart-label{font-size:13px;font-weight:600;color:var(--cream-soft);}
+  .chart-value{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--gold-light);}
+  .chart-track{height:12px;border-radius:7px;background:rgba(255,255,255,0.08);overflow:hidden;}
+  .chart-fill{height:100%;border-radius:7px;}
+
+  .stat-wrap{display:flex;flex-direction:column;gap:2px;margin-bottom:30px;}
+  .stat-value{font-size:80px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
+  .stat-label{font-size:13.5px;font-weight:600;color:var(--cream-soft);letter-spacing:0.3px;margin-top:6px;}
+
   .headline{font-weight:600;line-height:1.1;letter-spacing:-0.5px;margin-bottom:14px;color:var(--cream);font-size:32px;}
   .headline .hl{color:var(--gold);}
   .body-text{font-size:14.5px;line-height:1.6;font-weight:400;letter-spacing:0.1px;color:var(--cream-soft);}
@@ -91,19 +103,54 @@
     dot: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="currentColor"/></svg>'
   };
 
+  const TONE_COLOR = { blue: 'var(--blue)', green: 'var(--green)', red: 'var(--red)', yellow: 'var(--yellow)', gold: 'var(--gold)' };
+
+  function renderBarChart(v) {
+    const bars = v.bars || [];
+    const maxVal = v.maxOverride || Math.max(...bars.map(b => b.value), 1);
+    const rows = bars.map(b => {
+      const pct = Math.max(4, Math.round((b.value / maxVal) * 100));
+      const color = TONE_COLOR[b.tone || 'gold'];
+      return `<div class="chart-row">
+        <div class="chart-row-top">
+          <span class="chart-label">${b.label}</span>
+          <span class="chart-value">${b.value}${v.unit || ''}</span>
+        </div>
+        <div class="chart-track"><div class="chart-fill" style="width:${pct}%;background:${color};"></div></div>
+      </div>`;
+    }).join("");
+    return `<div class="chart-wrap">${rows}</div>`;
+  }
+
+  function renderStat(v) {
+    return `<div class="stat-wrap">
+      <div class="serif stat-value">${v.value}</div>
+      <div class="stat-label">${v.label}</div>
+    </div>`;
+  }
+
   function render(d) {
-    const icon = ICONS[d.icon] || ICONS.tech;
-    const badges = (d.badges || []).map(b =>
-      `<div class="pill tone-${b.tone || 'blue'}">${PILL_ICONS[b.icon || 'dot']}${b.label}</div>`
-    ).join("");
+    const vtype = (d.visual && d.visual.type) || 'icon';
+    let visualHtml;
+    if (vtype === 'bar_chart') {
+      visualHtml = renderBarChart(d.visual);
+    } else if (vtype === 'stat') {
+      visualHtml = renderStat(d.visual);
+    } else {
+      const icon = ICONS[d.icon] || ICONS.tech;
+      const badges = (d.badges || []).map(b =>
+        `<div class="pill tone-${b.tone || 'blue'}">${PILL_ICONS[b.icon || 'dot']}${b.label}</div>`
+      ).join("");
+      visualHtml = `<div class="visual">
+          <div class="icon-circle">${icon}</div>
+          <div class="mini-stack">${badges}</div>
+        </div>`;
+    }
 
     return `<div class="slide">
       <div class="badge-top"><span class="badge-dot"></span>davidaraujogestor</div>
       <div class="content">
-        <div class="visual">
-          <div class="icon-circle">${icon}</div>
-          <div class="mini-stack">${badges}</div>
-        </div>
+        ${visualHtml}
         <span class="tag">${d.tag}</span>
         <h2 class="serif headline">${d.headline}</h2>
         <p class="body-text">${d.body}</p>
