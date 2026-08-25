@@ -228,8 +228,17 @@ autoridade em 2026-08-17** a pedido do usuário — deixou de ser conteúdo de
 notícia/atualidade e passou a ser conteúdo evergreen que constrói autoridade
 do perfil nos dois pilares do negócio. **Escopo separado do calendário de 5
 posts do feed** — publica no Stories (não no feed), sem legenda (Stories não
-têm legenda na API), gerado sem Nano Banana (Playwright/HTML puro, pra não
-depender de crédito de IA).
+têm legenda na API).
+
+**Geração de imagem: Nano Banana (Higgsfield)**, revertido em 2026-08-20 a
+pedido do usuário (tinha ficado temporariamente em HTML/Playwright puro
+entre 2026-08-17 e 2026-08-20, período em que o crédito de Nano Banana
+estava zerado — ver "Geração de imagem (Nano Banana) e revisão" pra
+mecânica completa de geração/polling/revisão/válvula de escape, mesma usada
+pelo calendário de 5 posts). Os templates HTML/Playwright
+(`news-story-template.html`, `authority-carousel-template.html`) continuam
+no repositório como legado, caso precisem ser reativados de novo no futuro
+(ex.: se o crédito acabar de novo).
 
 - **Horário**: 06h00 BRT (09h00 UTC), todo dia.
 - **2 temas fixos, um story cada**:
@@ -284,105 +293,67 @@ depender de crédito de IA).
 - **Sem pessoas/fotos reais**: mesma regra de sempre — nunca gerar foto real
   do usuário nem de terceiros.
 - **Variedade visual** (adicionado 2026-08-19, a pedido do usuário — os
-  posts estavam saindo todos com o mesmo layout de ícone+badges todo dia).
-  Antes de montar o objeto de dados de cada tema, decidir o `visual.type`
-  mais adequado ao CONTEÚDO daquela dica específica, em vez de usar sempre
-  o layout padrão:
+  posts estavam saindo todos com o mesmo layout de ícone todo dia; mantido
+  depois da volta ao Nano Banana em 2026-08-20, agora como instrução de
+  prompt em vez de campo de schema). Antes de escrever o prompt de imagem
+  de cada tema, decidir qual elemento visual central combina melhor com o
+  CONTEÚDO daquela dica específica, em vez de pedir sempre a mesma coisa:
   - Se a dica tiver 2-4 valores numéricos comparáveis (ex.: CAC antes/depois,
-    conversão A vs B, custo por lead em 2 plataformas), usar
-    `visual.type: "bar_chart"` — vira um gráfico de barras de verdade, não
-    só texto.
+    conversão A vs B, custo por lead em 2 plataformas), pedir no prompt um
+    **mockup de dashboard com um gráfico de barras real** comparando esses
+    valores (cores semânticas: vermelho pro pior resultado, verde pro
+    melhor, ver "Identidade visual").
   - Se a dica girar em torno de UM número/percentual central (ex.: "73% dos
-    anúncios com esse erro..."), usar `visual.type: "stat"` — número grande
-    em destaque.
-  - Se a dica for qualitativa, sem dado numérico que renderize bem em
-    gráfico, usar `visual.type: "icon"` (ou omitir `visual` — mesmo
-    comportamento, layout padrão de ícone+badges).
-  - **Nunca inventar número pra caber num gráfico** — os guardrails de
-    conteúdo abaixo continuam valendo: só usar `bar_chart`/`stat` quando o
-    dado vier de verdade da pesquisa (`WebSearch`) ou for uma faixa/ordem de
-    grandeza genérica claramente identificada como ilustrativa no texto
-    (nunca como se fosse resultado real medido de cliente).
+    anúncios com esse erro..."), pedir um **número grande em destaque
+    dourado** como elemento visual principal, com uma legenda curta abaixo.
+  - Se a dica for qualitativa, sem dado numérico que valha a pena
+    visualizar, usar o layout padrão: **ícone circular dourado** temático
+    (alvo/mira pra tráfego pago, maleta/aperto de mão pra comercial) com
+    1-2 selos/pills pequenos ao lado (ex.: "AUTORIDADE", "ERRO COMUM").
+  - **Nunca inventar número pra caber num gráfico** — só pedir
+    gráfico/número em destaque quando o dado vier de verdade da pesquisa
+    (`WebSearch`) ou for uma faixa/ordem de grandeza genérica claramente
+    identificada como ilustrativa no texto (nunca como se fosse resultado
+    real medido de cliente).
   - **Variar entre os 2 stories do mesmo dia**: evitar que os 2 saiam com o
-    mesmo `visual.type` sempre que o conteúdo permitir (ex.: um
-    `bar_chart` e um `icon`, ou um `stat` e um `icon`) — e variar também
-    dia a dia, não deixar vários dias seguidos com o mesmo tipo de visual
-    quando o conteúdo permitiria outro.
-  - Todo `visual.type` continua usando a mesma paleta dourado/preto e as
-    cores semânticas (`tone`: `blue`/`green`/`red`/`yellow`/`gold`) já
-    documentadas em "Identidade visual".
-- **Geração da arte** (sem Nano Banana — HTML/Playwright, mesmo método do
-  story manual de 2026-08-17):
-  1. Montar um objeto de dados por tema. Layout padrão (ícone+badges):
-     ```json
-     {
-       "tag": "TRÁFEGO PAGO",
-       "headline": "Texto com <span class=\"hl\">palavra-chave dourada</span>",
-       "body": "2-4 linhas com a dica, específica e acionável.<br><br>Fonte: [veículo] (só quando a dica usou novidade pesquisada; omitir no fallback evergreen)",
-       "icon": "target",
-       "badges": [
-         { "label": "AUTORIDADE", "tone": "blue", "icon": "check" }
-       ]
-     }
-     ```
-     Layout gráfico de barras (`visual.type: "bar_chart"`, substitui o
-     ícone+badges pelo gráfico — `icon`/`badges` ficam sem efeito):
-     ```json
-     {
-       "tag": "TRÁFEGO PAGO",
-       "headline": "...",
-       "body": "...",
-       "visual": {
-         "type": "bar_chart",
-         "unit": "%",
-         "bars": [
-           { "label": "Antes", "value": 38, "tone": "red" },
-           { "label": "Depois", "value": 20, "tone": "green" }
-         ]
-       }
-     }
-     ```
-     Layout número em destaque (`visual.type: "stat"`):
-     ```json
-     { "tag": "...", "headline": "...", "body": "...",
-       "visual": { "type": "stat", "value": "73%", "label": "das campanhas com esse erro" } }
-     ```
-     - `icon` (ícone central, só usado no layout padrão, um por tema):
-       `target` (tráfego pago), `briefcase` (comercial).
-     - `badges[].tone` / `visual.bars[].tone`: `blue` (informativo), `green`
-       (positivo), `red` (negativo/urgente), `yellow` (atenção/neutro) —
-       mesma regra de cores semânticas da identidade visual.
-     - `badges[].icon`: `trend`, `check`, `alert` ou `dot`.
-  2. Salvar como `scripts/daily-output/story_trafego.json` e
-     `scripts/daily-output/story_comercial.json`, rodar
-     `node scripts/export-tools/render_news_story.js scripts/daily-output/story_<tema>.json scripts/daily-output/story_<tema>.png`
-     pra cada um.
-  3. Revisar a imagem gerada com `Read` (texto em português correto,
-     legível, sem pessoas/rostos reais, dica realmente específica/acionável
-     — não genérica).
-- **Publicação**: `node scripts/publish_instagram.js --images scripts/daily-output/story_<tema>.png --story`
+    mesmo tipo de elemento visual sempre que o conteúdo permitir (ex.: um
+    com gráfico de barras e um com ícone) — e variar também dia a dia.
+- **Geração da arte** (Nano Banana — `generate_image`, `model:
+  "nano_banana_pro"`, mesma mecânica de "Geração de imagem (Nano Banana) e
+  revisão"): montar 1 prompt de imagem por tema, formato Stories (9:16),
+  seguindo a identidade visual (fundo preto/azul-marinho muito escuro,
+  dourado #C9A24B, tipografia bold pro headline + legível pro corpo, linha
+  fina dourada divisória, logo pequeno "davidaraujogestor" num canto),
+  incorporando:
+  1. O elemento visual central decidido em "Variedade visual" acima.
+  2. Headline curto com a dica (pode destacar 1-2 palavras-chave em
+     dourado).
+  3. Corpo de texto (2-4 linhas) com a dica completa e, se usou novidade
+     pesquisada, uma linha "Fonte: [veículo]" (omitir no fallback
+     evergreen).
+  Gerar, revisar (`Read` na imagem baixada — mesmo checklist da seção
+  "Geração de imagem") e, se reprovar, ajustar o prompt e gerar de novo
+  (até 3 tentativas por tema + válvula de escape, mesma regra do
+  calendário).
+- **Publicação**: `node scripts/publish_instagram.js --images <imagem_baixada.png> --story`
   — um comando por tema, 2 publicações de Story no total. Sem `--caption`
   (Stories não usam legenda).
-- O `allowed_tools` da rotina de Stories 6h inclui `WebSearch` (adicionado
-  2026-08-17 junto com a varredura de novidade de mercado).
-- **Dependência de rede**: o template/script usa Playwright (Chromium
-  headless), que precisa de `registry.npmjs.org` e o CDN de download do
-  navegador do Playwright liberados no acesso de rede do ambiente de nuvem
-  (ver seção "Ambiente de nuvem" no fim deste arquivo) — configurado pelo
-  usuário em 2026-08-17. Se a rotina falhar por causa de rede/instalação do
-  Playwright, reportar claramente qual domínio faltou.
-- Arquivos: `scripts/content-bank/templates/news-story-template.html`
-  (template, ícones `target`/`briefcase` adicionados em 2026-08-17) +
-  `scripts/export-tools/render_news_story.js` (renderizador, CLI:
-  `node render_news_story.js <data.json> <outPath.png>`).
+- O `allowed_tools` da rotina de Stories 6h inclui `WebSearch` (pra
+  varredura de novidade de mercado) e as ferramentas MCP do Higgsfield
+  (`generate_image`, `show_generations`).
+- Arquivos legados (não usados no fluxo ativo desde 2026-08-20, mantidos
+  pra eventual reativação): `scripts/content-bank/templates/news-story-template.html`
+  + `scripts/export-tools/render_news_story.js`.
 
 ## Carrossel de autoridade 6h (feed)
 Adicionado em 2026-08-17, na mesma execução da rotina dos Stories 6h — o
 usuário pediu pra aproveitar a dica mais relevante das duas do dia e virar
-um post de carrossel no FEED, publicado no mesmo horário (06h00 BRT),
-**sem usar plataforma externa** (sem Nano Banana, sem Canva) — só
-HTML/Playwright, mesma identidade visual (fonte, layout, cores douradas)
-já usada nos Stories 6h e no resto do calendário.
+um post de carrossel no FEED, publicado no mesmo horário (06h00 BRT).
+**Geração de imagem: Nano Banana (Higgsfield)**, revertido em 2026-08-20
+junto com os Stories 6h (ficou em HTML/Playwright puro entre 2026-08-17 e
+2026-08-20 por falta de crédito de Nano Banana) — mesma identidade visual
+(fonte, layout, cores douradas) já usada nos Stories 6h e no resto do
+calendário.
 
 - **Horário**: 06h00 BRT (09h00 UTC), no mesmo disparo da rotina de Stories
   6h (não é uma rotina separada).
@@ -395,72 +366,47 @@ já usada nos Stories 6h e no resto do calendário.
      que tem mais potencial de engajamento/compartilhamento — mesma lógica
      de priorização de viralização da exceção Educação 7h.
   A outra dica continua indo só como Story (não vira carrossel também).
-- **Estrutura do carrossel — 5 slides**:
-  1. **Capa** (`type: "capa"`): ícone (`target` ou `briefcase`, o mesmo do
-     tema escolhido), `tag` com o nome do tema, `headline` com o hook
-     (pode destacar palavra-chave em `<span class="hl">`), `body` opcional
-     com um subtítulo de 1 linha.
+- **Estrutura do carrossel — 5 slides, cada um gerado via `generate_image`
+  individualmente** (mesma mecânica de "Geração de imagem (Nano Banana) e
+  revisão" usada pelos pilares de carrossel do calendário):
+  1. **Capa**: elemento visual do tema escolhido (ícone alvo/mira pra
+     tráfego pago, maleta pra comercial), tag com o nome do tema, headline
+     com o hook (palavra-chave em destaque dourado), subtítulo curto
+     opcional, selo "ARRASTA PRA VER →".
   2-4. **Interiores** (3 slides): desmembrar a dica em 3 pontos concretos e
-     numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada slide com
-     `headline` curto (o ponto) + `body` explicando em 2-3 linhas. Se a
-     dica não render pra 3 pontos naturalmente, pode usar 2 (ajustar o
-     array de slides). Cada interior é `type: "interior"` (texto) OU
-     `type: "chart"` (mesma numeração/divisor/headline, mas com um gráfico
-     de verdade no lugar/além do texto — ver "Variedade visual" abaixo).
-     Não é obrigatório usar `chart` — só quando aquele ponto específico tem
-     dado numérico que vale a pena visualizar.
-  5. **CTA** (`type: "cta"`): `headline` convidativo, `body` opcional,
-     `ctaLabel` curto (ex.: "SEGUIR →") — sempre convite pra seguir o
-     perfil, nunca promessa de resultado específico.
-- **Variedade visual** (adicionado 2026-08-19, mesma regra da seção "Stories
-  diários 6h"): se um dos pontos interiores tiver 2-4 valores numéricos
-  comparáveis, usar `type: "chart"` com `visual: { "type": "bar_chart", "unit": "...", "bars": [...] }`
-  em vez de `type: "interior"` puro — mesmo schema de `bars`/`tone`/`unit`
-  dos Stories. Se o ponto girar em torno de UM número central, usar
-  `visual: { "type": "stat", "value": "...", "label": "..." }`. Nunca forçar
-  gráfico em ponto que não tem dado real — texto simples (`type: "interior"`)
-  continua sendo o padrão pra pontos qualitativos. Mesmos guardrails: nunca
-  inventar número pra caber num gráfico.
-- **Formato de dados** — array de slides na ordem, salvo em
-  `scripts/daily-output/authority_carousel_slides.json`:
-  ```json
-  [
-    { "type": "capa", "tag": "TRÁFEGO PAGO", "headline": "...", "body": "...", "icon": "target" },
-    { "type": "interior", "headline": "...", "body": "..." },
-    { "type": "chart", "headline": "...", "body": "...", "visual": { "type": "bar_chart", "unit": "%", "bars": [
-      { "label": "Antes", "value": 38, "tone": "red" },
-      { "label": "Depois", "value": 20, "tone": "green" }
-    ]}},
-    { "type": "interior", "headline": "...", "body": "..." },
-    { "type": "cta", "headline": "...", "body": "...", "ctaLabel": "SEGUIR →" }
-  ]
-  ```
-  (o exemplo mistura `interior` e `chart` só pra ilustrar — usar `chart`
-  apenas quando aquele ponto específico tiver dado numérico real).
-- **Renderização**:
-  `node scripts/export-tools/render_authority_carousel.js scripts/daily-output/authority_carousel_slides.json scripts/daily-output/authority_carousel`
-  — gera `slide_1.png` ... `slide_5.png` dentro da pasta de saída (1080x1350,
-  4:5), via Playwright (mesma dependência de rede/Chromium pré-instalado
-  documentada na seção "Stories diários 6h").
-- **Revisão obrigatória**: `Read` em cada slide gerado — texto em português
-  correto, legível, coerente entre os slides (a promessa da capa precisa
-  ser cumprida pelos interiores), sem pessoas/rostos reais.
-- **Legenda**: compor um texto curto (tema/hook da capa sem as tags HTML +
-  1-2 linhas de corpo + convite a seguir), seguindo a mesma regra de nexo da
-  "Linha editorial" — a legenda não pode prometer o que os slides não
-  entregam.
-- **Publicação** (FEED, não Stories):
-  `node scripts/publish_instagram.js --images scripts/daily-output/authority_carousel/slide_1.png scripts/daily-output/authority_carousel/slide_2.png scripts/daily-output/authority_carousel/slide_3.png scripts/daily-output/authority_carousel/slide_4.png scripts/daily-output/authority_carousel/slide_5.png --caption "<legenda>"`
-  (múltiplas imagens no `--images` já publica como carrossel).
+     numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada slide com selo de
+     contagem "N/5" e headline curto (o ponto) + texto de apoio explicando
+     em 2-3 linhas. Se a dica não render pra 3 pontos naturalmente, pode
+     usar 2 (ajustar o total de slides). **Variedade visual** (mesma regra
+     dos Stories 6h): se um dos pontos tiver 2-4 valores numéricos
+     comparáveis, pedir no prompt um mockup com gráfico de barras real
+     comparando esses valores; se girar em torno de UM número central,
+     pedir um número grande em destaque dourado; senão, texto simples é o
+     padrão. Nunca forçar gráfico em ponto sem dado real.
+  5. **CTA**: headline convidativo, texto de apoio opcional, botão/selo
+     "SEGUIR →" — sempre convite pra seguir o perfil, nunca promessa de
+     resultado específico.
+- **Revisão obrigatória**: checklist completo da seção "Geração de imagem
+  (Nano Banana) e revisão" pra cada slide — coerência entre os slides
+  (a promessa da capa precisa ser cumprida pelos interiores) é um critério
+  extra específico deste carrossel.
+- **Legenda**: compor um texto curto (tema/hook da capa + 1-2 linhas de
+  corpo + convite a seguir), seguindo a mesma regra de nexo da "Linha
+  editorial" — a legenda não pode prometer o que os slides não entregam.
+- **Publicação** (FEED, não Stories): baixar as 5 imagens geradas e
+  publicar com `node scripts/publish_instagram.js --images <slide1.png> <slide2.png> <slide3.png> <slide4.png> <slide5.png> --caption "<legenda>"`
+  (múltiplas imagens no `--images` já publica como carrossel; ajustar a
+  lista se usou 4 slides em vez de 5).
 - **Guardrails**: mesmos da seção "Stories diários 6h" (nunca fabricar
   número/resultado específico como se fosse dado real de cliente; nunca
   foto real/fabricada de pessoa citada).
-- Arquivos: `scripts/content-bank/templates/authority-carousel-template.html`
-  (template) + `scripts/export-tools/render_authority_carousel.js`
-  (renderizador, CLI: `node render_authority_carousel.js <slides.json> <outDir>`).
+- Arquivo legado (não usado no fluxo ativo desde 2026-08-20):
+  `scripts/content-bank/templates/authority-carousel-template.html` +
+  `scripts/export-tools/render_authority_carousel.js`.
 
 ## Geração de imagem (Nano Banana) e revisão
-- Todos os 5 pilares geram TODAS as imagens via Nano Banana
+- Todos os 5 pilares do calendário **e a rotina de Stories/carrossel 6h**
+  (desde 2026-08-20) geram TODAS as imagens via Nano Banana
   (`generate_image` com `model: "nano_banana_pro"`, MCP do Higgsfield) —
   capa, slides interiores de carrossel e slide de CTA, cada um gerado e
   revisado individualmente.
@@ -543,10 +489,12 @@ esta ordem:
 - Template de marca HTML / renderizador (`slide-template.html`,
   `render_slides.js`): **legado, não usado no fluxo do feed** desde
   2026-08-13 — todos os slides do feed agora são gerados via Nano Banana.
-- Template/renderizador dos Stories 6h (`news-story-template.html`,
-  `render_news_story.js`, adicionados 2026-08-17, variedade visual
-  `bar_chart`/`stat` adicionada 2026-08-19): **ativo**, ver seção
-  "Stories diários 6h" acima — não usa Nano Banana.
+- Template/renderizador dos Stories 6h e do carrossel de autoridade
+  (`news-story-template.html` + `render_news_story.js`,
+  `authority-carousel-template.html` + `render_authority_carousel.js`):
+  **legado** desde 2026-08-20 — a rotina voltou a usar Nano Banana (ver
+  seções "Stories diários 6h" e "Carrossel de autoridade 6h" acima),
+  templates mantidos pra eventual reativação futura.
 - Publicador do calendário: `scripts/publish_calendar_post.js <pilarId> --image <arquivo> | --images <arquivo1> <arquivo2> ... [--day N] [--body-file <arquivo>] [--force]`
   - Monta a legenda (tema + corpo + CTA do pilar) e publica via `publish_instagram.js`
   - **Checagem anti-duplicidade** (adicionada 2026-08-14, depois de um caso
@@ -574,7 +522,10 @@ esta ordem:
   do CloudFront pra cada imagem gerada — sem o `*.` só libera o domínio
   exato, não os subdomínios, e o download falha com 403). Em 2026-08-17,
   adicionado `registry.npmjs.org` e o CDN de download do Playwright, pra
-  rodar a rotina de Stories 6h (ver seção acima) sem depender de Nano Banana.
+  rodar a rotina de Stories 6h em HTML/Playwright sem depender de Nano
+  Banana — domínios mantidos liberados mesmo após a volta ao Nano Banana em
+  2026-08-20 (não atrapalham, e o template Playwright continua como legado
+  reativável).
 - 6 rotinas cron em claude.ai/code/routines (5 do calendário de feed + 1 dos
   Stories 6h), cada
   uma com o `.env` recriado no início a partir dos valores no prompt da
