@@ -369,10 +369,35 @@ calendário.
 - **Estrutura do carrossel — 5 slides, cada um gerado via `generate_image`
   individualmente** (mesma mecânica de "Geração de imagem (Nano Banana) e
   revisão" usada pelos pilares de carrossel do calendário):
-  1. **Capa**: elemento visual do tema escolhido (ícone alvo/mira pra
-     tráfego pago, maleta pra comercial), tag com o nome do tema, headline
-     com o hook (palavra-chave em destaque dourado), subtítulo curto
-     opcional, selo "ARRASTA PRA VER →".
+  1. **Capa — estilo cinematográfico full-bleed** (mudado em 2026-08-26,
+     pedido do usuário com referência visual): diferente dos interiores/CTA
+     (que seguem o padrão dashboard/mockup preto/dourado), a capa agora é
+     uma cena foto-realista dramática ocupando TODO o quadro de borda a
+     borda (sem fundo sólido, sem mockup de app/dashboard), com elemento
+     central simbólico relacionado ao tema (tráfego pago ou comercial),
+     iluminação de alto contraste, tons predominantemente pretos/azul-
+     marinho muito escuros com brilho pontual dourado (#C9A24B) — nunca
+     laranja nem outra cor fora da paleta. Leve vinheta escura na parte
+     inferior pra legibilidade do texto. Elementos obrigatórios:
+     - Canto superior esquerdo: wordmark pequeno "davidaraujogestor" em
+       texto creme discreto.
+     - Canto superior direito: selo pequeno arredondado sólido dourado
+       (#C9A24B) com uma sigla curta em maiúsculas relacionada ao tema
+       (ex. "ADS", "IA", "$"), texto do selo em preto/azul-marinho bem
+       escuro pra contraste — nunca laranja.
+     - Parte inferior, sobre o gradiente: headline em maiúsculas (o hook do
+       tema) em fonte bold branca/creme quebrado em 2-3 linhas curtas, com
+       1-2 palavras-chave destacadas dentro de uma caixa/retângulo sólido
+       dourado (mesma cor do selo do canto) com texto escuro dentro — nunca
+       laranja, sempre dourado #C9A24B.
+     - Canto inferior esquerdo: contador de página discreto "01/N" (N =
+       total de slides) em texto pequeno cinza-claro/creme.
+     - Canto inferior direito: selo discreto "ARRASTA →" em texto pequeno
+       cinza-claro/creme com seta fina.
+     Perfeitamente legível, sem erro de ortografia, sem letra cortada, sem
+     pessoas/rostos reais (figuras simbólicas/objetos/robôs estilizados são
+     permitidos, desde que não sejam fotos reais/fabricadas de pessoa
+     específica).
   2-4. **Interiores** (3 slides): desmembrar a dica em 3 pontos concretos e
      numerados (ex.: 3 erros, 3 passos, 3 sinais) — cada slide com selo de
      contagem "N/5" e headline curto (o ponto) + texto de apoio explicando
@@ -435,12 +460,16 @@ calendário.
   slide, sem pessoas/rostos, sem números/dados/marca/logo real (dashboard
   precisa ser claramente fictício/ilustrativo), elemento visual rico mas
   hierarquizado e legível (nunca poluído a ponto de confundir a leitura),
-  linha fina dourada divisória visível, fundo preto/azul-marinho muito
-  escuro (nunca azul elétrico/roxo/verde neon — paleta antiga), logo
-  pequeno "davidaraujogestor" visível no canto. Capa: selo "ARRASTA PRA
-  VER →" visível. Slides interiores: selo de contagem "N/total" visível.
-  Se achar problema em qualquer imagem, gerar de novo ajustando o prompt
-  daquele slide (até 3 tentativas por imagem).
+  fundo preto/azul-marinho muito escuro (nunca azul elétrico/roxo/verde
+  neon — paleta antiga), logo pequeno "davidaraujogestor" visível no canto.
+  Interiores/CTA: linha fina dourada divisória visível; selo de contagem
+  "N/total" visível nos interiores. **Capa da rotina de autoridade 6h**
+  segue o estilo cinematográfico full-bleed próprio (ver "Carrossel de
+  autoridade 6h" acima) — sem linha divisória, sem mockup, mas com badge
+  dourado no canto superior direito, headline com destaque em caixa
+  dourada, contador "01/N" e selo "ARRASTA →" visíveis. Se achar problema
+  em qualquer imagem, gerar de novo ajustando o prompt daquele slide (até
+  3 tentativas por imagem).
 - Se a geração de qualquer slide falhar/reprovar 3x (depois da válvula de
   escape abaixo), reportar o erro claramente e NÃO publicar nada do post —
   não há fallback pro sistema antigo (`gpt-image-1`).
