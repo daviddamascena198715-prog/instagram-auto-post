@@ -1,0 +1,58 @@
+[
+  {
+    "date": "2026-08-31",
+    "trafegoPago": {
+      "resumo": "Google Ads mudou o sistema de lances de campanhas com meta de CPA/ROAS 'limitadas por orçamento' (Search, Shopping, PMax, Display, Hotel, Travel), passando a perseguir a meta com mais rigor mesmo com ajuste de orçamento",
+      "fonte": "Google Ads Help (mudança efetiva desde 17/08/2026)",
+      "icone": "alvo/mira com flecha"
+    },
+    "comercial": {
+      "resumo": "usar o silêncio após informar o preço pra deixar a pressão do lado do cliente",
+      "fonte": "fallback evergreen",
+      "icone": "maleta/aperto de mãos"
+    },
+    "carrosselTema": "CPA vai subir e você não vai saber por quê (mudança de lances do Google Ads)"
+  },
+  {
+    "date": "2026-08-30",
+    "trafegoPago": {
+      "resumo": "Google Ads mudou o algoritmo de lances de campanhas com meta de CPA/ROAS, efetivo desde 17/08/2026",
+      "fonte": "Google Ads Help",
+      "icone": "alvo/mira"
+    },
+    "comercial": {
+      "resumo": "pare de falar depois do preço, deixe o silêncio pesar na negociação",
+      "fonte": "fallback evergreen",
+      "icone": "maleta/aperto de mãos"
+    },
+    "carrosselTema": "mudança no algoritmo de lances do Google Ads (o que mudou / quem sente primeiro / o que fazer agora)"
+  },
+  {
+    "date": "2026-08-28",
+    "trafegoPago": {
+      "resumo": "migração automática do Google Ads para AI Max (campanhas com Correspondência Ampla/Ativos Criados Automaticamente, rollout 1-30/set)",
+      "fonte": "Search Engine Land",
+      "icone": "alvo/mira"
+    },
+    "comercial": {
+      "resumo": "depois do preço, o silêncio fecha a venda",
+      "fonte": "fallback evergreen",
+      "icone": "maleta/aperto de mãos"
+    },
+    "carrosselTema": "migração automática pro AI Max (o que muda / quando acontece / o que fazer agora)"
+  },
+  {
+    "date": "2026-08-26",
+    "trafegoPago": {
+      "resumo": "aumentar orçamento em mais de 20% de uma vez reinicia a fase de aprendizado do algoritmo (CPA sobe até estabilizar)",
+      "fonte": "fallback evergreen",
+      "icone": "número grande em destaque (20%)"
+    },
+    "comercial": {
+      "resumo": "quando o cliente diz que 'tá caro', perguntar o que fez a pessoa achar caro em vez de ir direto pro desconto",
+      "fonte": "fallback evergreen",
+      "icone": "maleta/aperto de mãos"
+    },
+    "carrosselTema": "fase de aprendizado do algoritmo / limite dos 20% de orçamento"
+  }
+]

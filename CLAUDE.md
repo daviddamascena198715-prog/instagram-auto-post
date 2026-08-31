@@ -274,6 +274,37 @@ no repositório como legado, caso precisem ser reativados de novo no futuro
   - **Pessoas citadas na novidade**: mesma regra de sempre — nunca foto real
     ou fabricada de pessoa específica, mesmo pública; cita nome/cargo em
     texto se relevante.
+- **Anti-repetição (adicionado em 2026-08-31, depois de detectar 3
+  execuções seguidas com a mesma notícia e a mesma dica evergreen)**: ANTES
+  de decidir a dica de cada tema, leia
+  `scripts/content-bank/recent-topics.json` (lista das últimas execuções,
+  mais recente primeiro; se o arquivo não existir, trate como lista vazia).
+  Para os últimos 5 registros desse arquivo, verifique:
+  - **Novidade pesquisada**: se a notícia mais relevante encontrada na
+    varredura já apareceu (mesma ou reformulada) em algum dos últimos 5
+    registros, ela NÃO PODE ser reusada — busque a segunda melhor
+    notícia ainda não usada, ou caia no fallback evergreen com um ângulo
+    diferente de qualquer um já usado.
+  - **Fallback evergreen**: escolha uma dica/tática claramente diferente
+    (outro ângulo, outro erro comum, outro cenário) de qualquer uma
+    presente nos últimos 5 registros do mesmo tema (tráfego pago ou
+    comercial) — nunca repetir a mesma tática só reescrita com outras
+    palavras.
+  - **Variedade visual**: o ícone/elemento visual central de cada tema não
+    pode ser o mesmo usado no registro mais recente daquele tema (ex.: se
+    ontem foi "alvo/mira", hoje usa outro elemento coerente com a nova
+    dica).
+  Ao final da rotina (depois de publicar), adicione um novo registro no
+  topo do array em `recent-topics.json` com
+  `{date, trafegoPago: {resumo, fonte, icone}, comercial: {resumo, fonte,
+  icone}, carrosselTema}`, mantenha só os 8 registros mais recentes
+  (remova os mais antigos do fim do array), e faça
+  `git add scripts/content-bank/recent-topics.json && git commit -m "..."
+  && git push` pra esse histórico persistir pro próximo run (o resto do
+  `daily-output/` continua gitignored, só esse arquivo de histórico é
+  commitado). Se o push falhar (ex.: sem permissão), reporte isso
+  claramente no relatório final, mas isso não deve impedir a publicação
+  dos posts do dia.
 - **Critério de qualidade pra cada dica**: específica (não genérica tipo
   "seja consistente"), acionável (a pessoa consegue aplicar hoje),
   demonstra know-how real (soa como quem já viveu aquilo, não como resumo de
