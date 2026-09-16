@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-16",
+    "trafegoPago": {
+      "resumo": "sobreposição de público entre conjuntos de anúncio faz a plataforma competir contra você mesmo no leilão, inflando o custo por resultado",
+      "fonte": "fallback evergreen",
+      "icone": "círculos dourados sobrepostos (colisão de público)"
+    },
+    "comercial": {
+      "resumo": "nomear/rotular a dúvida do cliente antes dele verbalizar (técnica de labeling) pra revelar a objeção real",
+      "fonte": "fallback evergreen",
+      "icone": "balão de fala com etiqueta/rótulo"
+    },
+    "carrosselTema": "seus anúncios competindo entre si (sobreposição de público / leilão interno) — NÃO PUBLICADO: limite diário de geração do Nano Banana atingido após 2 de 5 slides"
+  },
+  {
     "date": "2026-08-31",
     "trafegoPago": {
       "resumo": "Google Ads mudou o sistema de lances de campanhas com meta de CPA/ROAS 'limitadas por orçamento' (Search, Shopping, PMax, Display, Hotel, Travel), passando a perseguir a meta com mais rigor mesmo com ajuste de orçamento",
