@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-18",
+    "trafegoPago": {
+      "resumo": "otimizar campanha pro evento errado (ex.: 'Adicionar ao carrinho') infla o relatório mas não fecha venda — sempre configurar a otimização pro evento mais perto da receita (Compra)",
+      "fonte": "fallback evergreen",
+      "icone": "chip/circuito dourado (configuração técnica)"
+    },
+    "comercial": {
+      "resumo": "ancoragem de preço: apresentar a opção mais cara do catálogo primeiro pra fazer a oferta principal parecer mais barata por comparação; nunca abrir pelo mais barato; oferecer 3 opções em vez de 2",
+      "fonte": "fallback evergreen",
+      "icone": "cifrão dourado ($)"
+    },
+    "carrosselTema": "3 regras de ancoragem de preço (apresentar o mais caro primeiro / nunca abrir pelo mais barato / oferecer 3 opções, não 2)"
+  },
+  {
     "date": "2026-09-16",
     "trafegoPago": {
       "resumo": "sobreposição de público entre conjuntos de anúncio faz a plataforma competir contra você mesmo no leilão, inflando o custo por resultado",
