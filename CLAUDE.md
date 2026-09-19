@@ -409,19 +409,45 @@ no repositório como legado, caso precisem ser reativados de novo no futuro
   pra eventual reativação): `scripts/content-bank/templates/news-story-template.html`
   + `scripts/export-tools/render_news_story.js`.
 
-## Carrossel de autoridade 6h (feed)
+## Carrossel/post de autoridade 6h (feed)
 Adicionado em 2026-08-17, na mesma execução da rotina dos Stories 6h — o
 usuário pediu pra aproveitar a dica mais relevante das duas do dia e virar
-um post de carrossel no FEED, publicado no mesmo horário (06h00 BRT).
-**Desde 2026-09-19, este carrossel é a ÚNICA publicação da rotina das 6h**
+um post no FEED, publicado no mesmo horário (06h00 BRT).
+**Desde 2026-09-19, este post é a ÚNICA publicação da rotina das 6h**
 (os 2 Stories foram desativados — ver "Stories diários 6h" acima).
 **Geração de imagem: Nano Banana (Higgsfield)**, revertido em 2026-08-20
 junto com os Stories 6h (ficou em HTML/Playwright puro entre 2026-08-17 e
 2026-08-20 por falta de crédito de Nano Banana) — mesma identidade visual
-(fonte, layout, cores douradas) já usada no resto do calendário.
+(fonte, layout, cores douradas) já usada no resto do calendário. Ver
+"Fallback sem crédito Nano Banana" abaixo pra quando o crédito acabar de
+novo.
 
 - **Horário**: 06h00 BRT (09h00 UTC), domingo/segunda/quarta/sexta.
-- **Escolha de qual dica vira carrossel**: a rotina ainda pesquisa/compõe as
+- **Formato alternado (adicionado em 2026-09-19, a pedido do usuário —
+  "intercala, um post carrossel e outro não")**: a rotina alterna entre
+  **carrossel (5 slides)** e **post de imagem única** a cada execução
+  agendada, pra variar o formato do feed:
+  1. Leia o campo `formato` do registro mais recente em
+     `recent-topics.json` (`"carrossel"` ou `"imagem_unica"`).
+  2. Se o último foi `"carrossel"`, hoje é `"imagem_unica"` — e vice-versa.
+  3. Se não houver registro anterior com esse campo (histórico antigo, sem
+     `formato`), trate como se o último tivesse sido `"carrossel"` — ou
+     seja, hoje começa em `"imagem_unica"`.
+  4. Registre o `formato` usado hoje no novo registro do `recent-topics.json`
+     (passo 10 do prompt da rotina), pra a próxima execução alternar
+     corretamente.
+- **Post de imagem única** (quando o formato do dia for `imagem_unica`):
+  UMA imagem só, no mesmo estilo cinematográfico full-bleed da capa do
+  carrossel (ver estrutura abaixo), mas com um corpo de texto adicional
+  (2-3 linhas, a dica completa) já que não há slides interiores pra
+  explicar o ponto — a imagem sozinha precisa comunicar a dica inteira.
+  Mesmos elementos obrigatórios da capa (wordmark, selo com sigla, headline
+  com destaque dourado), **sem** contador de página nem selo "ARRASTA →"
+  (não é carrossel). Publicar com
+  `node scripts/publish_instagram.js --images <imagem.png> --caption "<legenda>"`
+  (uma imagem só, sem `--story` → vira post normal de feed). A legenda seguе
+  a mesma regra de nexo do carrossel (resume a dica + convite a seguir).
+- **Escolha de qual dica vira o post do dia**: a rotina ainda pesquisa/compõe as
   2 dicas do dia (tráfego pago e comercial, ver seção "Stories diários 6h"
   pros critérios de pesquisa/qualidade/anti-repetição) mesmo sem publicar
   os Stories separadamente — isso serve só pra decidir qual das duas vira
@@ -493,9 +519,12 @@ junto com os Stories 6h (ficou em HTML/Playwright puro entre 2026-08-17 e
 - **Guardrails**: mesmos da seção "Stories diários 6h" (nunca fabricar
   número/resultado específico como se fosse dado real de cliente; nunca
   foto real/fabricada de pessoa citada).
-- Arquivo legado (não usado no fluxo ativo desde 2026-08-20):
+- Template/renderizador usado no fallback sem crédito Nano Banana (ver seção
+  "Geração de imagem (Nano Banana) e revisão" → "Fallback sem crédito"):
   `scripts/content-bank/templates/authority-carousel-template.html` +
-  `scripts/export-tools/render_authority_carousel.js`.
+  `scripts/export-tools/render_authority_carousel.js` — roda 100% dentro do
+  mesmo sandbox em nuvem da rotina (Playwright + Node, sem depender do
+  computador do usuário estar ligado), igual a qualquer outro passo.
 
 ## Geração de imagem (Nano Banana) e revisão
 - Todos os 5 pilares do calendário **e a rotina de Stories/carrossel 6h**
@@ -539,8 +568,11 @@ junto com os Stories 6h (ficou em HTML/Playwright puro entre 2026-08-17 e
   em qualquer imagem, gerar de novo ajustando o prompt daquele slide (até
   3 tentativas por imagem).
 - Se a geração de qualquer slide falhar/reprovar 3x (depois da válvula de
-  escape abaixo), reportar o erro claramente e NÃO publicar nada do post —
-  não há fallback pro sistema antigo (`gpt-image-1`).
+  escape abaixo) por um motivo que NÃO seja falta de crédito/cota, reportar
+  o erro claramente e NÃO publicar nada do post — não há fallback pro
+  sistema antigo de IA (`gpt-image-1`) pra esse tipo de falha. Se o motivo
+  FOR falta de crédito/cota, ver "Fallback sem crédito Nano Banana" abaixo
+  — não desista, tem fallback pra esse caso específico.
 - Gerar todos os slides de um carrossel via Nano Banana é mais lento e
   consome mais créditos do que o fluxo antigo (capa por IA + interior via
   HTML), mas deixa o visual mais consistente com a referência do usuário.
@@ -575,6 +607,47 @@ esta ordem:
 4. Só reportar falha total e não publicar se a tentativa de emergência
    (item 3) também falhar de verdade (confirmada via `show_generations`).
    Nesse caso raro, reportar claramente ao usuário o que foi tentado.
+
+### Fallback sem crédito Nano Banana (adicionado em 2026-09-19, a pedido
+do usuário — "quando não tiver créditos no higgsfield, faça pelo claude")
+Se o Higgsfield/Nano Banana devolver um erro de **cota/crédito** — textos
+como `"Out of credits in the selected workspace"` ou `"You've reached the
+daily generation limit for your grace period"` — isso é diferente de um
+job travado (não se aplica a válvula de escape dos itens 1-3 acima, porque
+não adianta tentar de novo: a API já rejeitou a geração antes de começar).
+Nesse caso específico:
+1. Confirme que é erro de cota mesmo (a mensagem já deixa claro) — não
+   precisa cross-check com `show_generations`, já que nem chegou a criar
+   job.
+2. **Não desista e não pare a rotina** — troque IMEDIATAMENTE pro fallback
+   local, que roda 100% dentro do sandbox em nuvem da própria rotina (sem
+   depender de nenhum serviço externo pago, e sem depender do computador
+   do usuário estar ligado): `node scripts/export-tools/render_authority_carousel.js <slides.json> <outDir>`
+   (usa Playwright + o template `authority-carousel-template.html`, já
+   pré-instalado no ambiente).
+3. Monte o `slides.json` com os mesmos textos que seriam usados nos prompts
+   do Nano Banana, adaptados aos campos do template:
+   - Carrossel: `[{"type":"capa","tag":"<TEMA>","headline":"...","body":"...","icon":"target|briefcase"}, {"type":"interior","headline":"...","body":"..."} × 3, {"type":"cta","headline":"...","body":"...","ctaLabel":"SEGUIR →"}]`
+     (`icon`: `"target"` pra tráfego pago, `"briefcase"` pra comercial).
+   - Post de imagem única: array com um só elemento `{"type":"capa", ...}`
+     (mesmos campos) — o fallback não tem a versão "cinematográfica
+     full-bleed" da capa (isso só existe via Nano Banana), então nesse
+     modo a imagem sai no estilo dashboard/ícone padrão do template — é
+     uma rede de segurança, não precisa ser visualmente idêntica ao normal.
+   - O script gera `outDir/slide_1.png`, `slide_2.png`, etc. Revise cada
+     uma normalmente (mesmo checklist de sempre) antes de publicar.
+4. Se já tinha gerado algumas imagens via Nano Banana antes do erro de
+   cota aparecer (ex.: capa ok, mas o slide 2 falhou por falta de crédito),
+   pode misturar: mantenha as que já foram aprovadas e gere só as
+   restantes via fallback local, pra não desperdiçar o que já funcionou.
+5. Publique normalmente (mesmo comando `publish_instagram.js` de sempre) —
+   pro Instagram não importa se a imagem veio do Nano Banana ou do
+   render local, contanto que passe na revisão.
+6. Registre no relatório final e no `recent-topics.json` que esse post
+   usou o fallback local (campo livre, ex. `"fonte_imagem": "fallback
+   local (sem crédito Nano Banana)"`), pra o usuário saber que precisa
+   recarregar o crédito do Higgsfield quando quiser voltar ao visual
+   cinematográfico completo.
 
 ## Arquivos
 - Credenciais: `.env` (Instagram + OpenAI) — nunca commitado (está no `.gitignore`)
