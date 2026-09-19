@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-09-19",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "TikTok Ads lançou 'TopView Geo Exclusion': permite excluir sub-regiões inteiras (até 40%) de uma campanha TopView diretamente no Ads Manager, sem segmentação manual complexa",
+      "fonte": "ads.tiktok.com/business (blog oficial TikTok for Business, atualização Q3 2026)",
+      "icone": "alvo/mira dourado (padrão tráfego pago)"
+    },
+    "comercial": {
+      "resumo": "metodologia NEAT de qualificação de leads: avaliar Necessidade, impacto Econômico, Acesso aos tomadores de decisão e prazo (Timeline) antes de investir tempo comercial num lead",
+      "fonte": "fallback evergreen (pesquisado, mas não usado — tráfego pago tinha novidade mais recente/específica)",
+      "icone": "não usado, dica não publicada"
+    },
+    "carrosselTema": "TikTok Ads TopView Geo Exclusion (excluir até 40% das sub-regiões direto no Ads Manager) — escolhida por ter novidade pesquisada com fonte oficial, prioridade sobre o evergreen de qualificação NEAT",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, post de backfill #2) foi 'carrossel', logo este é 'imagem_unica' — 3º e último post de backfill do dia, autorizado ao vivo pelo usuário em conversa, pra cobrir os dias sem post de 13/09, 14/09 e 16/09",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo dos 2 posts anteriores de hoje",
+    "postId": "18621854623014917"
+  },
+  {
+    "date": "2026-09-19",
     "formato": "carrossel",
     "trafegoPago": {
       "resumo": "Google Ads passou a ser elegível pra aparecer DENTRO dos AI Overviews (respostas geradas por IA no topo da busca), não só acima/abaixo dos resultados orgânicos — posição varia por geografia, idioma, tipo de campanha e relevância",
@@ -104,19 +122,5 @@
       "icone": "maleta/aperto de mãos"
     },
     "carrosselTema": "migração automática pro AI Max (o que muda / quando acontece / o que fazer agora)"
-  },
-  {
-    "date": "2026-08-26",
-    "trafegoPago": {
-      "resumo": "aumentar orçamento em mais de 20% de uma vez reinicia a fase de aprendizado do algoritmo (CPA sobe até estabilizar)",
-      "fonte": "fallback evergreen",
-      "icone": "número grande em destaque (20%)"
-    },
-    "comercial": {
-      "resumo": "quando o cliente diz que 'tá caro', perguntar o que fez a pessoa achar caro em vez de ir direto pro desconto",
-      "fonte": "fallback evergreen",
-      "icone": "maleta/aperto de mãos"
-    },
-    "carrosselTema": "fase de aprendizado do algoritmo / limite dos 20% de orçamento"
   }
 ]
