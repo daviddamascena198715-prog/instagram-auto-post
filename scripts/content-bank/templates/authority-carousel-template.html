@@ -141,10 +141,10 @@
         ${s.tag ? `<span class="tag">${s.tag}</span>` : ""}
         <h2 class="serif headline capa">${s.headline}</h2>
         ${s.body ? `<p class="body-text">${s.body}</p>` : ""}
-        <div class="swipe-hint">
+        ${opts.total > 1 ? `<div class="swipe-hint">
           <span>arrasta pra ver</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>`;
+        </div>` : ""}`;
     } else if (s.type === "interior") {
       inner = `
         ${opts.stepNumber ? `<div class="step-badge">${opts.stepNumber}</div>` : ""}

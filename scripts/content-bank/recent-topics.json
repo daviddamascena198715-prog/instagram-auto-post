@@ -1,17 +1,21 @@
 [
   {
     "date": "2026-09-19",
+    "formato": "imagem_unica",
     "trafegoPago": {
-      "resumo": "Meta lançou o Meta One (15/09/2026): assinatura paga em 4 planos (US$14,99 a US$499/mês, por perfil) que trava atrás de paywall ferramentas como Competitive Insights (comparar com até 10 concorrentes) e Custom Audience Insights (ver quem interage além dos seguidores) — recursos que muita conta business usava sem custo extra",
-      "fonte": "Social Media Today / Marketing Dive (lançamento em 15/09/2026)",
-      "icone": "cadeado dourado sobre silhueta de ícones de rede social"
+      "resumo": "Meta One (lançado ~15/09/2026): assinatura paga em níveis (Essential US$14,99 até Max US$499/mês, por perfil) que trava atrás de paywall Competitive Insights (comparar até 10 concorrentes) e Custom Audience Insights (ver quem interage sem seguir) — recursos que antes eram grátis no Business Suite, liberados a partir do plano Advanced (US$49,99/mês)",
+      "fonte": "Social Media Today / storrito.com (confirmado também em about.fb.com e Hollywood Reporter)",
+      "icone": "ícone circular dourado de alvo/mira (tráfego pago, padrão do template de fallback)"
     },
     "comercial": {
-      "resumo": "cadência de follow-up: não desistir no 1º silêncio — sequência de 4-5 toques em 10-14 dias, cada um trazendo uma informação/valor novo (nunca só 'oi, tudo bem?'), só reclassificar como frio depois disso",
+      "resumo": "como reduzir no-show de reunião marcada: confirmação ativa 24h antes pedindo resposta (não só lembrete passivo) + fazer a pessoa reafirmar o compromisso verbalmente/por texto ('esse horário ainda funciona pra você?') — cria consistência psicológica, reduz falta sem parecer carente",
       "fonte": "fallback evergreen",
-      "icone": "seta circular dourada (ciclo de follow-up)"
+      "icone": "ícone de calendário/relógio dourado (não usado, dica não publicada)"
     },
-    "carrosselTema": "NÃO PUBLICADO: geração de imagem (Nano Banana) falhou antes do 1º slide — workspace com 0,6 créditos, erro 'Out of credits in the selected workspace' na primeira tentativa da capa. Tema que seria usado: Meta One travando Competitive Insights/Custom Audience Insights atrás de assinatura paga (novidade pesquisada, prioridade sobre o evergreen de follow-up)."
+    "carrosselTema": "A Meta trancou Competitive Insights e Custom Audience Insights atrás do paywall do Meta One (escolhida por ter novidade pesquisada com fonte, prioridade sobre o evergreen de no-show)",
+    "formatoEscolhaMotivo": "registro mais recente anterior não tinha campo 'formato' (histórico antigo) — tratado como se o último tivesse sido 'carrossel', logo hoje é 'imagem_unica'",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — workspace com 0,6 créditos, erro 'Out of credits in the selected workspace' confirmado novamente nesta execução (retry do mesmo dia, após a tentativa anterior também ter falhado por falta de crédito)",
+    "postId": "18113102438021229"
   },
   {
     "date": "2026-09-18",
