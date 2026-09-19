@@ -16,13 +16,19 @@ de dentro de uma execução automática sem usuário presente).
 ## Escopo autorizado — Stories e carrossel de autoridade 6h
 Autorizado ao vivo pelo usuário em 2026-08-17, na mesma conversa em que a
 rotina foi criada e depois ajustada (autorização válida conforme a regra
-acima — "na conversa, ao vivo"). Publica automaticamente, sem confirmação a
-cada disparo, junto com o resto do escopo autorizado:
-- 2 Stories diários às 06h00 BRT (tráfego pago + comercial) — ver seção
-  "Stories diários 6h — 2 temas de autoridade".
-- 1 post de carrossel no FEED, no mesmo horário (06h00 BRT), com a dica mais
-  relevante das duas expandida em 5 slides — ver seção "Carrossel de
-  autoridade 6h (feed)".
+acima — "na conversa, ao vivo"). **Os 2 Stories diários foram DESATIVADOS
+em 2026-09-19, a pedido do usuário** ("desative storie e deixe ativo so os
+posts") — a rotina das 6h agora publica só:
+- 1 post de carrossel no FEED, às 06h00 BRT, com a dica de autoridade do dia
+  (tráfego pago OU comercial, o que tiver mais novidade/potencial),
+  expandida em 5 slides — ver seção "Carrossel de autoridade 6h (feed)".
+A seção "Stories diários 6h — 2 temas de autoridade" abaixo fica mantida só
+como referência histórica (formato dos 2 temas, critérios de qualidade,
+varredura de novidade e regras de anti-repetição) — essas regras continuam
+valendo pra escolha do tema do carrossel, mesmo sem o Story ser publicado
+separadamente. Se o usuário quiser reativar os Stories no futuro, o texto
+antigo (`allowed_tools`/passos removidos do prompt da rotina) pode ser
+restaurado a partir do histórico do repositório.
 
 ## Escopo autorizado — Calendário editorial (5 posts/dia)
 Substituiu completamente o sistema antigo de 3 posts/dia com banco de 9 temas.
@@ -222,13 +228,20 @@ fazem isso.
 - O `allowed_tools` da rotina de Educação 7h inclui `WebSearch` —
   única das 5 rotinas com essa ferramenta liberada.
 
-## Stories diários 6h — 2 temas de autoridade
-Adicionado em 2026-08-17 (5 temas de notícias), **reduzido para 2 temas de
-autoridade em 2026-08-17** a pedido do usuário — deixou de ser conteúdo de
-notícia/atualidade e passou a ser conteúdo evergreen que constrói autoridade
-do perfil nos dois pilares do negócio. **Escopo separado do calendário de 5
-posts do feed** — publica no Stories (não no feed), sem legenda (Stories não
-têm legenda na API).
+## Stories diários 6h — 2 temas de autoridade (DESATIVADO em 2026-09-19)
+**A publicação de Stories foi desativada em 2026-09-19** a pedido do
+usuário — a rotina das 6h não publica mais os 2 Stories, só o carrossel de
+feed (ver "Carrossel de autoridade 6h (feed)"). Esta seção fica só como
+referência: os "2 temas de autoridade" (tráfego pago e comercial) e as
+regras de varredura de novidade/anti-repetição abaixo continuam sendo
+usados pra decidir o tema do carrossel do dia, mesmo sem o Story separado.
+
+Histórico: adicionado em 2026-08-17 (5 temas de notícias), **reduzido para
+2 temas de autoridade em 2026-08-17** a pedido do usuário — deixou de ser
+conteúdo de notícia/atualidade e passou a ser conteúdo evergreen que
+constrói autoridade do perfil nos dois pilares do negócio. **Escopo
+separado do calendário de 5 posts do feed** — quando ativo, publicava no
+Stories (não no feed), sem legenda (Stories não têm legenda na API).
 
 **Geração de imagem: Nano Banana (Higgsfield)**, revertido em 2026-08-20 a
 pedido do usuário (tinha ficado temporariamente em HTML/Playwright puro
@@ -380,23 +393,27 @@ no repositório como legado, caso precisem ser reativados de novo no futuro
 Adicionado em 2026-08-17, na mesma execução da rotina dos Stories 6h — o
 usuário pediu pra aproveitar a dica mais relevante das duas do dia e virar
 um post de carrossel no FEED, publicado no mesmo horário (06h00 BRT).
+**Desde 2026-09-19, este carrossel é a ÚNICA publicação da rotina das 6h**
+(os 2 Stories foram desativados — ver "Stories diários 6h" acima).
 **Geração de imagem: Nano Banana (Higgsfield)**, revertido em 2026-08-20
 junto com os Stories 6h (ficou em HTML/Playwright puro entre 2026-08-17 e
 2026-08-20 por falta de crédito de Nano Banana) — mesma identidade visual
-(fonte, layout, cores douradas) já usada nos Stories 6h e no resto do
-calendário.
+(fonte, layout, cores douradas) já usada no resto do calendário.
 
-- **Horário**: 06h00 BRT (09h00 UTC), no mesmo disparo da rotina de Stories
-  6h (não é uma rotina separada).
-- **Escolha de qual dica virar carrossel**: depois de compor as 2 dicas do
-  dia (tráfego pago e comercial, ver seção "Stories diários 6h"), escolher
-  a mais relevante pra virar carrossel:
+- **Horário**: 06h00 BRT (09h00 UTC), domingo/segunda/quarta/sexta.
+- **Escolha de qual dica vira carrossel**: a rotina ainda pesquisa/compõe as
+  2 dicas do dia (tráfego pago e comercial, ver seção "Stories diários 6h"
+  pros critérios de pesquisa/qualidade/anti-repetição) mesmo sem publicar
+  os Stories separadamente — isso serve só pra decidir qual das duas vira
+  o carrossel:
   1. Preferir a dica que usou novidade de mercado pesquisada (mais atual)
      sobre a evergreen sem fonte.
   2. Se as duas vierem de novidade (ou as duas forem evergreen), escolher a
      que tem mais potencial de engajamento/compartilhamento — mesma lógica
      de priorização de viralização da exceção Educação 7h.
-  A outra dica continua indo só como Story (não vira carrossel também).
+  A dica não escolhida não é publicada em lugar nenhum (nem Story, nem
+  carrossel) — só ajuda a decidir o tema do dia e fica registrada em
+  `recent-topics.json` pra não ser reproposta à toa nos próximos dias.
 - **Estrutura do carrossel — 5 slides, cada um gerado via `generate_image`
   individualmente** (mesma mecânica de "Geração de imagem (Nano Banana) e
   revisão" usada pelos pilares de carrossel do calendário):
