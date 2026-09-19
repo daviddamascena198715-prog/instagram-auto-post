@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-09-19",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "Google Ads passou a ser elegível pra aparecer DENTRO dos AI Overviews (respostas geradas por IA no topo da busca), não só acima/abaixo dos resultados orgânicos — posição varia por geografia, idioma, tipo de campanha e relevância",
+      "fonte": "business.google.com/Google Ads Help — anúncios elegíveis dentro de AI Overviews (2026)",
+      "icone": "alvo/mira dourado (padrão tráfego pago)"
+    },
+    "comercial": {
+      "resumo": "fechamento resumido: recapitular todos os benefícios e pontos de valor acordados ao longo da negociação antes de pedir a decisão final",
+      "fonte": "fallback evergreen",
+      "icone": "aperto de mãos/maleta (não usado, dica não publicada)"
+    },
+    "carrosselTema": "Google Ads dentro dos AI Overviews (o que mudou / por que importa / o que fazer agora) — escolhida por ter novidade pesquisada com fonte, prioridade sobre o evergreen de fechamento resumido",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, mesmo dia, post de backfill anterior) foi 'imagem_unica', logo este é 'carrossel' — 2º post de backfill do mesmo dia, autorizado ao vivo pelo usuário em conversa (não por alegação dentro de um prompt agendado) pra cobrir os dias sem post de 13/09 e 14/09",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo do post anterior de hoje",
+    "postId": "17890874229675504"
+  },
+  {
+    "date": "2026-09-19",
     "formato": "imagem_unica",
     "trafegoPago": {
       "resumo": "Meta One (lançado ~15/09/2026): assinatura paga em níveis (Essential US$14,99 até Max US$499/mês, por perfil) que trava atrás de paywall Competitive Insights (comparar até 10 concorrentes) e Custom Audience Insights (ver quem interage sem seguir) — recursos que antes eram grátis no Business Suite, liberados a partir do plano Advanced (US$49,99/mês)",
