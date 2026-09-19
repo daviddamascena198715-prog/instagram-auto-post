@@ -261,7 +261,27 @@ no repositório como legado, caso precisem ser reativados de novo no futuro
      quem gerencia campanha de verdade sabe.
   2. **Comercial** — uma dica/insight sobre vendas, negociação, fechamento,
      posicionamento ou relação com cliente que demonstra autoridade comercial
-     (não é motivacional vazio — é tático, aplicável).
+     (não é motivacional vazio — é tático, aplicável). **Ângulos possíveis**
+     (adicionado em 2026-09-19, a pedido do usuário, pra ampliar a variedade
+     e facilitar a anti-repetição — rotacionar entre eles, não usar sempre o
+     mesmo ângulo):
+     - **Negociação**: ancoragem de preço, como responder objeção de preço,
+       técnicas de concessão (nunca ceder sem pedir algo em troca), silêncio
+       estratégico, como não entrar em guerra de desconto.
+     - **Fechamento**: sinais de compra, perguntas de fechamento, como
+       reduzir o ciclo de vendas, erros que travam o fechamento no último
+       passo, como lidar com "vou pensar".
+     - **Follow-up**: cadência ideal de follow-up (quantas vezes, em quanto
+       tempo), como reativar lead frio sem parecer desesperado, o que
+       escrever quando o cliente some no meio da negociação, follow-up
+       depois do "não" (nutrição de longo prazo).
+     - **No-show / faltas em reunião**: como reduzir no-show de reunião
+       marcada (confirmação, lembrete, criar compromisso verbal), o que
+       fazer quando o cliente falta sem avisar, como reagendar sem parecer
+       carente.
+     - Outros ângulos válidos: qualificação de lead, discovery/diagnóstico,
+       posicionamento de autoridade na abordagem inicial, gestão de
+       expectativa pós-venda (evita churn/cancelamento).
 - **Varredura de novidade de mercado, com fallback evergreen** (atualizado
   2026-08-17, mesmo padrão da exceção do pilar Educação 7h): antes de montar
   cada dica, a rotina usa `WebSearch` (1-2 buscas por tema) procurando
