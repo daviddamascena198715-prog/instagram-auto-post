@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-20",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "atribuição duplicada entre Meta e Google Ads: cada plataforma usa janela de atribuição própria (cliques até 7 dias, visualização 1 dia) e pode reivindicar a mesma venda — somar os dois painéis sem bater com CRM/checkout infla o resultado real; solução é usar o CRM como fonte única de verdade",
+      "fonte": "fallback evergreen (buscas sobre novidade de Meta Ads/Google Ads/TikTok Ads não trouxeram nada específico e recente — dias, não meses — que passasse no critério; achados eram mudanças de meses atrás ou genéricos demais)",
+      "icone": "alvo/mira dourado na capa (padrão do template de fallback); ícones numerados 1/2/3 nos interiores"
+    },
+    "comercial": {
+      "resumo": "follow-up depois do 'não': o não de hoje não é o não de sempre — nutrição de longo prazo (a cada 60-90 dias, com conteúdo de valor, não venda direta) mantém o vendedor na cabeça do lead até o timing mudar (orçamento, dor ou decisor)",
+      "fonte": "fallback evergreen (pesquisado, mas não usado — tráfego pago tinha potencial de viralização maior, efeito 'não sabia disso')",
+      "icone": "não usado, dica não publicada"
+    },
+    "carrosselTema": "A mesma venda contada duas vezes (dupla atribuição entre Meta e Google Ads) — escolhida por maior potencial de engajamento/compartilhamento entre as duas dicas evergreen do dia",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, 3º post de backfill) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
+    "postId": "18120976436510681"
+  },
+  {
     "date": "2026-09-19",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -108,19 +126,5 @@
       "icone": "maleta/aperto de mãos"
     },
     "carrosselTema": "mudança no algoritmo de lances do Google Ads (o que mudou / quem sente primeiro / o que fazer agora)"
-  },
-  {
-    "date": "2026-08-28",
-    "trafegoPago": {
-      "resumo": "migração automática do Google Ads para AI Max (campanhas com Correspondência Ampla/Ativos Criados Automaticamente, rollout 1-30/set)",
-      "fonte": "Search Engine Land",
-      "icone": "alvo/mira"
-    },
-    "comercial": {
-      "resumo": "depois do preço, o silêncio fecha a venda",
-      "fonte": "fallback evergreen",
-      "icone": "maleta/aperto de mãos"
-    },
-    "carrosselTema": "migração automática pro AI Max (o que muda / quando acontece / o que fazer agora)"
   }
 ]
