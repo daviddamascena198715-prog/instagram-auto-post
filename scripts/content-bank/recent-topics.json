@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-21",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "mexer no orçamento, criativo ou público durante a fase de aprendizado do algoritmo (Meta/Google) reinicia o relógio do aprendizado e faz o CPA disparar de novo — regra prática: não editar a campanha nos primeiros 3-4 dias e fazer só uma alteração por vez, com pelo menos 24-48h de intervalo",
+      "fonte": "fallback evergreen (buscas sobre Meta Ads/Google Ads/TikTok Ads trouxeram só o TikTok 'TopReach Max Reach', anunciado em 28/07/2026 — mais de um mês, não passou no critério de 'dias, não meses')",
+      "icone": "não usado, dica não publicada (tráfego pago não foi o tema escolhido hoje)"
+    },
+    "comercial": {
+      "resumo": "3 perguntas de discovery que revelam se o lead tem orçamento e urgência de verdade: 'o que você já tentou resolver isso, e por que não funcionou?', 'o que muda se isso continuar assim nos próximos 6 meses?' e 'quem mais precisa aprovar essa decisão além de você?' — pular essas 3 é a razão mais comum de perder semanas com lead que nunca vai fechar",
+      "fonte": "fallback evergreen (buscas sobre novidade de vendas/negociação B2B só trouxeram conteúdo genérico de 'tendências 2026', nada específico e recente que passasse no critério)",
+      "icone": "maleta/aperto de mãos dourado (ícone padrão comercial do template de fallback)"
+    },
+    "carrosselTema": "3 perguntas de discovery que mostram se o lead vai fechar — escolhida sobre a evergreen de tráfego pago por variedade (tráfego pago foi o tema escolhido nos últimos 4 posts seguidos) e por potencial de engajamento do formato numerado/lista",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-20) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
+    "postId": "17955032157248488"
+  },
+  {
     "date": "2026-09-20",
     "formato": "carrossel",
     "trafegoPago": {
@@ -112,19 +130,5 @@
       "icone": "maleta/aperto de mãos"
     },
     "carrosselTema": "CPA vai subir e você não vai saber por quê (mudança de lances do Google Ads)"
-  },
-  {
-    "date": "2026-08-30",
-    "trafegoPago": {
-      "resumo": "Google Ads mudou o algoritmo de lances de campanhas com meta de CPA/ROAS, efetivo desde 17/08/2026",
-      "fonte": "Google Ads Help",
-      "icone": "alvo/mira"
-    },
-    "comercial": {
-      "resumo": "pare de falar depois do preço, deixe o silêncio pesar na negociação",
-      "fonte": "fallback evergreen",
-      "icone": "maleta/aperto de mãos"
-    },
-    "carrosselTema": "mudança no algoritmo de lances do Google Ads (o que mudou / quem sente primeiro / o que fazer agora)"
   }
 ]
