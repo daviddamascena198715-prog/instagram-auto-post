@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-23",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "Google Ads está aposentando as campanhas Dynamic Search Ads (DSA): desde setembro de 2026, campanhas elegíveis (com Automatically Created Assets e correspondência ampla no nível da campanha) foram migradas automaticamente pra AI Max, e não é mais possível criar um DSA novo pela interface, pelo Google Ads Editor ou pela API",
+      "fonte": "Google Ads / blog.google (business.google.com/accelerate/announcements/dsa-upgrade-to-ai-max-2026) — anúncio oficial do Google, rollout em setembro de 2026",
+      "icone": "seta circular de upgrade/atualização (fallback local usou o ícone padrão 'target' do template, já que o template de fallback só suporta 2 ícones fixos — ver fonteImagem)"
+    },
+    "comercial": {
+      "resumo": "cadência ideal de follow-up: intervalos crescentes (dia 1, dia 3, dia 7, dia 14) em vez de mandar mensagem todo dia — reduz a sensação de pressão pro lead e aumenta a taxa de resposta comparado a follow-up diário ou a sumir depois de uma tentativa",
+      "fonte": "fallback evergreen (buscas sobre novidade de vendas/negociação B2B trouxeram só conteúdo genérico de 'tendências 2026' — IA no processo comercial, hiperpersonalização — nada específico e recente o suficiente pra passar no critério de 'dias, não meses')",
+      "icone": "não usado, dica não publicada (tráfego pago foi o tema escolhido hoje)"
+    },
+    "carrosselTema": "O Google aposentou o DSA e já migrou sua campanha sozinho (Dynamic Search Ads → AI Max) — escolhida sobre o evergreen de follow-up por ter novidade pesquisada com fonte oficial, prioridade sobre evergreen sem fonte",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-21) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração (capa)",
+    "postId": "18149627674469682"
+  },
+  {
     "date": "2026-09-21",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -116,19 +134,5 @@
       "icone": "balão de fala com etiqueta/rótulo"
     },
     "carrosselTema": "seus anúncios competindo entre si (sobreposição de público / leilão interno) — NÃO PUBLICADO: limite diário de geração do Nano Banana atingido após 2 de 5 slides"
-  },
-  {
-    "date": "2026-08-31",
-    "trafegoPago": {
-      "resumo": "Google Ads mudou o sistema de lances de campanhas com meta de CPA/ROAS 'limitadas por orçamento' (Search, Shopping, PMax, Display, Hotel, Travel), passando a perseguir a meta com mais rigor mesmo com ajuste de orçamento",
-      "fonte": "Google Ads Help (mudança efetiva desde 17/08/2026)",
-      "icone": "alvo/mira com flecha"
-    },
-    "comercial": {
-      "resumo": "usar o silêncio após informar o preço pra deixar a pressão do lado do cliente",
-      "fonte": "fallback evergreen",
-      "icone": "maleta/aperto de mãos"
-    },
-    "carrosselTema": "CPA vai subir e você não vai saber por quê (mudança de lances do Google Ads)"
   }
 ]
