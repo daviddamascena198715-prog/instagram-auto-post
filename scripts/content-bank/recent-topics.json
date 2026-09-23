@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-09-23",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido neste post extra)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "isolar a objeção antes de responder o preço: perguntar 'além do preço, tem mais algum ponto que te impede de fechar agora?' — se a resposta for só preço, negocia; se vier mais alguma coisa, é nisso que precisa trabalhar primeiro (desconto não resolve problema que não é de preço)",
+      "fonte": "fallback evergreen (buscas por novidade de vendas/negociação trouxeram só conteúdo genérico, nada específico e recente o bastante)",
+      "icone": "n/a (layout novo sem ícone — ver fonteImagem)"
+    },
+    "carrosselTema": "isolar a objeção de preço antes de negociar — escolhida como tema real (sem estatística fabricada) pra validar o layout novo do template (sem o círculo de ícone, pedido do usuário)",
+    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário (não é a rotina agendada das 6h, que já rodou hoje como carrossel) — pra validar o novo visual do fallback local (sem ícone) com conteúdo real",
+    "fonteImagem": "fallback local (template atualizado em 2026-09-23: removido o círculo com ícone target/briefcase de todos os slides, a pedido do usuário — 'nenhuma arte mais deve ter aquilo')",
+    "postId": "17949328170050504"
+  },
+  {
+    "date": "2026-09-23",
     "formato": "carrossel",
     "trafegoPago": {
       "resumo": "Google Ads está aposentando as campanhas Dynamic Search Ads (DSA): desde setembro de 2026, campanhas elegíveis (com Automatically Created Assets e correspondência ampla no nível da campanha) foram migradas automaticamente pra AI Max, e não é mais possível criar um DSA novo pela interface, pelo Google Ads Editor ou pela API",
@@ -120,19 +138,5 @@
       "icone": "cifrão dourado ($)"
     },
     "carrosselTema": "3 regras de ancoragem de preço (apresentar o mais caro primeiro / nunca abrir pelo mais barato / oferecer 3 opções, não 2)"
-  },
-  {
-    "date": "2026-09-16",
-    "trafegoPago": {
-      "resumo": "sobreposição de público entre conjuntos de anúncio faz a plataforma competir contra você mesmo no leilão, inflando o custo por resultado",
-      "fonte": "fallback evergreen",
-      "icone": "círculos dourados sobrepostos (colisão de público)"
-    },
-    "comercial": {
-      "resumo": "nomear/rotular a dúvida do cliente antes dele verbalizar (técnica de labeling) pra revelar a objeção real",
-      "fonte": "fallback evergreen",
-      "icone": "balão de fala com etiqueta/rótulo"
-    },
-    "carrosselTema": "seus anúncios competindo entre si (sobreposição de público / leilão interno) — NÃO PUBLICADO: limite diário de geração do Nano Banana atingido após 2 de 5 slides"
   }
 ]
