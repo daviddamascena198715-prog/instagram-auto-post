@@ -627,13 +627,36 @@ Nesse caso específico:
    pré-instalado no ambiente).
 3. Monte o `slides.json` com os mesmos textos que seriam usados nos prompts
    do Nano Banana, adaptados aos campos do template:
-   - Carrossel: `[{"type":"capa","tag":"<TEMA>","headline":"...","body":"...","icon":"target|briefcase"}, {"type":"interior","headline":"...","body":"..."} × 3, {"type":"cta","headline":"...","body":"...","ctaLabel":"SEGUIR →"}]`
+   - Carrossel: `[{"type":"capa","tag":"<TEMA>","headline":"...","body":"...","icon":"target|briefcase"}, {"type":"interior"|"chart","headline":"...","body":"..."} × 3, {"type":"cta","headline":"...","body":"...","ctaLabel":"SEGUIR →"}]`
      (`icon`: `"target"` pra tráfego pago, `"briefcase"` pra comercial).
    - Post de imagem única: array com um só elemento `{"type":"capa", ...}`
      (mesmos campos) — o fallback não tem a versão "cinematográfica
      full-bleed" da capa (isso só existe via Nano Banana), então nesse
      modo a imagem sai no estilo dashboard/ícone padrão do template — é
      uma rede de segurança, não precisa ser visualmente idêntica ao normal.
+   - **Alternância clara/escura (adicionado em 2026-09-23, a pedido do
+     usuário — "os posts estão todos iguais e feio... a primeira imagem
+     pode ser mais escura, a segunda mais clara, a 3 mais escura")**: o
+     template já alterna automaticamente o tom de fundo por slide (índice
+     par = escuro, ímpar = claro/creme, mesma paleta dourada nos dois) —
+     não precisa fazer nada extra pra isso acontecer, é o comportamento
+     padrão. Só passar `"tone":"dark"` ou `"tone":"light"` num slide
+     específico se quiser forçar um tom fora da alternância automática
+     (raro).
+   - **Variedade de conteúdo visual — não deixar todo slide igual (texto
+     corrido)**: usar `"type":"chart"` (em vez de `"interior"`) pro slide
+     que tiver 2-4 valores comparáveis — vira gráfico de barras de verdade
+     via `"visual":{"type":"bar","unit":"%","bars":[{"label":"...","value":34,"tone":"gold|blue|green|red|yellow"},...]}`
+     — ou que girar em torno de UM número central — vira número grande em
+     destaque via `"visual":{"type":"stat","value":"7 dias","label":"..."}`.
+     Slide `"type":"capa"` (inclusive no post de imagem única, que só tem
+     esse slide) também aceita o mesmo campo `"visual"` opcional, quando o
+     tema permitir mostrar um gráfico/número já na capa. Só usar `"chart"`
+     quando o dado for real (nunca inventar número pra caber num gráfico —
+     mesmo guardrail de sempre); quando não houver dado numérico real,
+     usar `"interior"` (texto) normalmente. Variar entre os 3 formatos
+     (texto/gráfico/número) ao longo do carrossel em vez de repetir o
+     mesmo em todos os slides.
    - O script gera `outDir/slide_1.png`, `slide_2.png`, etc. Revise cada
      uma normalmente (mesmo checklist de sempre) antes de publicar.
 4. Se já tinha gerado algumas imagens via Nano Banana antes do erro de

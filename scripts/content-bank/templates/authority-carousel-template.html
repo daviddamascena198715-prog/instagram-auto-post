@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --gold:#C9A24B; --gold-light:#E4C97A; --dark-bg:#0A0B12;
+    --gold:#C9A24B; --gold-light:#E4C97A; --dark-bg:#0A0B12; --ink:#0A0B12;
     --cream:#F3EFE4; --cream-soft:rgba(243,239,228,0.62);
     --blue:#5B9BD5; --green:#6FCF97; --red:#E36F6F; --yellow:#E0C25B;
   }
@@ -17,21 +17,46 @@
   body{font-family:'Outfit',sans-serif;}
   .serif{font-family:'Fraunces',serif;font-optical-sizing:auto;}
 
+  /* Tom escuro (padrão) — fundo preto/azul-marinho com brilho dourado */
   .slide{
     width:420px;height:525px;position:relative;overflow:hidden;
-    background:radial-gradient(90% 70% at 85% 12%, rgba(201,162,75,0.20) 0%, rgba(201,162,75,0) 55%), var(--dark-bg);
     display:flex;flex-direction:column;
+    --bg: radial-gradient(90% 70% at 85% 12%, rgba(201,162,75,0.20) 0%, rgba(201,162,75,0) 55%), var(--dark-bg);
+    --text-primary: var(--cream);
+    --text-secondary: var(--cream-soft);
+    --surface: rgba(255,255,255,0.08);
+    --surface-border: rgba(255,255,255,0.12);
+    --track-bg: rgba(255,255,255,0.08);
+    --progress-track-bg: rgba(255,255,255,0.1);
+    --progress-label-c: rgba(255,255,255,0.45);
+    --vignette-a: rgba(255,255,255,0.05);
+    --vignette-b: rgba(0,0,0,0.45);
+    background:var(--bg);
+  }
+  /* Tom claro (alternado) — fundo creme quente, mesmos acentos dourados */
+  .slide.tone-light{
+    --bg: radial-gradient(90% 70% at 85% 12%, rgba(201,162,75,0.16) 0%, rgba(201,162,75,0) 55%), var(--cream);
+    --text-primary: #14161F;
+    --text-secondary: rgba(20,22,31,0.64);
+    --surface: rgba(10,11,18,0.05);
+    --surface-border: rgba(10,11,18,0.12);
+    --track-bg: rgba(10,11,18,0.09);
+    --progress-track-bg: rgba(10,11,18,0.12);
+    --progress-label-c: rgba(10,11,18,0.45);
+    --vignette-a: rgba(0,0,0,0.03);
+    --vignette-b: rgba(0,0,0,0.07);
+    background:var(--bg);
   }
   .slide::before{
     content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 45%),
-               radial-gradient(140% 100% at 50% 120%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 55%);
+    background:radial-gradient(120% 90% at 50% 0%, var(--vignette-a) 0%, rgba(0,0,0,0) 45%),
+               radial-gradient(140% 100% at 50% 120%, var(--vignette-b) 0%, rgba(0,0,0,0) 55%);
     pointer-events:none;z-index:1;
   }
   .badge-top{
     position:absolute;top:24px;right:24px;z-index:3;display:flex;align-items:center;gap:7px;
-    padding:6px 12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
-    border-radius:20px;font-size:9.5px;font-weight:600;letter-spacing:1px;color:var(--cream);
+    padding:6px 12px;background:var(--surface);border:1px solid var(--surface-border);
+    border-radius:20px;font-size:9.5px;font-weight:600;letter-spacing:1px;color:var(--text-primary);
   }
   .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
 
@@ -52,25 +77,25 @@
   }
   .icon-circle svg{width:44px;height:44px;}
 
-  .headline{font-weight:600;line-height:1.12;letter-spacing:-0.4px;margin-bottom:14px;color:var(--cream);}
+  .headline{font-weight:600;line-height:1.12;letter-spacing:-0.4px;margin-bottom:14px;color:var(--text-primary);}
   .headline .hl{color:var(--gold);}
   .headline.capa{font-size:30px;}
   .headline.interior{font-size:24px;}
   .headline.cta{font-size:26px;text-align:center;}
 
-  .body-text{font-size:13.5px;line-height:1.55;font-weight:400;letter-spacing:0.1px;color:var(--cream-soft);}
+  .body-text{font-size:13.5px;line-height:1.55;font-weight:400;letter-spacing:0.1px;color:var(--text-secondary);}
 
   .chart-wrap{display:flex;flex-direction:column;gap:14px;margin-bottom:8px;}
   .chart-row{display:flex;flex-direction:column;gap:6px;}
   .chart-row-top{display:flex;justify-content:space-between;align-items:baseline;}
-  .chart-label{font-size:12.5px;font-weight:600;color:var(--cream-soft);}
+  .chart-label{font-size:12.5px;font-weight:600;color:var(--text-secondary);}
   .chart-value{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--gold-light);}
-  .chart-track{height:10px;border-radius:6px;background:rgba(255,255,255,0.08);overflow:hidden;}
+  .chart-track{height:10px;border-radius:6px;background:var(--track-bg);overflow:hidden;}
   .chart-fill{height:100%;border-radius:6px;}
 
   .stat-wrap{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
   .stat-value{font-size:56px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
-  .stat-label{font-size:12.5px;font-weight:600;color:var(--cream-soft);letter-spacing:0.3px;margin-top:6px;}
+  .stat-label{font-size:12.5px;font-weight:600;color:var(--text-secondary);letter-spacing:0.3px;margin-top:6px;}
 
   .step-badge{
     width:36px;height:36px;border-radius:50%;flex-shrink:0;margin-bottom:16px;
@@ -85,13 +110,13 @@
   }
 
   .progress-wrap{position:absolute;bottom:0;left:0;right:0;padding:14px 24px 20px;display:flex;align-items:center;gap:9px;z-index:10;}
-  .progress-track{flex:1;height:3px;border-radius:2px;overflow:hidden;background:rgba(255,255,255,0.1);}
+  .progress-track{flex:1;height:3px;border-radius:2px;overflow:hidden;background:var(--progress-track-bg);}
   .progress-fill{height:100%;border-radius:2px;background:var(--gold);}
-  .progress-label{font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.45);font-variant-numeric:tabular-nums;}
+  .progress-label{font-size:10.5px;font-weight:600;color:var(--progress-label-c);font-variant-numeric:tabular-nums;}
 
   .cta-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;}
   .cta-btn{
-    display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:var(--gold);color:var(--dark-bg);
+    display:inline-flex;align-items:center;gap:9px;padding:14px 28px;background:var(--gold);color:var(--ink);
     font-weight:700;font-size:14px;letter-spacing:0.2px;border-radius:30px;margin-top:20px;
     box-shadow:0 8px 24px rgba(0,0,0,0.35);
   }
@@ -136,10 +161,12 @@
 
     if (s.type === "capa") {
       const icon = ICONS[s.icon] || ICONS.target;
+      const visualHtml = s.visual ? (s.visual.type === "stat" ? renderStat(s.visual) : renderBarChart(s.visual)) : "";
       inner = `
         <div class="icon-circle">${icon}</div>
         ${s.tag ? `<span class="tag">${s.tag}</span>` : ""}
         <h2 class="serif headline capa">${s.headline}</h2>
+        ${visualHtml}
         ${s.body ? `<p class="body-text">${s.body}</p>` : ""}
         ${opts.total > 1 ? `<div class="swipe-hint">
           <span>arrasta pra ver</span>
@@ -178,7 +205,8 @@
       </div>`;
     }
 
-    return `<div class="slide">
+    const toneClass = opts.tone === "light" ? "tone-light" : "";
+    return `<div class="slide ${toneClass}">
       <div class="badge-top"><span class="badge-dot"></span>davidaraujogestor</div>
       <div class="content">${inner}</div>
       ${progress}
@@ -190,7 +218,10 @@
   document.getElementById("root").innerHTML = SLIDES.map((s, i) => {
     const isNumbered = s.type === "interior" || s.type === "chart";
     if (isNumbered) stepCounter++;
-    return renderSlide(s, { total: SLIDES.length, index: i, stepNumber: isNumbered ? stepCounter : null });
+    // Alterna tom claro/escuro a cada slide (capa mais escura, 2ª mais clara, 3ª mais escura...),
+    // a menos que o slide especifique um "tone" próprio (ex.: post de imagem única sempre escuro).
+    const tone = s.tone || (i % 2 === 0 ? "dark" : "light");
+    return renderSlide(s, { total: SLIDES.length, index: i, stepNumber: isNumbered ? stepCounter : null, tone });
   }).join("");
 </script>
 </body>
