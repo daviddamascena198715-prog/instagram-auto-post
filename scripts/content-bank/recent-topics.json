@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-09-23",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "Meta Andromeda: o algoritmo passou a tratar segmentação detalhada como sugestão, não regra — quem decide o alcance agora é a diversidade de criativos. Teste interno do Meta: 1 conjunto com 25 criativos diversos gerou 17% mais conversões e 16% menos custo por resultado do que 5 conjuntos menores com 5 criativos cada",
+      "fonte": "Search Engine Land — 'Inside Meta's AI-driven advertising system: How Andromeda and GEM work together' (2026)",
+      "icone": "n/a (layout novo sem ícone)"
+    },
+    "comercial": {
+      "resumo": "não usado, dica não publicada (tráfego pago foi o tema escolhido neste post extra)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "carrosselTema": "o algoritmo do Meta (Andromeda) parou de mirar público e passou a mirar criativo — consolidar campanhas com mais criativos por conjunto gera mais conversão e menos custo",
+    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra gerar um carrossel de exemplo já com conteúdo real (pedido: 'gere um carrossel pra eu ver como ficaria, mas com informações reais pra publicar já') — alternância normal indicava carrossel, já que o post anterior de hoje foi imagem_unica",
+    "fonteImagem": "fallback local (template sem ícone e com alternância clara/escura por slide + gráfico de barras/número grande, validado nesta publicação)",
+    "postId": "18094668599557187"
+  },
+  {
+    "date": "2026-09-23",
     "formato": "imagem_unica",
     "trafegoPago": {
       "resumo": "não usado, dica não publicada (comercial foi o tema escolhido neste post extra)",
@@ -124,19 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior não tinha campo 'formato' (histórico antigo) — tratado como se o último tivesse sido 'carrossel', logo hoje é 'imagem_unica'",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — workspace com 0,6 créditos, erro 'Out of credits in the selected workspace' confirmado novamente nesta execução (retry do mesmo dia, após a tentativa anterior também ter falhado por falta de crédito)",
     "postId": "18113102438021229"
-  },
-  {
-    "date": "2026-09-18",
-    "trafegoPago": {
-      "resumo": "otimizar campanha pro evento errado (ex.: 'Adicionar ao carrinho') infla o relatório mas não fecha venda — sempre configurar a otimização pro evento mais perto da receita (Compra)",
-      "fonte": "fallback evergreen",
-      "icone": "chip/circuito dourado (configuração técnica)"
-    },
-    "comercial": {
-      "resumo": "ancoragem de preço: apresentar a opção mais cara do catálogo primeiro pra fazer a oferta principal parecer mais barata por comparação; nunca abrir pelo mais barato; oferecer 3 opções em vez de 2",
-      "fonte": "fallback evergreen",
-      "icone": "cifrão dourado ($)"
-    },
-    "carrosselTema": "3 regras de ancoragem de preço (apresentar o mais caro primeiro / nunca abrir pelo mais barato / oferecer 3 opções, não 2)"
   }
 ]
