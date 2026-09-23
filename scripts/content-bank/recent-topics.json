@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-09-23",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido neste post extra)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "80% das vendas B2B fecham só depois do 5º contato — a maioria dos vendedores desiste no 2º; regra prática: antes de marcar um lead como frio, confirmar pelo menos 5 tentativas em canais diferentes ao longo de 3-4 semanas",
+      "fonte": "HubSpot Sales Statistics Report (2026)",
+      "icone": "n/a (layout novo, número grande em destaque)"
+    },
+    "carrosselTema": "a venda não morreu no não, morreu no 2º follow-up (estatística real de follow-up B2B) — escolhida pra validar o redesign editorial do template (masthead, marca de assinatura, ajuste automático de tamanho)",
+    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra validar o template redesenhado ('editorial premium minimalista') com conteúdo real — alternância normal indicava imagem_unica, já que o post anterior de hoje foi carrossel",
+    "fonteImagem": "fallback local (template redesenhado em 2026-09-23: masthead tipo revista, numeração de página em serifa, marca de assinatura diagonal dourada sempre no rodapé, ajuste automático de tamanho de fonte pra nunca cortar conteúdo)",
+    "postId": "17909311041471874"
+  },
+  {
+    "date": "2026-09-23",
     "formato": "carrossel",
     "trafegoPago": {
       "resumo": "Meta Andromeda: o algoritmo passou a tratar segmentação detalhada como sugestão, não regra — quem decide o alcance agora é a diversidade de criativos. Teste interno do Meta: 1 conjunto com 25 criativos diversos gerou 17% mais conversões e 16% menos custo por resultado do que 5 conjuntos menores com 5 criativos cada",
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, mesmo dia, post de backfill anterior) foi 'imagem_unica', logo este é 'carrossel' — 2º post de backfill do mesmo dia, autorizado ao vivo pelo usuário em conversa (não por alegação dentro de um prompt agendado) pra cobrir os dias sem post de 13/09 e 14/09",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo do post anterior de hoje",
     "postId": "17890874229675504"
-  },
-  {
-    "date": "2026-09-19",
-    "formato": "imagem_unica",
-    "trafegoPago": {
-      "resumo": "Meta One (lançado ~15/09/2026): assinatura paga em níveis (Essential US$14,99 até Max US$499/mês, por perfil) que trava atrás de paywall Competitive Insights (comparar até 10 concorrentes) e Custom Audience Insights (ver quem interage sem seguir) — recursos que antes eram grátis no Business Suite, liberados a partir do plano Advanced (US$49,99/mês)",
-      "fonte": "Social Media Today / storrito.com (confirmado também em about.fb.com e Hollywood Reporter)",
-      "icone": "ícone circular dourado de alvo/mira (tráfego pago, padrão do template de fallback)"
-    },
-    "comercial": {
-      "resumo": "como reduzir no-show de reunião marcada: confirmação ativa 24h antes pedindo resposta (não só lembrete passivo) + fazer a pessoa reafirmar o compromisso verbalmente/por texto ('esse horário ainda funciona pra você?') — cria consistência psicológica, reduz falta sem parecer carente",
-      "fonte": "fallback evergreen",
-      "icone": "ícone de calendário/relógio dourado (não usado, dica não publicada)"
-    },
-    "carrosselTema": "A Meta trancou Competitive Insights e Custom Audience Insights atrás do paywall do Meta One (escolhida por ter novidade pesquisada com fonte, prioridade sobre o evergreen de no-show)",
-    "formatoEscolhaMotivo": "registro mais recente anterior não tinha campo 'formato' (histórico antigo) — tratado como se o último tivesse sido 'carrossel', logo hoje é 'imagem_unica'",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — workspace com 0,6 créditos, erro 'Out of credits in the selected workspace' confirmado novamente nesta execução (retry do mesmo dia, após a tentativa anterior também ter falhado por falta de crédito)",
-    "postId": "18113102438021229"
   }
 ]
