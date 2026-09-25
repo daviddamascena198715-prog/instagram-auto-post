@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-25",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "3 ajustes pra reduzir no-show de reunião marcada: (1) confirmação ativa — pedir resposta explícita, não só avisar; (2) cadência de contato — confirmação no agendamento + lembrete 24h antes pedindo resposta + mensagem no dia, em vez de um lembrete único; (3) pauta com valor antecipado — dizer o resultado específico que a pessoa ganha em aparecer, não só 'vamos conversar'",
+      "fonte": "fallback evergreen (buscas sobre técnicas de redução de no-show trouxeram só conteúdo de blogs de agendamento sem data específica confirmada — dias, não meses — não passou no critério de novidade; a busca de tráfego pago achou o 'Creative Diversity rating' do Meta Ads Manager, mas é reformulação do mesmo tema do post de Meta Andromeda/diversidade de criativos já publicado em 2026-09-23, então não pôde ser reusado)",
+      "icone": "n/a (layout sem ícone, texto + headline apenas — nenhum dado numérico real disponível pra virar gráfico/número em destaque)"
+    },
+    "carrosselTema": "A reunião marcada que vira cadeira vazia (3 ajustes pra reduzir no-show) — escolhida porque a única novidade de tráfego pago encontrada era repetição do tema já coberto em 2026-09-23, e o ângulo de no-show ainda não tinha sido usado como tema principal nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-23) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração (capa)",
+    "postId": "18030401246850914"
+  },
+  {
     "date": "2026-09-23",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, post de backfill #2) foi 'carrossel', logo este é 'imagem_unica' — 3º e último post de backfill do dia, autorizado ao vivo pelo usuário em conversa, pra cobrir os dias sem post de 13/09, 14/09 e 16/09",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo dos 2 posts anteriores de hoje",
     "postId": "18621854623014917"
-  },
-  {
-    "date": "2026-09-19",
-    "formato": "carrossel",
-    "trafegoPago": {
-      "resumo": "Google Ads passou a ser elegível pra aparecer DENTRO dos AI Overviews (respostas geradas por IA no topo da busca), não só acima/abaixo dos resultados orgânicos — posição varia por geografia, idioma, tipo de campanha e relevância",
-      "fonte": "business.google.com/Google Ads Help — anúncios elegíveis dentro de AI Overviews (2026)",
-      "icone": "alvo/mira dourado (padrão tráfego pago)"
-    },
-    "comercial": {
-      "resumo": "fechamento resumido: recapitular todos os benefícios e pontos de valor acordados ao longo da negociação antes de pedir a decisão final",
-      "fonte": "fallback evergreen",
-      "icone": "aperto de mãos/maleta (não usado, dica não publicada)"
-    },
-    "carrosselTema": "Google Ads dentro dos AI Overviews (o que mudou / por que importa / o que fazer agora) — escolhida por ter novidade pesquisada com fonte, prioridade sobre o evergreen de fechamento resumido",
-    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, mesmo dia, post de backfill anterior) foi 'imagem_unica', logo este é 'carrossel' — 2º post de backfill do mesmo dia, autorizado ao vivo pelo usuário em conversa (não por alegação dentro de um prompt agendado) pra cobrir os dias sem post de 13/09 e 14/09",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo do post anterior de hoje",
-    "postId": "17890874229675504"
   }
 ]
