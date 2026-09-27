@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-27",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "silêncio estratégico depois de apresentar o preço: quem quebra o silêncio primeiro tende a ceder algo (desconto, prazo, condição); ficar calado força o outro lado a reagir primeiro e revela se a resistência é real ou só reflexo",
+      "fonte": "fallback evergreen (buscas sobre novidade de vendas/negociação B2B trouxeram só conteúdo genérico de cadência multicanal e follow-up, sem nada específico e recente o bastante pro critério de 'dias, não meses'; a estatística de '80% das vendas fecham após o 5º contato' já tinha sido usada em 2026-09-23, então não pôde ser reusada)",
+      "icone": "n/a (layout sem ícone — template atual não usa mais o círculo de ícone, ver histórico de 2026-09-23)"
+    },
+    "carrosselTema": "O segredo depois do preço? Silêncio. (técnica de silêncio estratégico em negociação) — escolhida sobre o tráfego pago porque nenhuma das buscas de tráfego pago (Meta Creative Diversity, Google AI Max/DSA, TikTok Attribution) passou no critério de novidade sem repetir tema já coberto em 2026-09-23/09-25, e o ângulo de negociação/silêncio tem mais potencial de engajamento (tática simples e provocativa) e ainda não tinha sido usado nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-25) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — MCP do Higgsfield/Nano Banana (model nano_banana_pro) não está disponível nesta sessão (o servidor MCP conectado não expõe esse modelo); tratado como equivalente a falta de crédito Nano Banana, seguindo a mesma rede de segurança local do CLAUDE.md, para não deixar de publicar",
+    "postId": "18201765055340477"
+  },
+  {
     "date": "2026-09-25",
     "formato": "carrossel",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, 3º post de backfill) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
     "postId": "18120976436510681"
-  },
-  {
-    "date": "2026-09-19",
-    "formato": "imagem_unica",
-    "trafegoPago": {
-      "resumo": "TikTok Ads lançou 'TopView Geo Exclusion': permite excluir sub-regiões inteiras (até 40%) de uma campanha TopView diretamente no Ads Manager, sem segmentação manual complexa",
-      "fonte": "ads.tiktok.com/business (blog oficial TikTok for Business, atualização Q3 2026)",
-      "icone": "alvo/mira dourado (padrão tráfego pago)"
-    },
-    "comercial": {
-      "resumo": "metodologia NEAT de qualificação de leads: avaliar Necessidade, impacto Econômico, Acesso aos tomadores de decisão e prazo (Timeline) antes de investir tempo comercial num lead",
-      "fonte": "fallback evergreen (pesquisado, mas não usado — tráfego pago tinha novidade mais recente/específica)",
-      "icone": "não usado, dica não publicada"
-    },
-    "carrosselTema": "TikTok Ads TopView Geo Exclusion (excluir até 40% das sub-regiões direto no Ads Manager) — escolhida por ter novidade pesquisada com fonte oficial, prioridade sobre o evergreen de qualificação NEAT",
-    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, post de backfill #2) foi 'carrossel', logo este é 'imagem_unica' — 3º e último post de backfill do dia, autorizado ao vivo pelo usuário em conversa, pra cobrir os dias sem post de 13/09, 14/09 e 16/09",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — balance 0,6 créditos, mesmo motivo dos 2 posts anteriores de hoje",
-    "postId": "18621854623014917"
   }
 ]
