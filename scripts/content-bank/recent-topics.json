@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-28",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "pesquisado, mas não usado (comercial foi o tema escolhido hoje) — evergreen cogitado: otimizar por múltiplos eventos de conversão (add to cart, lead, purchase) na mesma campanha divide o aprendizado do algoritmo entre eventos diferentes, atrasando a otimização e inflando o CPA; o ideal é 1 evento de otimização por campanha",
+      "fonte": "n/a (evergreen, não publicado)",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "3 formas de reabrir a conversa quando o cliente diz 'vou pensar': (1) isolar a razão real perguntando o que especificamente deixou em dúvida — preço, timing ou confiança; (2) mostrar o custo de esperar relembrando o problema sem pressão; (3) oferecer um próximo passo pequeno e de baixo risco (call rápida, teste, retorno em poucos dias) em vez de pressionar pela decisão inteira",
+      "fonte": "fallback evergreen (buscas sobre Meta Ads/Google Ads/TikTok Ads só trouxeram achados de mais de 1-2 meses — TikTok 'Creative Upgrades para Smart+' anunciado em julho/2026, Meta AI Pro de junho/2026 — não passaram no critério de 'dias, não meses'; buscas de vendas/negociação trouxeram só conteúdo genérico de tendências 2026, sem novidade específica recente; ângulo de fechamento/objeção 'vou pensar' ainda não tinha sido usado nos últimos 5 registros)",
+      "icone": "n/a (layout sem ícone — template atual não usa mais o círculo de ícone, ver histórico de 2026-09-23)"
+    },
+    "carrosselTema": "Seu cliente disse \"vou pensar\"? Isso não é não. (3 formas de reabrir a conversa) — escolhida sobre o tráfego pago porque nenhuma novidade de tráfego pago encontrada passou no critério de 'dias, não meses', e o ângulo de objeção de fechamento 'vou pensar' tem alto potencial de identificação/engajamento e ainda não tinha sido coberto nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-27) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana (model nano_banana_pro) devolveu 'Out of credits in the selected workspace' na primeira tentativa (capa); dependência playwright não estava instalada no sandbox desta sessão e foi instalada via npm install antes do render",
+    "postId": "18079194647427888"
+  },
+  {
     "date": "2026-09-27",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-20) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
     "postId": "17955032157248488"
-  },
-  {
-    "date": "2026-09-20",
-    "formato": "carrossel",
-    "trafegoPago": {
-      "resumo": "atribuição duplicada entre Meta e Google Ads: cada plataforma usa janela de atribuição própria (cliques até 7 dias, visualização 1 dia) e pode reivindicar a mesma venda — somar os dois painéis sem bater com CRM/checkout infla o resultado real; solução é usar o CRM como fonte única de verdade",
-      "fonte": "fallback evergreen (buscas sobre novidade de Meta Ads/Google Ads/TikTok Ads não trouxeram nada específico e recente — dias, não meses — que passasse no critério; achados eram mudanças de meses atrás ou genéricos demais)",
-      "icone": "alvo/mira dourado na capa (padrão do template de fallback); ícones numerados 1/2/3 nos interiores"
-    },
-    "comercial": {
-      "resumo": "follow-up depois do 'não': o não de hoje não é o não de sempre — nutrição de longo prazo (a cada 60-90 dias, com conteúdo de valor, não venda direta) mantém o vendedor na cabeça do lead até o timing mudar (orçamento, dor ou decisor)",
-      "fonte": "fallback evergreen (pesquisado, mas não usado — tráfego pago tinha potencial de viralização maior, efeito 'não sabia disso')",
-      "icone": "não usado, dica não publicada"
-    },
-    "carrosselTema": "A mesma venda contada duas vezes (dupla atribuição entre Meta e Google Ads) — escolhida por maior potencial de engajamento/compartilhamento entre as duas dicas evergreen do dia",
-    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-19, 3º post de backfill) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
-    "postId": "18120976436510681"
   }
 ]
