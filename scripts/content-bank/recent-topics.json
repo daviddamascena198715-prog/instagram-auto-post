@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-09-30",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje) — buscas sobre Meta Ads/Google Ads/TikTok Ads trouxeram só achados vagos ou de meses atrás (Advantage+ de março/2026, TopReach Max Reach de julho/2026) ou uma reformulação do tema 'campanhas de pesquisa migrando pra AI Max' (rollout 1-30/set/2026), próxima demais do tema DSA→AI Max já publicado em 2026-09-23 — não passou no critério de novidade não repetida",
+      "fonte": "n/a (evergreen, não publicado)",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "gestão de expectativa pós-venda pra evitar churn/cancelamento: a maioria dos cancelamentos não vem de resultado ruim, vem de expectativa mal alinhada — kickoff nas primeiras 48h + prazo real de resultado por escrito (30-45 dias, não 3)",
+      "fonte": "fallback evergreen (buscas sobre negociação/fechamento B2B trouxeram só conteúdo genérico de 'tendências 2026' — IA na prospecção, propostas interativas, técnica de 'fechamento de portas' sem data específica confirmada — nada passou no critério de 'dias, não meses'; ângulo de pós-venda/churn ainda não tinha sido usado nos últimos 5 registros)",
+      "icone": "n/a (layout sem ícone, template atual)"
+    },
+    "carrosselTema": "Seu cliente cancelou. E não foi pelo serviço. (gestão de expectativa pós-venda pra evitar churn) — escolhida sobre o tráfego pago porque a única novidade encontrada era reformulação do tema DSA→AI Max já publicado em 2026-09-23, e o ângulo de pós-venda/churn tem alto potencial de identificação e ainda não tinha sido coberto nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-28) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana (model nano_banana_pro) devolveu 'Out of credits in the selected workspace' na primeira tentativa (imagem única)",
+    "postId": "18093399296404660"
+  },
+  {
     "date": "2026-09-28",
     "formato": "carrossel",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-21) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração (capa)",
     "postId": "18149627674469682"
-  },
-  {
-    "date": "2026-09-21",
-    "formato": "imagem_unica",
-    "trafegoPago": {
-      "resumo": "mexer no orçamento, criativo ou público durante a fase de aprendizado do algoritmo (Meta/Google) reinicia o relógio do aprendizado e faz o CPA disparar de novo — regra prática: não editar a campanha nos primeiros 3-4 dias e fazer só uma alteração por vez, com pelo menos 24-48h de intervalo",
-      "fonte": "fallback evergreen (buscas sobre Meta Ads/Google Ads/TikTok Ads trouxeram só o TikTok 'TopReach Max Reach', anunciado em 28/07/2026 — mais de um mês, não passou no critério de 'dias, não meses')",
-      "icone": "não usado, dica não publicada (tráfego pago não foi o tema escolhido hoje)"
-    },
-    "comercial": {
-      "resumo": "3 perguntas de discovery que revelam se o lead tem orçamento e urgência de verdade: 'o que você já tentou resolver isso, e por que não funcionou?', 'o que muda se isso continuar assim nos próximos 6 meses?' e 'quem mais precisa aprovar essa decisão além de você?' — pular essas 3 é a razão mais comum de perder semanas com lead que nunca vai fechar",
-      "fonte": "fallback evergreen (buscas sobre novidade de vendas/negociação B2B só trouxeram conteúdo genérico de 'tendências 2026', nada específico e recente que passasse no critério)",
-      "icone": "maleta/aperto de mãos dourado (ícone padrão comercial do template de fallback)"
-    },
-    "carrosselTema": "3 perguntas de discovery que mostram se o lead vai fechar — escolhida sobre a evergreen de tráfego pago por variedade (tráfego pago foi o tema escolhido nos últimos 4 posts seguidos) e por potencial de engajamento do formato numerado/lista",
-    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-20) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração",
-    "postId": "17955032157248488"
   }
 ]
