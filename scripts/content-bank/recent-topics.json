@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-04",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje) — evergreen cogitado e ainda disponível pra próximo post: otimizar por múltiplos eventos de conversão (add to cart, lead, purchase) na mesma campanha divide o aprendizado do algoritmo entre eventos diferentes, atrasando a otimização e inflando o CPA — o ideal é 1 evento de otimização por campanha",
+      "fonte": "n/a (evergreen, não publicado)",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "o erro que mata a venda antes de começar: pular a etapa de diagnóstico e já sair oferecendo solução. Antes de falar preço, perguntar por que agora, o que já foi tentado e qual seria o cenário ideal em 90 dias — vendedor que faz essas 3 perguntas vende sem brigar no preço, porque a proposta nasce alinhada com o que o cliente já disse que precisa",
+      "fonte": "fallback evergreen (buscas sobre vendas/negociação B2B trouxeram só conteúdo genérico de 'tendências 2026' e cadência de follow-up — a estatística de follow-up/5º contato já tinha sido usada em 2026-09-23, então não pôde ser reusada; ângulo de diagnóstico/discovery ainda não tinha sido usado nos últimos 5 registros)",
+      "icone": "n/a (layout sem ícone, template atual)"
+    },
+    "carrosselTema": "O erro que mata a venda antes de começar (pular o diagnóstico antes de apresentar solução/preço) — escolhida sobre o tráfego pago porque nenhuma novidade de tráfego pago encontrada passou no critério de 'dias, não meses' (TikTok Smart+/TopReach Max Reach e sunset do Google call-only ads sem data recente confirmada), e o ângulo de diagnóstico comercial tem mais potencial de identificação/compartilhamento e ainda não tinha sido coberto nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-10-02) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana (model nano_banana_pro) devolveu 'Out of credits in the selected workspace' na primeira tentativa de geração (imagem única), antes de qualquer job ser criado",
+    "postId": "18634873783044439"
+  },
+  {
     "date": "2026-10-02",
     "formato": "carrossel",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra gerar um carrossel de exemplo já com conteúdo real (pedido: 'gere um carrossel pra eu ver como ficaria, mas com informações reais pra publicar já') — alternância normal indicava carrossel, já que o post anterior de hoje foi imagem_unica",
     "fonteImagem": "fallback local (template sem ícone e com alternância clara/escura por slide + gráfico de barras/número grande, validado nesta publicação)",
     "postId": "18094668599557187"
-  },
-  {
-    "date": "2026-09-23",
-    "formato": "imagem_unica",
-    "trafegoPago": {
-      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido neste post extra)",
-      "fonte": "n/a",
-      "icone": "n/a"
-    },
-    "comercial": {
-      "resumo": "isolar a objeção antes de responder o preço: perguntar 'além do preço, tem mais algum ponto que te impede de fechar agora?' — se a resposta for só preço, negocia; se vier mais alguma coisa, é nisso que precisa trabalhar primeiro (desconto não resolve problema que não é de preço)",
-      "fonte": "fallback evergreen (buscas por novidade de vendas/negociação trouxeram só conteúdo genérico, nada específico e recente o bastante)",
-      "icone": "n/a (layout novo sem ícone — ver fonteImagem)"
-    },
-    "carrosselTema": "isolar a objeção de preço antes de negociar — escolhida como tema real (sem estatística fabricada) pra validar o layout novo do template (sem o círculo de ícone, pedido do usuário)",
-    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário (não é a rotina agendada das 6h, que já rodou hoje como carrossel) — pra validar o novo visual do fallback local (sem ícone) com conteúdo real",
-    "fonteImagem": "fallback local (template atualizado em 2026-09-23: removido o círculo com ícone target/briefcase de todos os slides, a pedido do usuário — 'nenhuma arte mais deve ter aquilo')",
-    "postId": "17949328170050504"
   }
 ]
