@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-05",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje) — evergreen cogitado e ainda disponível pra próximo post: otimizar por múltiplos eventos de conversão (add to cart, lead, purchase) na mesma campanha divide o aprendizado do algoritmo entre eventos diferentes, atrasando a otimização e inflando o CPA — o ideal é 1 evento de otimização por campanha",
+      "fonte": "n/a (evergreen, não publicado) — buscas sobre Meta/Google/TikTok Ads trouxeram só achados de semanas/meses atrás (disclosure de IA do Google Ads de julho/2026, mudança de Target CPA/ROAS de agosto/2026, API v26 em outubro mas é tema técnico de desenvolvedor, não de dono de negócio) — nada passou no critério de 'dias, não meses'",
+      "icone": "n/a"
+    },
+    "comercial": {
+      "resumo": "ancoragem de preço em negociação: quem fala o primeiro número define a faixa de referência do resto da conversa — abrir com o valor que reflete a entrega (não o que acha que o cliente quer ouvir), nunca ceder sem pedir uma contrapartida em troca, e calibrar a âncora pesquisando o padrão de mercado (alta demais quebra credibilidade, tímida demais já entrega margem)",
+      "fonte": "fallback evergreen (buscas sobre ancoragem/técnica de concessão trouxeram só conteúdo de blog genérico sem data específica recente — não passou no critério de 'dias, não meses'; ângulo de ancoragem/concessão era o próximo priorizado desde o registro de 2026-10-02 e ainda não tinha sido usado nos últimos 5 registros)",
+      "icone": "n/a (layout sem ícone, template atual)"
+    },
+    "carrosselTema": "Quem fala o primeiro número controla o jogo (ancoragem de preço + nunca ceder sem pedir algo em troca + calibrar a âncora) — escolhida sobre o tráfego pago porque nenhuma novidade de tráfego pago encontrada passou no critério de 'dias, não meses', e o ângulo de ancoragem/concessão tem alto potencial de aplicação prática e ainda não tinha sido coberto nos registros recentes",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-10-04) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana (model nano_banana_pro) devolveu 'Out of credits in the selected workspace' na primeira tentativa de geração (capa), confirmado também por balance (0.6 créditos disponíveis, abaixo do custo de 2 créditos por imagem)",
+    "postId": "18101866748374931"
+  },
+  {
     "date": "2026-10-04",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra validar o template redesenhado ('editorial premium minimalista') com conteúdo real — alternância normal indicava imagem_unica, já que o post anterior de hoje foi carrossel",
     "fonteImagem": "fallback local (template redesenhado em 2026-09-23: masthead tipo revista, numeração de página em serifa, marca de assinatura diagonal dourada sempre no rodapé, ajuste automático de tamanho de fonte pra nunca cortar conteúdo)",
     "postId": "17909311041471874"
-  },
-  {
-    "date": "2026-09-23",
-    "formato": "carrossel",
-    "trafegoPago": {
-      "resumo": "Meta Andromeda: o algoritmo passou a tratar segmentação detalhada como sugestão, não regra — quem decide o alcance agora é a diversidade de criativos. Teste interno do Meta: 1 conjunto com 25 criativos diversos gerou 17% mais conversões e 16% menos custo por resultado do que 5 conjuntos menores com 5 criativos cada",
-      "fonte": "Search Engine Land — 'Inside Meta's AI-driven advertising system: How Andromeda and GEM work together' (2026)",
-      "icone": "n/a (layout novo sem ícone)"
-    },
-    "comercial": {
-      "resumo": "não usado, dica não publicada (tráfego pago foi o tema escolhido neste post extra)",
-      "fonte": "n/a",
-      "icone": "n/a"
-    },
-    "carrosselTema": "o algoritmo do Meta (Andromeda) parou de mirar público e passou a mirar criativo — consolidar campanhas com mais criativos por conjunto gera mais conversão e menos custo",
-    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra gerar um carrossel de exemplo já com conteúdo real (pedido: 'gere um carrossel pra eu ver como ficaria, mas com informações reais pra publicar já') — alternância normal indicava carrossel, já que o post anterior de hoje foi imagem_unica",
-    "fonteImagem": "fallback local (template sem ícone e com alternância clara/escura por slide + gráfico de barras/número grande, validado nesta publicação)",
-    "postId": "18094668599557187"
   }
 ]
