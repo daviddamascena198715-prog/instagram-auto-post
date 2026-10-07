@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-07",
+    "formato": "imagem_unica",
+    "trafegoPago": {
+      "resumo": "otimizar por múltiplos eventos de conversão (add to cart, lead, compra) na mesma campanha divide o aprendizado do algoritmo entre eventos diferentes, atrasando a saída da fase de aprendizado e inflando o CPA — o ideal é escolher 1 evento de otimização por campanha e manter esse foco do início ao fim",
+      "fonte": "fallback evergreen (buscas sobre Meta/Google Ads trouxeram só achados de meses atrás — Advantage+/Andromeda, atualizações de abril/agosto/2026 — nenhum passou no critério de 'dias, não meses'; esse ângulo de múltiplos eventos de otimização já tinha sido cogitado em vários registros anteriores como evergreen disponível e ainda não publicado)",
+      "icone": "n/a (layout sem ícone, template atual)"
+    },
+    "comercial": {
+      "resumo": "não pesquisado a fundo neste post (tráfego pago foi o tema escolhido hoje, pra variar depois de 3 posts seguidos com tema comercial) — buscas sobre follow-up/no-show/negociação trouxeram só conteúdo genérico ou estatística já usada em 2026-09-23 (80% das vendas fecham após o 5º contato)",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "carrosselTema": "Sua campanha está aprendendo demais — e isso custa caro (otimizar por múltiplos eventos de conversão na mesma campanha divide o aprendizado do algoritmo e infla o CPA; o certo é 1 evento de otimização por campanha) — escolhido sobre o comercial porque nenhuma novidade de vendas/negociação encontrada passou no critério de 'dias, não meses', e esse ângulo de tráfego pago já estava pendente de publicação há várias execuções",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-10-05) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — o servidor MCP do Higgsfield conectado nesta sessão não expõe o modelo nano_banana_pro (confirmado via models_explore, busca por 'nano banana pro' só retornou FLUX.2 e Seedream 5.0 Pro), tratado como equivalente a falta de crédito Nano Banana, seguindo a mesma rede de segurança local do CLAUDE.md",
+    "postId": "17913013470285848"
+  },
+  {
     "date": "2026-10-05",
     "formato": "carrossel",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-23) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
     "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração (capa)",
     "postId": "18030401246850914"
-  },
-  {
-    "date": "2026-09-23",
-    "formato": "imagem_unica",
-    "trafegoPago": {
-      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido neste post extra)",
-      "fonte": "n/a",
-      "icone": "n/a"
-    },
-    "comercial": {
-      "resumo": "80% das vendas B2B fecham só depois do 5º contato — a maioria dos vendedores desiste no 2º; regra prática: antes de marcar um lead como frio, confirmar pelo menos 5 tentativas em canais diferentes ao longo de 3-4 semanas",
-      "fonte": "HubSpot Sales Statistics Report (2026)",
-      "icone": "n/a (layout novo, número grande em destaque)"
-    },
-    "carrosselTema": "a venda não morreu no não, morreu no 2º follow-up (estatística real de follow-up B2B) — escolhida pra validar o redesign editorial do template (masthead, marca de assinatura, ajuste automático de tamanho)",
-    "formatoEscolhaMotivo": "post extra publicado ao vivo em conversa com o usuário pra validar o template redesenhado ('editorial premium minimalista') com conteúdo real — alternância normal indicava imagem_unica, já que o post anterior de hoje foi carrossel",
-    "fonteImagem": "fallback local (template redesenhado em 2026-09-23: masthead tipo revista, numeração de página em serifa, marca de assinatura diagonal dourada sempre no rodapé, ajuste automático de tamanho de fonte pra nunca cortar conteúdo)",
-    "postId": "17909311041471874"
   }
 ]
