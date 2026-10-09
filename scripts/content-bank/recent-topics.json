@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-10-09",
+    "formato": "carrossel",
+    "trafegoPago": {
+      "resumo": "a fase de aprendizado do algoritmo de anúncios (Meta/Google): toda campanha nova precisa de um volume mínimo de conversões por conjunto de anúncios pra sair do modo de teste; quando o mesmo orçamento é dividido entre muitos conjuntos, nenhum deles acumula dados suficientes e o CPA fica instável — a saída é concentrar o orçamento em menos conjuntos de anúncios",
+      "fonte": "fallback evergreen (buscas sobre Meta Ads e Google Ads trouxeram só achados de agosto/setembro 2026 já cobertos em registros anteriores — regras de disclosure de IA da UE, migração automática pro AI Max a partir de setembro, Advisor unificado com Gemini do GML 2026 — nada específico e 'dias, não meses' passou no critério; ângulo de fase de aprendizado/orçamento fragmentado ainda não tinha sido usado nos últimos 5 registros, diferente de 'múltiplos eventos de conversão' (10-07) e 'atribuição/incrementalidade' (10-02))",
+      "icone": "n/a (layout sem ícone, template atual — texto simples, sem gráfico, pra não forçar número que não veio de pesquisa real)"
+    },
+    "comercial": {
+      "resumo": "não escolhido hoje (tráfego pago foi o tema); buscas sobre fechamento/negociação só trouxeram conteúdo genérico de 'tendências 2026' (venda consultiva vs. pressão, técnicas de fechamento presumido/resumo/perguntas) sem novidade específica e recente — nada publicado, fica como evergreen disponível se precisar no futuro",
+      "fonte": "n/a",
+      "icone": "n/a"
+    },
+    "carrosselTema": "Seu anúncio tá preso no modo teste (fase de aprendizado do algoritmo + orçamento dividido demais entre conjuntos de anúncios trava o teste e deixa o CPA instável + solução: concentrar orçamento em menos conjuntos) — escolhido sobre o comercial porque nenhuma novidade de vendas/negociação encontrada passou no critério de 'dias, não meses', e o ângulo de fase de aprendizado tem alto potencial de 'não sabia disso' pra donos de negócio que não entendem por que o CPA oscila",
+    "formatoEscolhaMotivo": "registro mais recente anterior (2026-10-07) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
+    "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana (model nano_banana_pro) devolveu 'Out of credits in the selected workspace' na primeira tentativa de geração (capa), antes de qualquer job ser criado",
+    "postId": "18360689323247600"
+  },
+  {
     "date": "2026-10-07",
     "formato": "imagem_unica",
     "trafegoPago": {
@@ -124,23 +142,5 @@
     "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-25) foi 'carrossel', logo hoje é 'imagem_unica' — alternância normal da rotina 6h",
     "fonteImagem": "fallback local (Playwright/render_authority_carousel.js) — MCP do Higgsfield/Nano Banana (model nano_banana_pro) não está disponível nesta sessão (o servidor MCP conectado não expõe esse modelo); tratado como equivalente a falta de crédito Nano Banana, seguindo a mesma rede de segurança local do CLAUDE.md, para não deixar de publicar",
     "postId": "18201765055340477"
-  },
-  {
-    "date": "2026-09-25",
-    "formato": "carrossel",
-    "trafegoPago": {
-      "resumo": "não usado, dica não publicada (comercial foi o tema escolhido hoje)",
-      "fonte": "n/a",
-      "icone": "n/a"
-    },
-    "comercial": {
-      "resumo": "3 ajustes pra reduzir no-show de reunião marcada: (1) confirmação ativa — pedir resposta explícita, não só avisar; (2) cadência de contato — confirmação no agendamento + lembrete 24h antes pedindo resposta + mensagem no dia, em vez de um lembrete único; (3) pauta com valor antecipado — dizer o resultado específico que a pessoa ganha em aparecer, não só 'vamos conversar'",
-      "fonte": "fallback evergreen (buscas sobre técnicas de redução de no-show trouxeram só conteúdo de blogs de agendamento sem data específica confirmada — dias, não meses — não passou no critério de novidade; a busca de tráfego pago achou o 'Creative Diversity rating' do Meta Ads Manager, mas é reformulação do mesmo tema do post de Meta Andromeda/diversidade de criativos já publicado em 2026-09-23, então não pôde ser reusado)",
-      "icone": "n/a (layout sem ícone, texto + headline apenas — nenhum dado numérico real disponível pra virar gráfico/número em destaque)"
-    },
-    "carrosselTema": "A reunião marcada que vira cadeira vazia (3 ajustes pra reduzir no-show) — escolhida porque a única novidade de tráfego pago encontrada era repetição do tema já coberto em 2026-09-23, e o ângulo de no-show ainda não tinha sido usado como tema principal nos registros recentes",
-    "formatoEscolhaMotivo": "registro mais recente anterior (2026-09-23) foi 'imagem_unica', logo hoje é 'carrossel' — alternância normal da rotina 6h",
-    "fonteImagem": "fallback local (sem crédito Nano Banana) — erro 'Out of credits in the selected workspace' confirmado na primeira tentativa de geração (capa)",
-    "postId": "18030401246850914"
   }
 ]
