@@ -4,7 +4,8 @@
 // Stories 6h (dourado/preto, Fraunces/Outfit). Sem Nano Banana, sem
 // plataforma externa — só HTML/CSS via Playwright.
 //
-// Uso: node render_authority_carousel.js <slides.json> <outDir>
+// Uso: node render_authority_carousel.js <slides.json> <outDir> [--story]
+//   --story → 1080x1920 (Stories); sem a flag → 1080x1350 (feed 4:5)
 //
 // slides.json: array de slides, na ordem em que aparecem no carrossel:
 //   [
@@ -45,13 +46,15 @@ function findPreinstalledChromium() {
   return undefined;
 }
 
-async function renderCarousel(slides, outDir) {
+async function renderCarousel(slides, outDir, { story = false } = {}) {
   const VIEW_W = 420;
-  const VIEW_H = 525;
+  // viewport precisa ser inteiro; o slide em si mede 746.667px (= 1920px no PNG final)
+  const VIEW_H = story ? 747 : 525; // 1080x1920 (Stories) ou 1080x1350 (feed 4:5)
   const SCALE = 1080 / VIEW_W;
 
   const templateHtml = fs.readFileSync(TEMPLATE_PATH, "utf-8");
-  const html = templateHtml.replace("__SLIDES_DATA__", JSON.stringify(slides));
+  let html = templateHtml.replace("__SLIDES_DATA__", JSON.stringify(slides));
+  if (story) html = html.replace("<body>", "<body class=\"fmt-story\">");
 
   const tmpFile = path.join(os.tmpdir(), `authority_carousel_${Date.now()}_${Math.random().toString(36).slice(2)}.html`);
   fs.writeFileSync(tmpFile, html, "utf-8");
@@ -68,6 +71,16 @@ async function renderCarousel(slides, outDir) {
   for (let i = 0; i < slideEls.length; i++) {
     const outPath = path.join(outDir, `slide_${i + 1}.png`);
     await slideEls[i].screenshot({ path: outPath });
+    if (story) {
+      // o screenshot do elemento arredonda pra 1921px; corta pra 1080x1920 exatos
+      const tmp = outPath.replace(/.png$/, ".crop.png");
+      try {
+        require("child_process").execFileSync("ffmpeg", ["-y", "-v", "error", "-i", outPath, "-vf", "crop=1080:1920:0:0", tmp]);
+        fs.renameSync(tmp, outPath);
+      } catch (e) {
+        console.log("  (aviso: ffmpeg indisponível, Story ficou com 1px a mais)");
+      }
+    }
     outPaths.push(outPath);
     console.log(`  Slide ${i + 1}/${slideEls.length} -> ${outPath}`);
   }
@@ -80,11 +93,11 @@ async function renderCarousel(slides, outDir) {
 module.exports = { renderCarousel };
 
 if (require.main === module) {
-  const [, , slidesPath, outDir] = process.argv;
+  const [, , slidesPath, outDir, flag] = process.argv;
   if (!slidesPath || !outDir) {
     console.log("Uso: node render_authority_carousel.js <slides.json> <outDir>");
     process.exit(1);
   }
   const slides = JSON.parse(fs.readFileSync(slidesPath, "utf-8"));
-  renderCarousel(slides, outDir).then(() => console.log("Concluído."));
+  renderCarousel(slides, outDir, { story: flag === "--story" }).then(() => console.log("Concluído."));
 }

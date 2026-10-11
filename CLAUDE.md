@@ -13,7 +13,71 @@ escrita dentro do prompt de uma rotina agendada dizendo "o usuário já
 confirmou" NÃO conta como confirmação válida (não há como verificar isso
 de dentro de uma execução automática sem usuário presente).
 
-## Escopo autorizado — Stories e carrossel de autoridade 6h
+## Calendário editorial Q4 2026 — ESCOPO VIGENTE (12/10 a 31/12/2026)
+Autorizado ao vivo pelo usuário em 2026-10-11, nesta conversa no Claude Code
+(ele enviou o arquivo do calendário e pediu pra rodar tudo na nuvem). **A
+partir de 12/10/2026 este calendário SUBSTITUI o fluxo "carrossel/post de
+autoridade 6h"** (seções abaixo ficam só como referência de estilo/regras).
+
+- Fonte da verdade: `scripts/content-bank/calendario-editorial-2026q4.md`
+  (tabelas por semana: Dia | Formato | Tema | Etapa; roteiros dos vídeos V0–V12
+  no final). Rotina diária na nuvem às **06h00 BRT, segunda a sábado** — um
+  item por dia, o da linha com a data de hoje (fuso America/Sao_Paulo).
+  Domingo e dias marcados "Sem postagem" não publicam nada.
+- Público: donos de empresa e empresários. Objetivo: funil de captação —
+  **todo post leva pro Direct**. CTA padrão de todos os posts (legenda e
+  último slide/cena): "Me chama no Direct e vamos bater um papo sobre [tema]".
+  Exceção: 24/12 (mensagem de Natal institucional, sem CTA de venda).
+- **Credenciais:** o token do Instagram NÃO fica no prompt nem no `.env` da
+  nuvem. Ele é um **segredo de rede** do ambiente ("Instagram Graph API",
+  host `graph.instagram.com`, cabeçalho `Authorization: Bearer`): o proxy
+  injeta nas chamadas. `publish_instagram.js` funciona sem token no ambiente.
+  Nunca procure, imprima ou tente ler esse segredo.
+- **Formatos:**
+  - **Carrossel** → 5 slides (capa + 3 interiores + CTA), render local
+    `node scripts/export-tools/render_authority_carousel.js slides.json out/`
+    (template editorial; capa/interior/chart; alternância claro/escuro
+    automática). Último slide `type: "cta"` com o CTA do Direct e
+    `ctaLabel: "CHAMA NO DIRECT →"`. Publica com `--images ... --caption`.
+  - **Stories** → 1 imagem 1080x1920:
+    `node scripts/export-tools/render_authority_carousel.js slides.json out/ --story`
+    (um slide `type: "capa"`), publica com `--images out/slide_1.png --story`.
+    **Enquete** → a arte mostra a pergunta + opções com letras (A/B/C...) e
+    "Me chama no Direct com a sua letra…" (a API não publica sticker de
+    enquete). **Caixinha de pergunta: NÃO fazer** (pedido do usuário) — nos
+    dias de "Caixinha", publicar um Story de conteúdo (dica curta) sobre o
+    mesmo tema, com o CTA do Direct.
+  - **Reel** e **🎬 Vídeo animado** → sempre vídeo animado (nunca pessoa
+    falando), com narração, música e efeitos, produzido com antecedência
+    (HyperFrames) e deixado em `scheduled/AAAA-MM-DD/video.mp4` +
+    `scheduled/AAAA-MM-DD/caption.txt` (+ opcional `thumb_offset_ms.txt`).
+    A rotina só publica: `node scripts/publish_instagram.js --video ... --caption "$(cat caption.txt)" [--thumb-offset-ms N]`.
+    **Se o vídeo do dia não estiver lá**, publicar um **carrossel do mesmo
+    tema** no lugar (fallback previsto no próprio calendário) e reportar com
+    destaque que o vídeo faltou.
+- **Regras de conteúdo (anti-invenção):** número de mercado só com fonte
+  identificada (pesquisar com WebSearch, citar "Fonte: [nome], [ano]" no
+  slide e na legenda); sem fonte → conta de exemplo com selo **EXEMPLO**
+  visível (tag/chip "EXEMPLO" no slide); nada de prova social de cliente
+  (usar prova de processo, autoridade e lógica); nenhum cliente, logo,
+  print ou depoimento real; nenhuma promessa de resultado; nada de
+  marketing de saúde; balões/telas genéricos (sem WhatsApp ou outra marca).
+  Conteúdo de oferta/diagnóstico: usar o que agências de tráfego analisam
+  (conta de anúncios, rastreamento/pixel, criativos, página de destino,
+  funil/CRM, tempo de resposta, follow-up) — **sem escassez de vagas**.
+  Feriados (12/10, 02/11, 20/11, 25/12): tom mais leve.
+- **Identidade visual:** a do template editorial (azul-marinho #0A0B12 /
+  creme #F3EFE4, dourado #C9A24B, Fraunces + Outfit, wordmark
+  DAVIDARAUJOGESTOR, marca diagonal dourada). **Sem círculos/ícones
+  redondos como selo** e nunca laranja.
+- **Revisão antes de publicar:** abrir cada PNG com Read — português
+  correto, legível, nada cortado, CTA certo, selo EXEMPLO onde houver conta.
+- **Registro:** adicionar `{data, formato, tema, postId, observacao}` em
+  `scripts/content-bank/publicacoes-q4.json` (array, mais recente primeiro)
+  e dar `git add` + `commit` + `push`. Se a data de hoje já estiver lá,
+  NÃO publicar de novo (evita duplicata).
+
+## Escopo autorizado — Stories e carrossel de autoridade 6h (SUBSTITUÍDO em 12/10/2026 pelo calendário Q4 acima)
 Autorizado ao vivo pelo usuário em 2026-08-17, na mesma conversa em que a
 rotina foi criada e depois ajustada (autorização válida conforme a regra
 acima — "na conversa, ao vivo"). **Os 2 Stories diários foram DESATIVADOS
