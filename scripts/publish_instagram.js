@@ -3,10 +3,13 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 
-process.loadEnvFile(path.join(__dirname, "..", ".env"));
+try { process.loadEnvFile(path.join(__dirname, "..", ".env")); } catch { /* sem .env: usa variáveis do ambiente */ }
 
 const IG_ID = process.env.INSTAGRAM_BUSINESS_ID;
-const TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
+// Token pelo cabeçalho Authorization. Sem token no ambiente (nuvem), a requisição sai sem
+// credencial e o proxy da nuvem injeta o segredo de rede "Instagram Graph API".
+const TOKEN = (process.env.INSTAGRAM_ACCESS_TOKEN || "").trim();
+const AUTH = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
 const API_VER = process.env.META_API_VERSION || "v21.0";
 const GRAPH_HOST = process.env.META_GRAPH_HOST || "graph.instagram.com";
 const BASE_URL = `https://${GRAPH_HOST}/${API_VER}`;
@@ -17,6 +20,8 @@ function parseArgs() {
   let caption = "";
   let dryRun = false;
   let story = false;
+  let video = null;
+  let thumbOffsetMs = null;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--images") {
       i++;
@@ -31,17 +36,21 @@ function parseArgs() {
       dryRun = true;
     } else if (args[i] === "--story") {
       story = true;
+    } else if (args[i] === "--video") {
+      video = args[++i];
+    } else if (args[i] === "--thumb-offset-ms") {
+      thumbOffsetMs = Number(args[++i]);
     }
   }
-  return { images, caption, dryRun, story };
+  return { images, caption, dryRun, story, video, thumbOffsetMs };
 }
 
 const IMAGE_HOSTS = [
   {
     name: "uguu.se",
-    upload: (imagePath) => {
+    upload: (imagePath, maxTime = 25) => {
       const raw = execFileSync("curl", [
-        "-s", "--max-time", "25",
+        "-s", "--max-time", String(maxTime),
         "-F", `files[]=@${imagePath}`,
         "https://uguu.se/upload",
       ]).toString().trim();
@@ -52,9 +61,9 @@ const IMAGE_HOSTS = [
   },
   {
     name: "litterbox.catbox.moe",
-    upload: (imagePath) => {
+    upload: (imagePath, maxTime = 25) => {
       const url = execFileSync("curl", [
-        "-s", "--max-time", "25",
+        "-s", "--max-time", String(maxTime),
         "-F", "reqtype=fileupload",
         "-F", "time=1h",
         "-F", `fileToUpload=@${imagePath}`,
@@ -66,12 +75,12 @@ const IMAGE_HOSTS = [
   },
 ];
 
-async function hostImage(imagePath) {
+async function hostImage(imagePath, maxTime = 25) {
   // Node's fetch (undici) fails TLS renegotiation on some hosts; curl handles it fine.
   let lastError;
   for (const host of IMAGE_HOSTS) {
     try {
-      const url = host.upload(imagePath);
+      const url = host.upload(imagePath, maxTime);
       console.log(`  Hospedada (${host.name}): ${url}`);
       return url;
     } catch (err) {
@@ -84,11 +93,11 @@ async function hostImage(imagePath) {
 
 async function createMediaContainer(imagePath, { isCarouselItem = false, caption = null, story = false } = {}) {
   const imageUrl = await hostImage(imagePath);
-  const body = new URLSearchParams({ access_token: TOKEN, image_url: imageUrl });
+  const body = new URLSearchParams({ image_url: imageUrl });
   if (isCarouselItem) body.set("is_carousel_item", "true");
   if (caption !== null) body.set("caption", caption);
   if (story) body.set("media_type", "STORIES");
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body });
+  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
   const result = await resp.json();
   if (!result.id) throw new Error(`Erro container: ${JSON.stringify(result)}`);
   console.log(`  Container: ${result.id}`);
@@ -97,21 +106,20 @@ async function createMediaContainer(imagePath, { isCarouselItem = false, caption
 
 async function createCarousel(mediaIds, caption) {
   const body = new URLSearchParams({
-    access_token: TOKEN,
     media_type: "CAROUSEL",
     children: mediaIds.join(","),
     caption,
   });
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body });
+  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
   const result = await resp.json();
   if (!result.id) throw new Error(`Erro carrossel: ${JSON.stringify(result)}`);
   console.log(`  Carrossel: ${result.id}`);
   return result.id;
 }
 
-async function waitReady(containerId) {
-  for (let i = 0; i < 12; i++) {
-    const resp = await fetch(`${BASE_URL}/${containerId}?fields=status_code&access_token=${TOKEN}`);
+async function waitReady(containerId, maxTries = 12) {
+  for (let i = 0; i < maxTries; i++) {
+    const resp = await fetch(`${BASE_URL}/${containerId}?fields=status_code`, { headers: AUTH });
     const result = await resp.json();
     if (result.status_code === "FINISHED") return true;
     if (result.status_code === "ERROR") throw new Error(`Container com erro: ${JSON.stringify(result)}`);
@@ -121,10 +129,21 @@ async function waitReady(containerId) {
   return false;
 }
 
+async function createReelContainer(videoPath, caption, thumbOffsetMs) {
+  const videoUrl = await hostImage(videoPath, 180);
+  const body = new URLSearchParams({ media_type: "REELS", video_url: videoUrl, caption, share_to_feed: "true" });
+  if (Number.isFinite(thumbOffsetMs)) body.set("thumb_offset", String(Math.round(thumbOffsetMs)));
+  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
+  const result = await resp.json();
+  if (!result.id) throw new Error(`Erro container Reel: ${JSON.stringify(result)}`);
+  console.log(`  Container Reel: ${result.id}`);
+  return result.id;
+}
+
 async function publish(containerId) {
-  const body = new URLSearchParams({ access_token: TOKEN, creation_id: containerId });
+  const body = new URLSearchParams({ creation_id: containerId });
   for (let attempt = 1; attempt <= 5; attempt++) {
-    const resp = await fetch(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body });
+    const resp = await fetch(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body, headers: AUTH });
     const result = await resp.json();
     if (result.id) return result.id;
     const isNotReadyYet = result.error?.code === 9007 && result.error?.error_subcode === 2207027;
@@ -138,13 +157,26 @@ async function publish(containerId) {
 }
 
 async function run() {
-  const { images, caption, dryRun, story } = parseArgs();
-  if (!IG_ID || !TOKEN) {
+  const { images, caption, dryRun, story, video, thumbOffsetMs } = parseArgs();
+  if (!IG_ID) {
     console.log("ERRO: Credenciais nao encontradas. Rode /setup-instagram primeiro.");
     process.exit(1);
   }
+  if (video) {
+    if (!fs.existsSync(video)) { console.log(`ERRO: vídeo não encontrado: ${video}`); process.exit(1); }
+    console.log(`\nPublicando Reel no Instagram: ${video}`);
+    if (dryRun) { console.log("[DRY RUN] Tudo OK. Remova --dry-run para publicar."); return; }
+    console.log("\nPasso 1/2 - Enviando vídeo e criando container...");
+    const containerId = await createReelContainer(video, caption, thumbOffsetMs);
+    console.log("\nPasso 2/2 - Aguardando processamento do vídeo e publicando...");
+    if (!(await waitReady(containerId, 60))) { console.log("ERRO: Timeout no processamento do vídeo."); process.exit(1); }
+    const reelId = await publish(containerId);
+    console.log(`\nPublicado com sucesso!`);
+    console.log(`Post ID: ${reelId}`);
+    return;
+  }
   if (images.length === 0) {
-    console.log("ERRO: Informe --images <arquivo1> [arquivo2 ...]");
+    console.log("ERRO: Informe --images <arquivo1> [arquivo2 ...] ou --video <arquivo.mp4>");
     process.exit(1);
   }
   if (images.length > 10) {
