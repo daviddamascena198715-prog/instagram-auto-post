@@ -1,5 +1,12 @@
 [
   {
+    "data": "2026-10-12",
+    "formato": "Stories (Enquete)",
+    "tema": "Seus clientes novos vêm de onde? Indicação / Instagram / Outro",
+    "postId": "18347065765252113",
+    "observacao": "Segunda-feira (feriado, tom mais leve). Enquete renderizada localmente (Playwright + authority-carousel-template.html, --story, 1080x1920) com pergunta + opções A/B/C e CTA 'Me chama no Direct com a sua letra'. Sem legenda (Stories não suportam caption na API)."
+  },
+  {
     "data": "2026-10-11",
     "formato": "Vídeo animado V0 (Reel)",
     "tema": "Seu comercial tem processo ou depende de sorte?",
