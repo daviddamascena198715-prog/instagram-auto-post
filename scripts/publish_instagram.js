@@ -10,6 +10,27 @@ const IG_ID = process.env.INSTAGRAM_BUSINESS_ID;
 // credencial e o proxy da nuvem injeta o segredo de rede "Instagram Graph API".
 const TOKEN = (process.env.INSTAGRAM_ACCESS_TOKEN || "").trim();
 const AUTH = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
+
+// Chamadas da Graph API via curl, não via fetch: o fetch do Node ignora HTTPS_PROXY, e na nuvem
+// é o proxy que injeta o segredo de rede — sem ele a requisição chega no Instagram sem token.
+// O token local vai por stdin (-H @-), nunca na linha de comando.
+function graphCall(url, { method = "GET", body = null } = {}) {
+  const args = ["-sS", "--max-time", "60", "-X", method];
+  if (body) for (const [k, v] of body) args.push("--data-urlencode", `${k}=${v}`);
+  let input;
+  if (TOKEN) {
+    args.push("-H", "@-");
+    input = `Authorization: Bearer ${TOKEN}
+`;
+  }
+  args.push(url);
+  const raw = execFileSync("curl", args, { input }).toString();
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error(`Resposta inesperada da API: ${raw.slice(0, 300)}`);
+  }
+}
 const API_VER = process.env.META_API_VERSION || "v21.0";
 const GRAPH_HOST = process.env.META_GRAPH_HOST || "graph.instagram.com";
 const BASE_URL = `https://${GRAPH_HOST}/${API_VER}`;
@@ -97,8 +118,7 @@ async function createMediaContainer(imagePath, { isCarouselItem = false, caption
   if (isCarouselItem) body.set("is_carousel_item", "true");
   if (caption !== null) body.set("caption", caption);
   if (story) body.set("media_type", "STORIES");
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
-  const result = await resp.json();
+  const result = graphCall(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body });
   if (!result.id) throw new Error(`Erro container: ${JSON.stringify(result)}`);
   console.log(`  Container: ${result.id}`);
   return result.id;
@@ -110,8 +130,7 @@ async function createCarousel(mediaIds, caption) {
     children: mediaIds.join(","),
     caption,
   });
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
-  const result = await resp.json();
+  const result = graphCall(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body });
   if (!result.id) throw new Error(`Erro carrossel: ${JSON.stringify(result)}`);
   console.log(`  Carrossel: ${result.id}`);
   return result.id;
@@ -119,8 +138,7 @@ async function createCarousel(mediaIds, caption) {
 
 async function waitReady(containerId, maxTries = 12) {
   for (let i = 0; i < maxTries; i++) {
-    const resp = await fetch(`${BASE_URL}/${containerId}?fields=status_code`, { headers: AUTH });
-    const result = await resp.json();
+    const result = graphCall(`${BASE_URL}/${containerId}?fields=status_code`);
     if (result.status_code === "FINISHED") return true;
     if (result.status_code === "ERROR") throw new Error(`Container com erro: ${JSON.stringify(result)}`);
     console.log(`  Processando... ${i * 5}s`);
@@ -133,8 +151,7 @@ async function createReelContainer(videoPath, caption, thumbOffsetMs) {
   const videoUrl = await hostImage(videoPath, 180);
   const body = new URLSearchParams({ media_type: "REELS", video_url: videoUrl, caption, share_to_feed: "true" });
   if (Number.isFinite(thumbOffsetMs)) body.set("thumb_offset", String(Math.round(thumbOffsetMs)));
-  const resp = await fetch(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body, headers: AUTH });
-  const result = await resp.json();
+  const result = graphCall(`${BASE_URL}/${IG_ID}/media`, { method: "POST", body });
   if (!result.id) throw new Error(`Erro container Reel: ${JSON.stringify(result)}`);
   console.log(`  Container Reel: ${result.id}`);
   return result.id;
@@ -143,8 +160,7 @@ async function createReelContainer(videoPath, caption, thumbOffsetMs) {
 async function publish(containerId) {
   const body = new URLSearchParams({ creation_id: containerId });
   for (let attempt = 1; attempt <= 5; attempt++) {
-    const resp = await fetch(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body, headers: AUTH });
-    const result = await resp.json();
+    const result = graphCall(`${BASE_URL}/${IG_ID}/media_publish`, { method: "POST", body });
     if (result.id) return result.id;
     const isNotReadyYet = result.error?.code === 9007 && result.error?.error_subcode === 2207027;
     if (isNotReadyYet && attempt < 5) {
