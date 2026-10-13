@@ -1,5 +1,12 @@
 [
   {
+    "data": "2026-10-13",
+    "formato": "Carrossel (fallback de Reel — vídeo ausente)",
+    "tema": "Por que seu negócio depende de indicação (e como sair disso)",
+    "postId": "18136414849636711",
+    "observacao": "Calendário pedia Reel (scheduled/2026-10-13/video.mp4), mas a pasta scheduled/ não existia no repositório — nenhum vídeo foi produzido com antecedência. Aplicado o fallback previsto no CLAUDE.md: carrossel de 5 slides (capa + 3 interiores + CTA 'CHAMA NO DIRECT →') no mesmo tema, renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, 1080x1350, alternância clara/escura automática). Conteúdo só lógico/processo, sem número de mercado nem conta de exemplo — não foi preciso selo EXEMPLO. Revisão visual das 5 imagens feita via Read antes de publicar."
+  },
+  {
     "data": "2026-10-12",
     "formato": "Stories (Enquete)",
     "tema": "Seus clientes novos vêm de onde? Indicação / Instagram / Outro",
