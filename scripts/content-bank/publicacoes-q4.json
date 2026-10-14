@@ -1,5 +1,12 @@
 [
   {
+    "data": "2026-10-14",
+    "formato": "Carrossel",
+    "tema": "Quanto você perde por demorar a responder um lead (tempo de atendimento)",
+    "postId": "18412486375093646",
+    "observacao": "Carrossel de 5 slides (capa + 3 interiores + CTA 'CHAMA NO DIRECT →'), renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, 1080x1350, alternância clara/escura automática) — ferramentas Nano Banana/Higgsfield não disponíveis nesta sessão. WebSearch sobre tempo de resposta a leads trouxe números divergentes entre fontes (blogs/fornecedores, sem consenso sobre a amostra do estudo citado), então optou-se por não citar estatística de mercado: o slide 3 usa um cenário ilustrativo (sem números) com selo EXEMPLO visível, conforme regra de anti-invenção. Revisão visual das 5 imagens feita via Read antes de publicar."
+  },
+  {
     "data": "2026-10-13",
     "formato": "Carrossel (fallback de Reel — vídeo ausente)",
     "tema": "Por que seu negócio depende de indicação (e como sair disso)",
