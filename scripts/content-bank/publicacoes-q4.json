@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-15",
+    "formato": "Carrossel (fallback de Vídeo animado V1 — vídeo ausente)",
+    "tema": "De cada 100 leads, quantos viram cliente? A maioria dos donos não sabe",
+    "postId": "18113645264171763",
+    "observacao": "Calendário pedia 🎬 Vídeo animado V1 (scheduled/2026-10-15/video.mp4), mas a pasta scheduled/ não existia no repositório — nenhum vídeo foi produzido com antecedência. Aplicado o fallback previsto no CLAUDE.md: carrossel de 5 slides (capa + 3 interiores + CTA 'CHAMA NO DIRECT →') no mesmo tema do roteiro V1 (funil de leads: 3 etapas — responderam/foram à reunião/compraram — e 3 pontos de perda — demora, no-show, falta de follow-up), renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, 1080x1350, alternância clara/escura automática) — ferramentas Nano Banana/Higgsfield não disponíveis nesta sessão. Sem dado de mercado com fonte disponível para a proporção real de conversão, então o slide 4 usa um gráfico de barras ilustrativo (100/40/12) com selo EXEMPLO visível no masthead e aviso explícito no corpo do slide, conforme regra de anti-invenção — números ilustrativos não repetidos na legenda. Revisão visual das 5 imagens feita via Read antes de publicar; conferência de nexo entre legenda e artes feita antes de publicar.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana/Higgsfield não disponíveis"
+  },
+  {
     "data": "2026-10-14",
     "formato": "Carrossel",
     "tema": "Quanto você perde por demorar a responder um lead (tempo de atendimento)",
