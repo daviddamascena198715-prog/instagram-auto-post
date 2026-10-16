@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-16",
+    "formato": "Carrossel",
+    "tema": "Checklist: seu negócio está pronto pra escalar vendas?",
+    "postId": "18096502085422228",
+    "observacao": "Carrossel de 5 slides (capa + 3 interiores + CTA 'CHAMA NO DIRECT →'), renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, 1080x1350, alternância clara/escura automática) — ferramentas Nano Banana/Higgsfield não disponíveis nesta sessão. Conteúdo totalmente lógico/processo (3 perguntas de checklist: processo documentado, métricas por etapa, follow-up sistemático), sem número de mercado nem conta de exemplo — não foi preciso selo EXEMPLO nem WebSearch. Revisão visual das 5 imagens feita via Read antes de publicar; conferência de nexo entre legenda (lista os 3 itens do checklist) e artes feita antes de publicar.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana/Higgsfield não disponíveis"
+  },
+  {
     "data": "2026-10-15",
     "formato": "Carrossel (fallback de Vídeo animado V1 — vídeo ausente)",
     "tema": "De cada 100 leads, quantos viram cliente? A maioria dos donos não sabe",
