@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-17",
+    "formato": "Stories (conteúdo — Caixinha substituída)",
+    "tema": "gargalos de vendas",
+    "postId": "18187027864419986",
+    "observacao": "Calendário pedia Stories 'Caixinha: qual o maior gargalo de vendas da sua empresa?'. Caixinha de pergunta NÃO é feita (regra do CLAUDE.md) — publicado em seu lugar 1 Story de conteúdo (dica curta) sobre o mesmo tema: gargalo de vendas não é falta de lead, e sim resposta lenta ao lead, falta de follow-up estruturado e vendedor sem roteiro de qualificação — com CTA do Direct ('Me chama no Direct e vamos bater um papo sobre gargalos de vendas') embutido na própria arte (Stories não têm legenda na API). Renderizado localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, 1080x1920, tom escuro). Sem número de mercado nem conta de exemplo — conteúdo só lógico/processo, não foi preciso selo EXEMPLO nem WebSearch. Revisão visual feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado).",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana/Higgsfield não disponíveis"
+  },
+  {
     "data": "2026-10-16",
     "formato": "Carrossel",
     "tema": "Checklist: seu negócio está pronto pra escalar vendas?",
