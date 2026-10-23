@@ -1,5 +1,12 @@
 [
   {
+    "data": "2026-10-19",
+    "formato": "Reel (vídeo animado)",
+    "tema": "Os erros que mais vejo em negócios que querem vender mais",
+    "postId": "18023567420935145",
+    "observacao": "Publicado com atraso em 23/10/2026, manualmente na conversa (local), a partir de scheduled/2026-10-19/. A rotina da nuvem não rodou de 19 a 23/10: a sessão falhava em 3s com 403 \"Your organization has disabled Claude subscription access for Claude Code\" (acesso da conta à nuvem desligado)."
+  },
+  {
     "data": "2026-10-17",
     "formato": "Stories (conteúdo — Caixinha substituída)",
     "tema": "gargalos de vendas",
