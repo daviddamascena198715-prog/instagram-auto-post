@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-24",
+    "formato": "Stories",
+    "tema": "Como deve ser a rotina de atendimento de um lead, hora a hora",
+    "postId": "18415388371094914",
+    "observacao": "1 imagem 1080x1920 (slide único 'capa'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Conteúdo é rotina hora a hora de atendimento ao lead (5 min / 1h / 24h sem resposta / 72h sem resposta) — só lógica/processo, sem número de mercado nem conta de exemplo, então não foi preciso WebSearch nem selo EXEMPLO. CTA do Direct ('Me chama no Direct e vamos bater um papo sobre atendimento de lead') embutido na própria arte (Stories não têm legenda na API). Revisão visual feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado). AVISO: a rotina ficou sem registro de publicação de 2026-10-20 a 2026-10-23 (4 dias) — recomenda-se o usuário checar se esses dias da Semana 2 do calendário (Stories, Carrossel, Vídeo V2, Carrossel) foram realmente publicados ou se a rotina falhou silenciosamente nesse período.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Nano Banana/Higgsfield não disponíveis"
+  },
+  {
     "data": "2026-10-19",
     "formato": "Reel (vídeo animado)",
     "tema": "Os erros que mais vejo em negócios que querem vender mais",
