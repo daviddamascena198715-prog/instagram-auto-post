@@ -6,3 +6,4 @@ scripts/test-render/
 scripts/carousel-trafego/
 scripts/export-tools/node_modules/
 videos/
+out/
