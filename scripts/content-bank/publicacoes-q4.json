@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-26",
+    "formato": "Carrossel (fallback do Reel — vídeo do dia não estava em scheduled/2026-10-26/)",
+    "tema": "Quanto devo investir pra ter retorno? A conta que todo dono precisa fazer",
+    "postId": "18141800353614710",
+    "observacao": "Calendário pedia Reel (vídeo animado) pra 26/10, mas scheduled/2026-10-26/ não existia (só scheduled/2026-10-19/ no repositório) — publicado em seu lugar um carrossel de 5 slides do mesmo tema, conforme regra de fallback do CLAUDE.md. Carrossel: capa (CAC máximo vs orçamento), 2 slides interiores de texto (CAC máximo = ticket médio × margem; orçamento só sobe depois que o funil aguenta) e 1 slide de gráfico de barras comparando CAC máximo vs CAC real com conta exemplo (ticket médio R$ 2.000, margem 40%, CAC máximo R$ 800 vs CAC real R$ 1.200) — sem fonte de mercado, por isso os dois valores levam o selo 'EXEMPLO' visível no rótulo da barra e o corpo do slide deixa explícito 'não é dado real de cliente'. Slide final de CTA 'CHAMA NO DIRECT →'. Renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, formato feed 4:5, alternância clara/escura automática). Revisão visual de cada slide feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, selo EXEMPLO visível, sem rosto/pessoa real, paleta azul-marinho/dourado). Legenda = tema (gancho) + corpo com os 3 passos da conta (cumprindo a promessa do gancho) + CTA fixo 'Me chama no Direct e vamos bater um papo sobre quanto investir pra ter retorno.' Sem WebSearch: o tema não pedia dado de mercado, só uma conta de exemplo ilustrativa.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Reel não publicado, vídeo ausente em scheduled/"
+  },
+  {
     "data": "2026-10-24",
     "formato": "Stories",
     "tema": "Como deve ser a rotina de atendimento de um lead, hora a hora",
