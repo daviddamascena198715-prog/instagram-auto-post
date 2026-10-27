@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-27",
+    "formato": "Stories (Enquete)",
+    "tema": "Qual é a sua taxa de conversão hoje? Menos de 5% / 5 a 10% / mais de 10% / não sei",
+    "postId": "18015601685961092",
+    "observacao": "1 imagem 1080x1920 (slide único 'capa'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Enquete com pergunta + 4 opções com letras (A) Menos de 5% / B) 5% a 10% / C) Mais de 10% / D) Não sei medir) e CTA específico de enquete 'Me chama no Direct com a sua letra' (API do Instagram não publica sticker de enquete nativo). Conteúdo só pergunta/opções, sem número de mercado nem conta de exemplo — não foi preciso WebSearch nem selo EXEMPLO. CTA embutido na própria arte (Stories não têm legenda na API). Revisão visual feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível).",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-10-26",
     "formato": "Carrossel (fallback do Reel — vídeo do dia não estava em scheduled/2026-10-26/)",
     "tema": "Quanto devo investir pra ter retorno? A conta que todo dono precisa fazer",
