@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-28",
+    "formato": "Carrossel (fallback do Reel V3 — vídeo do dia não estava em scheduled/2026-10-28/)",
+    "tema": "O funil comercial completo: do primeiro contato ao fechamento",
+    "postId": "17976107352156301",
+    "observacao": "Calendário pedia Reel/Vídeo animado V3 ('O funil comercial completo: do primeiro contato ao fechamento') pra 28/10, mas scheduled/2026-10-28/ não existia (só scheduled/2026-10-19/ no repositório) — publicado em seu lugar um carrossel de 5 slides do mesmo tema, conforme regra de fallback do CLAUDE.md. Carrossel: capa ('Do primeiro contato ao fechamento', tag FUNIL COMERCIAL, ícone briefcase), slide 1 lista as 6 etapas do roteiro original do vídeo (captação, qualificação, reunião, proposta, follow-up, fechamento), slide 2 explica que a maioria só mede captação e fechamento e ignora onde o funil vaza, slide 3 reforça a necessidade de medir etapa por etapa, slide CTA com a pergunta de reflexão e botão 'CHAMA NO DIRECT →'. Sem números/estatísticas inventados (conteúdo só de processo/lógica), não precisou de WebSearch nem selo EXEMPLO. Renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância clara/escura automática). Revisão visual das 5 imagens feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível). Legenda = tema (gancho) + corpo listando as 6 etapas e a lógica do meio do funil (cumprindo a promessa do gancho) + CTA fixo do dia 'Me chama no Direct e vamos bater um papo sobre o seu processo de vendas.' Conferência de nexo feita entre legenda e artes antes de publicar.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Reel não publicado, vídeo ausente em scheduled/"
+  },
+  {
     "data": "2026-10-27",
     "formato": "Stories (Enquete)",
     "tema": "Qual é a sua taxa de conversão hoje? Menos de 5% / 5 a 10% / mais de 10% / não sei",
