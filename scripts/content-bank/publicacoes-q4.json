@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-29",
+    "formato": "Carrossel (fallback do Reel — vídeo do dia não estava em scheduled/2026-10-29/)",
+    "tema": "Reunião marcada e cliente some: como reduzir o no-show",
+    "postId": "17905852248395101",
+    "observacao": "Calendário pedia Reel (vídeo animado, etapa Meio, Semana 3) pra 29/10, mas scheduled/2026-10-29/ não existia (só scheduled/2026-10-19/ no repositório) — publicado em seu lugar um carrossel de 5 slides do mesmo tema, conforme regra de fallback do CLAUDE.md. Carrossel: capa ('O cliente marcou e sumiu? 3 jeitos de reduzir o no-show', tag COMERCIAL, ícone briefcase), 3 slides interiores com táticas concretas (1. Confirmação em camadas — confirmar na marcação + lembrete 24h antes + aviso na manhã do dia; 2. Compromisso verbal — pedir pro cliente confirmar o que vai trazer/decidir na reunião; 3. Lembrete com motivo — lembrar por que a reunião importa pro negócio dele, não só o horário), slide CTA 'Quer estruturar isso no seu processo comercial?' com botão 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo comercial, sem número de mercado inventado — não precisou de WebSearch nem selo EXEMPLO. Renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância clara/escura automática). Revisão visual das 5 imagens feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível, coerência capa↔interiores). Legenda = tema (gancho) + corpo listando as 3 táticas (cumprindo a promessa do gancho) + CTA fixo 'Me chama no Direct e vamos bater um papo sobre como reduzir o no-show nas suas reuniões.' Conferência de nexo feita entre legenda e artes antes de publicar.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — Reel não publicado, vídeo ausente em scheduled/"
+  },
+  {
     "data": "2026-10-28",
     "formato": "Carrossel (fallback do Reel V3 — vídeo do dia não estava em scheduled/2026-10-28/)",
     "tema": "O funil comercial completo: do primeiro contato ao fechamento",
