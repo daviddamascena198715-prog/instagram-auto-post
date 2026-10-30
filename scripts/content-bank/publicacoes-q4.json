@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-10-30",
+    "formato": "Carrossel",
+    "tema": "Diagnóstico: o que eu analiso no seu processo de vendas",
+    "postId": "17909406564332909",
+    "observacao": "Carrossel de 5 slides (capa + 3 interiores + CTA), renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância clara/escura automática — capa e CTA escuros, 2 interiores intercalando escuro/claro). Capa: tag 'DIAGNÓSTICO', headline 'O que eu analiso no seu processo de vendas antes de falar qualquer coisa'. 3 interiores de texto (sem gráfico/número, por não haver dado real pra visualizar): 1) onde o funil trava (captação/qualificação/reunião/proposta), 2) tempo de resposta ao lead, 3) cadência de follow-up com quem não respondeu. CTA 'Quer saber onde o seu processo está perdendo venda?' com botão 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo comercial (etapa Fundo do funil, tema do calendário), sem número de mercado inventado — não precisou de WebSearch nem selo EXEMPLO (nenhuma estatística ou conta de exemplo usada). Revisão visual das 5 imagens feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível, coerência capa↔interiores↔CTA). Legenda = tema (gancho) + corpo listando os 3 pontos analisados (cumprindo a promessa do gancho) + CTA fixo 'Me chama no Direct e vamos bater um papo sobre o diagnóstico do seu processo de vendas.' Conferência de nexo feita entre legenda e artes antes de publicar.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-10-29",
     "formato": "Carrossel (fallback do Reel — vídeo do dia não estava em scheduled/2026-10-29/)",
     "tema": "Reunião marcada e cliente some: como reduzir o no-show",
