@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-03",
+    "formato": "Carrossel (fallback de Reel — vídeo do dia não encontrado)",
+    "tema": "Oferta clara: o que entregamos, pra quem é e o que esperar",
+    "postId": "18413253304092228",
+    "observacao": "O calendário marcava 'Reel' pra hoje, mas scheduled/2026-11-03/ não existia (sem video.mp4 nem caption.txt) — publicado carrossel de 5 slides (capa + 3 interiores + CTA 'CHAMA NO DIRECT →') do mesmo tema no lugar, conforme fallback previsto no CLAUDE.md. Renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância clara/escura automática — capa e CTA escuros, interiores intercalando claro/escuro). Capa: tag 'OFERTA', headline 'O que a gente realmente entrega quando você fecha com a gente'. 3 interiores: 1) O que entregamos (diagnóstico de conta de anúncios, pixel/tracking, criativos, página de destino, funil/CRM + gestão contínua com ajuste no dado real), 2) Pra quem é (quem já tem oferta rodando e quer vender mais previsível; não indicado pra quem não validou nenhuma venda), 3) O que esperar (primeiras semanas de diagnóstico/organização, sem promessa de número, acompanhamento constante). CTA 'Faz sentido pro seu negócio?' com botão 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo de trabalho da agência (sem dado de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado específico) — não foi preciso WebSearch nem selo EXEMPLO. Revisão visual das 5 imagens feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível, coerência capa↔interiores↔CTA — a promessa da capa 'o que fazemos, pra quem é e o que esperar' é cumprida exatamente pelos 3 interiores). Legenda = tema (gancho) + corpo listando os 3 pontos (O que entregamos / Pra quem é / O que esperar, cumprindo a promessa do gancho) + CTA fixo do Direct. Conferência de nexo feita entre legenda e artes antes de publicar. **Vídeo do dia faltou — destacar ao usuário que scheduled/2026-11-03/video.mp4 precisa ser produzido com antecedência (HyperFrames) se quiser o Reel original em vez do fallback de carrossel.**",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-02",
     "formato": "Stories",
     "tema": "O que mais travou seu comercial em 2026?",
