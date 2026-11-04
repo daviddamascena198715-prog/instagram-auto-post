@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-04",
+    "formato": "Carrossel",
+    "tema": "Como funciona nosso trabalho, do diagnóstico ao primeiro cliente novo",
+    "postId": "18180208759382354",
+    "observacao": "Carrossel de 5 slides (capa + 3 interiores + CTA), renderizado localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância clara/escura automática — capa e CTA escuros, interiores intercalando claro/escuro/claro). Capa: tag 'PROCESSO', headline 'Como funciona nosso trabalho, do diagnóstico ao primeiro cliente novo' (destaque dourado em 'diagnóstico'). 3 interiores de texto (sem gráfico/número, por não haver dado real pra visualizar): 1) Diagnóstico completo (conta de anúncios, pixel/rastreamento, criativos, página de destino, funil/CRM), 2) Ajuste e acompanhamento (correção do que precisa + decisão baseada em dado real), 3) Primeiro cliente novo (objetivo é fechar negócio, não só gerar lead, sem promessa de prazo/número). CTA 'Quer ver como isso funcionaria no seu negócio?' com botão 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo de trabalho da agência (etapa Fundo do calendário) — sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado específico; não precisou de WebSearch nem selo EXEMPLO. Revisão visual das 5 imagens feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado, wordmark davidaraujogestor visível, linha divisória dourada visível, selo de contagem 'N/5' visível, coerência capa↔interiores↔CTA — a promessa da capa 'do diagnóstico ao primeiro cliente novo' é cumprida exatamente pelos 3 interiores). Legenda = tema (gancho) + corpo listando os 3 pontos (Diagnóstico completo / Ajuste e acompanhamento / Primeiro cliente novo, cumprindo a promessa do gancho) + CTA fixo do Direct. Conferência de nexo feita entre legenda e artes antes de publicar. Primeiro container (slide 5) falhou na 1ª tentativa com 'upstream request failed' (erro transitório de upload/API) — republicado com sucesso na 2ª tentativa, sem precisar alterar nada.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-03",
     "formato": "Carrossel (fallback de Reel — vídeo do dia não encontrado)",
     "tema": "Oferta clara: o que entregamos, pra quem é e o que esperar",
