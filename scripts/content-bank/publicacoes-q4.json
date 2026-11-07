@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-07",
+    "formato": "Stories",
+    "tema": "O que acontece depois que você chama no Direct (passo a passo)",
+    "postId": "17939930130397018",
+    "observacao": "1 imagem 1080x1920 (slide único 'capa', tag 'PASSO A PASSO'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Tema do calendário (etapa Fundo) é uma pergunta/curiosidade comum de quem ainda não chamou no Direct — desmembrado em 4 passos numerados dentro do próprio corpo do slide (não é Enquete nem Caixinha de pergunta, é Story de conteúdo explicativo): 1) conta rápida da situação comercial hoje, 2) conversa curta de diagnóstico, 3) análise de conta de anúncios/criativos/página/funil, 4) devolutiva do que foi encontrado, deixando claro que não há promessa de número fechado. CTA do Direct embutido na própria arte ('Me chama no Direct e vamos bater um papo sobre o seu processo de vendas' — Stories não têm legenda na API). Conteúdo só de processo/lógica interna, sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado — não precisou de WebSearch nem selo EXEMPLO. Revisão visual feita via Read antes de publicar (português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível). Publicação teve 1 erro transitório na 1ª tentativa de media_publish ('The requested resource does not exist', code 24/2207006, mesma classe do erro 'Media ID is not available' documentado no CLAUDE.md, só que com código diferente) — o container (18444296908177000) já estava com status_code FINISHED ao verificar via GET; reenviado o media_publish com o creation_id existente (sem recriar o container) e publicado com sucesso na 2ª tentativa.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-06",
     "formato": "Carrossel (fallback de Reel — vídeo do dia não encontrado)",
     "tema": "Vagas de diagnóstico da semana: chama no Direct",
