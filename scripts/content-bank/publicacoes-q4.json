@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-09",
+    "formato": "Carrossel (fallback — Reel do dia não tinha vídeo em scheduled/2026-11-09/)",
+    "tema": "Black Friday é dia 27/11: seu comercial está preparado pra demanda?",
+    "postId": "18073583054780091",
+    "observacao": "Calendário editorial Q4 2026, Semana 5 (Ciclo 2: Black Friday), etapa Topo. O dia estava marcado como 'Reel' no calendário, mas não havia scheduled/2026-11-09/video.mp4 nem caption.txt — aplicado o fallback previsto no CLAUDE.md: carrossel do mesmo tema no lugar do vídeo. 5 slides renderizados localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, 1080x1350, alternância escuro/claro automática): 1) capa (tag 'BLACK FRIDAY 2026', hook contando os 18 dias até 27/11), 2) slide tipo 'chart' com stat '20,7%' (crescimento estimado nas vendas online da Black Friday 2026 vs. 2025, WebSearch, Fonte: Neotrust/Confi, 2026 — citada no slide e na legenda), 3) e 4) interiores (lead não espera / problema é o pós-anúncio, sem processo de atendimento), 5) CTA 'CHAMA NO DIRECT →'. Nenhum número inventado — só o dado pesquisado com fonte e a contagem de dias (calculada, não estimada). Sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem selo EXEMPLO (não precisou de conta de exemplo, só dado de mercado com fonte). Legenda monta tema (hook) + corpo (responde a pergunta do hook com o dado e a lógica do processo comercial) + CTA padrão do Direct. Revisão visual feita via Read em cada slide antes de publicar (português correto, legível, nada cortado, linha dourada divisória visível, contador N/5, wordmark davidaraujogestor, CTA certo no slide 5). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — vídeo do dia ausente em scheduled/"
+  },
+  {
     "data": "2026-11-07",
     "formato": "Stories",
     "tema": "O que acontece depois que você chama no Direct (passo a passo)",
