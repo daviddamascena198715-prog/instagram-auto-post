@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-10",
+    "formato": "Stories",
+    "tema": "Enquete: sua empresa vai fazer ação na Black Friday? Sim / Não / Ainda não sei",
+    "postId": "17975398638169928",
+    "observacao": "1 imagem 1080x1920 (slide único 'capa', tag 'BLACK FRIDAY 2026'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Calendário editorial Q4 2026, Semana 5 (Ciclo 2: Black Friday), etapa Topo, formato Enquete. Como a API do Instagram não publica sticker de enquete de verdade, seguida a regra do CLAUDE.md: a arte mostra a pergunta + as 3 opções com letras (A) Sim / B) Não / C) Ainda não sei) e o CTA 'Me chama no Direct com a sua letra e te ajudo a decidir rápido.' em vez do CTA padrão de post. Sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem rosto/pessoa real — não precisou de WebSearch nem selo EXEMPLO (pergunta de opinião sobre o próprio negócio do seguidor, não dado de mercado). Revisão visual feita via Read antes de publicar (português correto, legível, nada cortado, as 3 opções e o CTA com a letra visíveis, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível). Stories não têm legenda na API — publicado só com --story, sem --caption. Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-09",
     "formato": "Carrossel (fallback — Reel do dia não tinha vídeo em scheduled/2026-11-09/)",
     "tema": "Black Friday é dia 27/11: seu comercial está preparado pra demanda?",
