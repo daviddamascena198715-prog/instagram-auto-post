@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-13",
+    "formato": "Carrossel",
+    "tema": "Checklist de Black Friday do seu comercial",
+    "postId": "18058946723801849",
+    "observacao": "Calendário editorial Q4 2026 (Semana 5, Ciclo 2: Black Friday, etapa Meio). Formato do dia era Carrossel (sem fallback necessário). 5 slides renderizados localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância escuro/claro automática — capa escura, slide 2 claro, slide 3 escuro, slide 4 claro, CTA escuro): 1) capa (tag 'BLACK FRIDAY 2026', headline 'Checklist de Black Friday: seu comercial está pronto pra demanda?', subtítulo '3 pontos pra revisar antes do pico de leads chegar.'), 2) interior '1. Resposta rápida garantida', 3) interior '2. Fila por prioridade, não por ordem de chegada', 4) interior '3. Script pronto pra objeção de preço', 5) CTA 'CHAMA NO DIRECT →'. Conteúdo só de lógica/checklist de processo comercial — nenhum número/estatística/resultado específico inventado ou apresentado como dado real de cliente, sem conta de exemplo (não precisou de selo EXEMPLO, pois não há número sendo citado), sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas. Revisão visual das 5 imagens feita via Read antes de publicar — na primeira revisão a capa dizia '4 pontos' mas só havia 3 itens interiores (desalinhamento de nexo); corrigido o subtítulo da capa pra '3 pontos' e re-renderizado antes de publicar. Depois da correção: português correto, legível, nada cortado, CTA certo, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível, selo de contagem 'N/5' visível, coerência capa↔interiores↔CTA confirmada. Legenda = tema (gancho) + corpo listando os 3 pontos do checklist (cumprindo a promessa do gancho) + CTA 'Me chama no Direct e vamos bater um papo sobre o seu processo comercial.' Conferência de nexo feita entre legenda e artes antes de publicar. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-13). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-12",
     "formato": "Carrossel (fallback — Reel do dia não tinha vídeo em scheduled/2026-11-12/)",
     "tema": "Anúncio sem processo comercial é dinheiro jogado fora",
