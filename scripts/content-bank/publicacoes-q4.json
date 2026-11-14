@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-14",
+    "formato": "Stories",
+    "tema": "Caixinha: qual a sua maior dúvida para a Black Friday? (convertido em Story de conteúdo, por regra do CLAUDE.md)",
+    "postId": "17931989130186257",
+    "observacao": "Calendário editorial Q4 2026 (Semana 5, Ciclo 2: Black Friday, etapa Topo). O calendário marcava 'Stories — Caixinha' pra hoje; por regra fixa do CLAUDE.md (Caixinha de pergunta: NÃO fazer, a pedido do usuário), publicado em vez disso 1 Story de conteúdo (dica curta) sobre o mesmo tema (Black Friday), com CTA do Direct embutido na arte. 1 imagem 1080x1920 (slide único 'capa', tag 'BLACK FRIDAY 2026', icon 'briefcase'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Dica: a dúvida mais comum não é o anúncio, é se o comercial aguenta o pico de mensagens no dia 27/11 — separar resposta rápida pronta, ordem de prioridade de atendimento e script pra objeção de preço antes do pico. Conteúdo só de lógica/processo comercial, sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas — não precisou de WebSearch nem selo EXEMPLO. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, CTA do Direct certo no corpo, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível. Stories não têm legenda na API — publicado só com --story, sem --caption. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-14). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-13",
     "formato": "Carrossel",
     "tema": "Checklist de Black Friday do seu comercial",
