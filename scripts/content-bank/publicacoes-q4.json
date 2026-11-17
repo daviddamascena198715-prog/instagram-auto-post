@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-17",
+    "formato": "Stories",
+    "tema": "Bastidores: como eu monto um diagnóstico",
+    "postId": "18106617713031055",
+    "observacao": "Calendário editorial Q4 2026 (Semana 6, Ciclo Autoridade, etapa Meio). Formato do dia era Stories (conteúdo normal de bastidores, não é Enquete nem Caixinha). 1 imagem 1080x1920 (slide único 'capa', tag 'DIAGNÓSTICO', icon 'briefcase'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Conteúdo: a ordem que o agente segue num diagnóstico — 1) conta de anúncios e pixel/rastreamento, 2) criativo e página de destino, 3) funil, CRM, tempo de resposta e follow-up — só lógica/processo de diagnóstico de agência (escopo permitido pelo CLAUDE.md pra conteúdo de oferta/diagnóstico), sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas — não precisou de WebSearch nem selo EXEMPLO. CTA do Direct embutido na própria arte ('Me chama no Direct e vamos bater um papo sobre diagnóstico.') — Stories não têm legenda na API, publicado só com --story, sem --caption. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-17). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-16",
     "formato": "Carrossel (fallback — Reel do dia não tinha vídeo em scheduled/2026-11-16/)",
     "tema": "Venda previsível: o que é e por que depender de indicação limita o crescimento",
