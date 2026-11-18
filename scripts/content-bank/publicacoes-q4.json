@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-18",
+    "formato": "Carrossel",
+    "tema": "Qualificação: as perguntas que separam curioso de comprador",
+    "postId": "17961802041256090",
+    "observacao": "Calendário editorial Q4 2026 (Semana 6, Ciclo Autoridade, etapa Meio). Formato do dia era Carrossel (sem fallback necessário). 5 slides renderizados localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância escuro/claro automática — capa escura, slide 2 claro, slide 3 escuro, slide 4 claro, CTA escuro): 1) capa (tag 'QUALIFICAÇÃO', headline 'As perguntas que separam quem só tá curioso de quem vai comprar', icon 'briefcase'), 2) interior pergunta 1 (decisão tomada vs. ainda decidindo), 3) interior pergunta 2 (quem mais participa da decisão), 4) interior pergunta 3 (prazo definido ou não), 5) CTA 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo comercial (ângulo de qualificação de lead) — nenhum número/estatística/resultado específico inventado ou apresentado como dado real de cliente, sem conta de exemplo (não precisou de selo EXEMPLO, pois não há número sendo citado), sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas; não precisou de WebSearch (tema do calendário fixo, não é o pilar com exceção de pesquisa). Revisão visual das 5 imagens feita via Read antes de publicar: português correto, legível, nada cortado, CTA certo, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível, selo de contagem 'N/5' visível, coerência capa↔interiores↔CTA confirmada (a promessa da capa — as 3 perguntas que separam curioso de comprador — é cumprida exatamente pelos 3 interiores). Legenda = tema (gancho) + corpo listando as 3 perguntas (cumprindo a promessa do gancho) + CTA 'Me chama no Direct e vamos bater um papo sobre qualificação de leads.' Conferência de nexo feita entre legenda e artes antes de publicar — as 3 perguntas da legenda batem exatamente com os 3 slides interiores. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-18). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-17",
     "formato": "Stories",
     "tema": "Bastidores: como eu monto um diagnóstico",
