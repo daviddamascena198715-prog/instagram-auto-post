@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-20",
+    "formato": "Carrossel",
+    "tema": "Mitos sobre tráfego pago que custam caro pro dono (conteúdo evergreen)",
+    "postId": "18153550294482007",
+    "observacao": "Calendário editorial Q4 2026 (Semana 6, Ciclo Autoridade, etapa Meio; Sex 20/11 marcado como feriado — tom mais leve). Formato do dia era Carrossel (sem fallback necessário). 5 slides renderizados localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância escuro/claro automática — capa escura, slide 2 claro, slide 3 escuro, slide 4 claro, CTA escuro): 1) capa (tag 'TRÁFEGO PAGO', headline '3 mitos sobre tráfego pago que custam caro pro dono', subtítulo reconhecendo o feriado, icon 'target'), 2) interior Mito 1 — gastar mais nem sempre traz mais resultado, 3) interior Mito 2 — anúncio bonito não é o que converte, 4) interior Mito 3 — resultado não aparece em 2 dias (fase de ajuste da plataforma, mecânica geral conhecida, nenhum número específico inventado), 5) CTA 'CHAMA NO DIRECT →'. Conteúdo evergreen só de lógica/mecânica de tráfego pago — nenhum número de mercado, estatística ou resultado específico inventado ou apresentado como dado real de cliente (não precisou de WebSearch nem selo EXEMPLO, pois nenhuma cifra foi citada), sem conta de exemplo, sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas. Revisão visual das 5 imagens feita via Read antes de publicar: português correto, legível, nada cortado, CTA certo, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível, selo de contagem 'N/5' visível, coerência capa↔interiores↔CTA confirmada (a promessa da capa — 3 mitos — é cumprida exatamente pelos 3 interiores). Legenda = tema (gancho) + corpo listando os 3 mitos com explicação de cada um (cumprindo a promessa do gancho) + CTA 'Me chama no Direct e vamos bater um papo sobre tráfego pago.' Conferência de nexo feita entre legenda e artes antes de publicar — os 3 mitos da legenda batem exatamente com os 3 slides interiores. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-20). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-19",
     "formato": "Carrossel (fallback — vídeo V6 ausente)",
     "tema": "Script: como responder \"vou pensar\" sem perder a venda",
