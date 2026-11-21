@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-21",
+    "formato": "Stories",
+    "tema": "Caixinha: qual objeção você mais escuta dos seus clientes? (convertido em Story de conteúdo, por regra do CLAUDE.md)",
+    "postId": "18019955981959578",
+    "observacao": "Calendário editorial Q4 2026 (Semana 6, Ciclo Autoridade, etapa Meio). O calendário marcava 'Stories — Caixinha' pra hoje; por regra fixa do CLAUDE.md (Caixinha de pergunta: NÃO fazer, a pedido do usuário), publicado em vez disso 1 Story de conteúdo (dica curta) sobre o mesmo tema (objeção mais comum dos clientes), com CTA do Direct embutido na arte. 1 imagem 1080x1920 (slide único 'capa', tag 'OBJEÇÕES', icon 'briefcase'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Dica: a objeção que mais aparece é 'Tá caro' — preço isolado quase nunca é o problema real, é sinal de que o valor ainda não ficou claro; antes de dar desconto, perguntar 'comparado com o quê?' pra revelar a referência do cliente e abrir espaço pra mostrar o custo de continuar sem resolver. Conteúdo só de lógica/processo comercial (ângulo de negociação/objeção de preço, diferente do ângulo 'vou pensar' já usado em 19/11), sem número de mercado, sem conta de exemplo, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas — não precisou de WebSearch nem selo EXEMPLO. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, CTA do Direct certo no corpo, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, dimensões 1080x1920 confirmadas. Stories não têm legenda na API — publicado só com --story, sem --caption. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-21). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-20",
     "formato": "Carrossel",
     "tema": "Mitos sobre tráfego pago que custam caro pro dono (conteúdo evergreen)",
