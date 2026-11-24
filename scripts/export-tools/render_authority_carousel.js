@@ -27,7 +27,7 @@ const TEMPLATE_PATH = path.join(__dirname, "..", "content-bank", "templates", "a
 function findPreinstalledChromium() {
   const browsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH;
   if (!browsersPath || !fs.existsSync(browsersPath)) return undefined;
-  const candidates = ["chrome-linux/chrome", "chrome-linux/headless_shell", "chrome-win/chrome.exe", "chrome-mac/Chromium.app/Contents/MacOS/Chromium"];
+  const candidates = ["chrome-linux/chrome", "chrome-linux64/chrome", "chrome-linux/headless_shell", "chrome-win/chrome.exe", "chrome-mac/Chromium.app/Contents/MacOS/Chromium"];
   const stack = [browsersPath];
   while (stack.length) {
     const dir = stack.pop();

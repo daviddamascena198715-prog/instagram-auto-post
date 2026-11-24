@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-24",
+    "formato": "Stories",
+    "tema": "Teste: em quanto tempo seu time responde um lead?",
+    "postId": "18357327247271236",
+    "observacao": "Calendário editorial Q4 2026 (Semana 7, Ciclo Black Friday, etapa Meio). Formato do dia era Stories, item 'Teste' (não é Enquete nem Caixinha — o calendário não lista opções com letras pra essa data, diferente das entradas 'Enquete: ...'). Tratado como Story de conteúdo diagnóstico (autoteste), seguindo o guardrail de tema de oferta/diagnóstico do CLAUDE.md (tempo de resposta é um dos itens explicitamente permitidos: 'conta de anúncios, rastreamento/pixel, criativos, página de destino, funil/CRM, tempo de resposta, follow-up'). 1 imagem 1080x1920 (slide único 'capa', tag 'DIAGNÓSTICO', icon 'briefcase'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Conteúdo: pergunta de autoteste sobre tempo de resposta a lead, sem número/estatística específico inventado ou apresentado como dado real — só lógica qualitativa (responder rápido evita que o lead esfrie e procure outra opção), por isso não precisou de WebSearch nem de selo EXEMPLO (nenhuma cifra foi citada). Sem conta de exemplo, sem prova social de cliente, sem rosto/pessoa real, sem promessa de resultado específico, sem escassez de vagas. CTA do Direct embutido na própria arte ('Me chama no Direct e vamos bater um papo sobre tempo de resposta.') — Stories não têm legenda na API, publicado só com --story, sem --caption. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, CTA certo, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, dimensões 1080x1920 confirmadas. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-24). Nota técnica: o playwright não estava instalado no início da rotina (`npm install playwright --no-save`) e a função `findPreinstalledChromium` em render_authority_carousel.js não reconhecia o layout `chrome-linux64/` do Chromium pré-instalado neste ambiente — corrigido adicionando esse candidato à lista de busca (commit incluído neste push). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-23",
     "formato": "Carrossel (fallback — Reel do dia sem vídeo em scheduled/2026-11-23/)",
     "tema": "Último aviso: 3 ajustes no comercial antes da Black Friday",
