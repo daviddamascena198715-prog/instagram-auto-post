@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-25",
+    "formato": "Carrossel",
+    "tema": "Follow-up pós-Black Friday: como não deixar o lead esfriar",
+    "postId": "17948000238089094",
+    "observacao": "Calendário editorial Q4 2026 (Semana 7, Ciclo Black Friday, etapa Meio). Formato do dia era Carrossel (sem fallback necessário). 5 slides renderizados localmente com render_authority_carousel.js (Playwright + authority-carousel-template.html, feed 4:5, alternância escuro/claro automática — capa escura, slide 2 claro, slide 3 escuro, slide 4 claro, CTA escuro): 1) capa (tag 'BLACK FRIDAY', headline 'Follow-up pós-Black Friday: como não deixar o lead esfriar', icon 'briefcase'), 2) interior — as primeiras 48h decidem tudo (velocidade de resposta), 3) interior — mensagem genérica não reativa ninguém (personalização citando o que o lead viu/perguntou na Black Friday), 4) interior — uma mensagem não é follow-up, é sequência (cadência de 2-3 contatos espaçados), 5) CTA 'CHAMA NO DIRECT →'. Conteúdo só de lógica/processo comercial (follow-up pós-Black Friday) — nenhum número/estatística/resultado específico inventado ou apresentado como dado real de cliente, sem conta de exemplo (não precisou de selo EXEMPLO, pois não há número sendo citado), sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas; não precisou de WebSearch (tema do calendário fixo, não é o pilar com exceção de pesquisa). Revisão visual das 5 imagens feita via Read antes de publicar: português correto, legível, nada cortado, CTA certo, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, linha divisória dourada visível, selo de contagem 'N/5' visível, coerência capa↔interiores↔CTA confirmada (a promessa da capa — como não deixar o lead esfriar — é cumprida pelos 3 interiores: velocidade, personalização, cadência). Legenda = tema (gancho) + corpo listando os 3 pontos com explicação de cada um (cumprindo a promessa do gancho) + CTA 'Me chama no Direct e vamos bater um papo sobre follow-up pós-Black Friday.' Conferência de nexo feita entre legenda e artes antes de publicar — os 3 pontos da legenda batem exatamente com os 3 slides interiores. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-25). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de carrossel do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-24",
     "formato": "Stories",
     "tema": "Teste: em quanto tempo seu time responde um lead?",
