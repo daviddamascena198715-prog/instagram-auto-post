@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-27",
+    "formato": "Stories",
+    "tema": "Black Friday: sequência de dicas rápidas do dia + convite pro Direct",
+    "postId": "17981347098134102",
+    "observacao": "Calendário editorial Q4 2026 (Semana 7, Ciclo Black Friday, etapa Fundo — dia da própria Black Friday, 27/11). Formato do dia era Stories, tema 'sequência de dicas rápidas do dia' (não é Enquete nem Caixinha). 1 imagem 1080x1920 (slide único 'capa', tag 'BLACK FRIDAY', icon 'briefcase'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro). Conteúdo: 3 dicas rápidas e acionáveis pro comercial no dia do pico (responder em minutos, ter script de objeção de preço pronto, nunca ceder desconto sem pedir algo em troca) — só lógica/processo comercial geral, nenhum número/estatística/resultado específico inventado ou apresentado como dado real de cliente, sem conta de exemplo (não precisou de selo EXEMPLO, pois não há cifra sendo citada), sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas; não precisou de WebSearch (tema do calendário fixo, não é o pilar com exceção de pesquisa). CTA do Direct embutido na própria arte ('Me chama no Direct e vamos bater um papo sobre a Black Friday.') — Stories não têm legenda na API, publicado só com --story, sem --caption. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, as 3 dicas numeradas e o CTA visíveis, sem rosto/pessoa real, paleta azul-marinho/dourado/creme, wordmark davidaraujogestor visível, dimensões 1080x1920 confirmadas. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-27). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-26",
     "formato": "Carrossel (fallback — Vídeo animado V7 ausente)",
     "tema": "Véspera: o erro que derruba a conversão na Black Friday",
