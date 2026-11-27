@@ -111,17 +111,105 @@
     font-weight:700;font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;border-radius:2px;margin-top:22px;
   }
 
+  /* Ilustrações editoriais — traço fino dourado + traço secundário no tom do texto,
+     preenchimento dourado translúcido. Figuras, nunca ícone dentro de círculo. */
+  .illus{display:block;flex-shrink:0;}
+  .illus svg{display:block;height:100%;width:auto;overflow:visible;}
+  .illus.capa{height:132px;margin-bottom:22px;}
+  .illus.interior{height:104px;margin-bottom:18px;}
+  .illus.cta{height:96px;margin:0 auto 18px;}
+  .il-g{stroke:var(--gold);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+  .il-i{stroke:var(--text-primary);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:0.78;}
+  .il-s{stroke:var(--text-primary);fill:none;stroke-width:1.2;stroke-linecap:round;opacity:0.28;}
+  .il-f{fill:var(--gold);opacity:0.20;stroke:none;}
+  .il-d{fill:var(--gold);stroke:none;}
+  .il-n{fill:var(--text-primary);opacity:0.40;stroke:none;}
+  .il-dash{stroke-dasharray:4 5;}
+
   /* Formato Stories (9:16, 1080x1920) — ativado pelo renderizador com --story.
      Respiro pras zonas que a interface do Instagram cobre: ~250px no topo, ~350px na base (em 1080px). */
   body.fmt-story .slide{height:746.666px;}
   body.fmt-story .masthead{padding-top:100px;}
   body.fmt-story .footer{padding-bottom:140px;}
+  body.fmt-story .illus.capa{height:170px;margin-bottom:28px;}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script>
   const TONE_COLOR = { blue: 'var(--blue)', green: 'var(--green)', red: 'var(--red)', yellow: 'var(--yellow)', gold: 'var(--gold)' };
+
+  // Biblioteca de ilustrações (viewBox 240x150). Use pelo nome no campo "illus" do slide.
+  // il-g = traço dourado, il-i = traço no tom do texto, il-s = linha de apoio fraca,
+  // il-f = preenchimento dourado translúcido, il-d = dourado sólido, il-n = ponto neutro.
+  const ILLUS = {
+    // funil de vendas: leads entrando em cima, poucos saindo embaixo
+    funil: `<rect class="il-n" x="58" y="12" width="5" height="5"/><rect class="il-d" x="84" y="6" width="5" height="5"/><rect class="il-n" x="108" y="16" width="5" height="5"/><rect class="il-n" x="134" y="8" width="5" height="5"/><rect class="il-d" x="160" y="14" width="5" height="5"/><rect class="il-n" x="184" y="6" width="5" height="5"/>
+      <path class="il-f" d="M30 34 H210 L186 58 H54 Z"/>
+      <path class="il-g" d="M30 34 H210"/><path class="il-i" d="M30 34 L102 104 V132 M210 34 L138 104 V132"/>
+      <path class="il-s" d="M54 58 H186 M78 81 H162"/><rect class="il-d" x="117" y="140" width="6" height="6"/>`,
+    // ampulheta: tempo de resposta, demora
+    ampulheta: `<path class="il-g" d="M80 14 H160 M80 136 H160"/>
+      <path class="il-i" d="M90 14 C90 52 116 62 116 75 C116 88 90 98 90 136 M150 14 C150 52 124 62 124 75 C124 88 150 98 150 136"/>
+      <path class="il-f" d="M98 34 H142 C138 50 126 60 120 67 C114 60 102 50 98 34 Z"/><path class="il-f" d="M98 136 C103 118 113 110 120 108 C127 110 137 118 142 136 Z"/>
+      <path class="il-g il-dash" d="M120 70 V106"/><path class="il-s" d="M36 52 H64 M26 75 H64 M36 98 H64 M176 52 H204 M176 75 H214 M176 98 H204"/>`,
+    // celular com conversa genérica (sem marca de app)
+    chat: `<rect class="il-i" x="80" y="6" width="80" height="138" rx="12"/><path class="il-s" d="M108 16 H132"/>
+      <rect class="il-i" x="90" y="32" width="50" height="18" rx="6"/><rect class="il-f" x="100" y="58" width="50" height="18" rx="6"/><rect class="il-g" x="100" y="58" width="50" height="18" rx="6"/>
+      <rect class="il-i" x="90" y="84" width="38" height="18" rx="6"/><rect class="il-d" x="94" y="118" width="5" height="5"/><rect class="il-d" x="104" y="118" width="5" height="5" opacity="0.6"/><rect class="il-d" x="114" y="118" width="5" height="5" opacity="0.3"/>
+      <path class="il-g" d="M176 40 L196 30 M178 62 H202 M176 84 L196 94"/>`,
+    // gráfico de linha subindo
+    grafico: `<path class="il-s" d="M30 48 H215 M30 79 H215 M30 110 H215"/><path class="il-i" d="M30 16 V130 H215"/>
+      <path class="il-f" d="M40 116 L76 100 L106 106 L140 72 L170 60 L204 32 V130 H40 Z"/>
+      <path class="il-g" d="M40 116 L76 100 L106 106 L140 72 L170 60 L204 32 M190 30 H205 V45"/>
+      <rect class="il-d" x="73" y="97" width="6" height="6"/><rect class="il-d" x="137" y="69" width="6" height="6"/>`,
+    // calendário com um dia marcado (data, prazo, follow-up)
+    calendario: `<rect class="il-i" x="50" y="22" width="140" height="114" rx="4"/><path class="il-g" d="M82 12 V32 M158 12 V32"/><path class="il-i" d="M50 46 H190"/>
+      <path class="il-s" d="M70 46 V136 M90 46 V136 M110 46 V136 M130 46 V136 M150 46 V136 M170 46 V136 M50 68.5 H190 M50 91 H190 M50 113.5 H190"/>
+      <rect class="il-f" x="130" y="91" width="20" height="22.5"/><rect class="il-g" x="130" y="91" width="20" height="22.5"/>
+      <path class="il-g" d="M75 80 L79 84 L86 75 M95 80 L99 84 L106 75"/>`,
+    // megafone: anúncio, tráfego pago
+    megafone: `<path class="il-i" d="M62 62 L132 32 V118 L62 88 Z"/><rect class="il-i" x="46" y="62" width="16" height="26" rx="2"/><path class="il-i" d="M74 92 L82 122 H96 L90 96"/>
+      <path class="il-f" d="M62 62 L132 32 V118 L62 88 Z"/>
+      <path class="il-g" d="M148 56 Q160 75 148 94"/><path class="il-g" d="M164 44 Q182 75 164 106" opacity="0.7"/><path class="il-g" d="M180 32 Q204 75 180 118" opacity="0.4"/>`,
+    // fluxo de processo: etapas ligadas + volta de follow-up
+    fluxo: `<rect class="il-i" x="12" y="60" width="40" height="34" rx="3"/><rect class="il-i" x="72" y="60" width="40" height="34" rx="3"/><rect class="il-i" x="132" y="60" width="40" height="34" rx="3"/>
+      <rect class="il-f" x="192" y="60" width="40" height="34" rx="3"/><rect class="il-g" x="192" y="60" width="40" height="34" rx="3"/>
+      <path class="il-g" d="M54 77 H68 M63 72 L68 77 L63 82 M114 77 H128 M123 72 L128 77 L123 82 M174 77 H188 M183 72 L188 77 L183 82"/>
+      <path class="il-s" d="M22 72 H42 M22 80 H36 M82 72 H102 M82 80 H96 M142 72 H162 M142 80 H156"/><path class="il-g" d="M203 77 L209 83 L221 70"/>
+      <path class="il-g il-dash" d="M212 56 V34 H32 V56" opacity="0.6"/><path class="il-g" d="M27 50 L32 56 L37 50" opacity="0.6"/>`,
+    // prancheta com checklist
+    checklist: `<rect class="il-i" x="70" y="16" width="100" height="128" rx="6"/><rect class="il-f" x="100" y="9" width="40" height="15" rx="3"/><rect class="il-g" x="100" y="9" width="40" height="15" rx="3"/>
+      <rect class="il-i" x="84" y="42" width="13" height="13" rx="2"/><rect class="il-i" x="84" y="68" width="13" height="13" rx="2"/><rect class="il-i" x="84" y="94" width="13" height="13" rx="2"/><rect class="il-i" x="84" y="120" width="13" height="13" rx="2"/>
+      <path class="il-g" d="M86 48 L90 52 L98 41 M86 74 L90 78 L98 67 M86 100 L90 104 L98 93"/><path class="il-s" d="M106 48 H156 M106 74 H150 M106 100 H156 M106 126 H144"/>`,
+    // escada de etapas com bandeira no topo (crescimento, meta)
+    escada: `<path class="il-f" d="M20 132 H70 V102 H120 V72 H170 V42 H220 V132 Z"/><path class="il-i" d="M20 132 H70 V102 H120 V72 H170 V42 H220"/>
+      <path class="il-g" d="M204 42 V10 L224 18 L204 26"/><path class="il-g il-dash" d="M34 118 Q110 70 192 34" opacity="0.6"/>`,
+    // lupa sobre gráfico de barras (diagnóstico, análise)
+    lupa: `<rect class="il-i" x="30" y="96" width="16" height="36"/><rect class="il-i" x="56" y="78" width="16" height="54"/><rect class="il-i" x="82" y="104" width="16" height="28"/><rect class="il-i" x="108" y="64" width="16" height="68"/>
+      <path class="il-s" d="M22 132 H230"/><circle class="il-f" cx="160" cy="66" r="36"/><circle class="il-i" cx="160" cy="66" r="36"/>
+      <path class="il-g" d="M136 76 L152 62 L166 70 L184 50"/><path class="il-g" d="M186 92 L214 122" style="stroke-width:6"/>`,
+    // ímã atraindo leads (atração, captação)
+    ima: `<path class="il-i" d="M60 20 V74 A60 60 0 0 0 180 74 V20 H146 V74 A26 26 0 0 1 94 74 V20 Z"/><path class="il-f" d="M60 20 H94 V40 H60 Z M146 20 H180 V40 H146 Z"/>
+      <path class="il-g" d="M60 40 H94 M146 40 H180"/><rect class="il-d" x="117" y="128" width="6" height="6"/><rect class="il-n" x="90" y="140" width="5" height="5"/><rect class="il-n" x="146" y="138" width="5" height="5"/>
+      <path class="il-g il-dash" d="M120 124 V108 M96 136 L104 120 M146 134 L138 120" opacity="0.6"/>`,
+    // avião de papel (Direct, mensagem, CTA)
+    aviao: `<path class="il-f" d="M30 78 L212 18 L118 96 Z"/><path class="il-i" d="M30 78 L212 18 L150 132 L118 96 Z"/><path class="il-g" d="M118 96 L212 18 M118 96 V128 L136 112"/>
+      <path class="il-g il-dash" d="M14 132 Q44 124 62 102" opacity="0.6"/>`,
+    // balde furado: vazamento de leads no funil
+    vazamento: `<path class="il-f" d="M78 70 H162 L156 128 H84 Z"/><path class="il-i" d="M72 38 H168 L156 128 H84 Z"/><path class="il-g" d="M64 38 H176"/>
+      <path class="il-s" d="M78 70 H162"/><path class="il-d" d="M178 98 Q184 108 178 112 Q172 108 178 98 Z M190 118 Q196 128 190 132 Q184 128 190 118 Z M176 132 Q182 142 176 146 Q170 142 176 132 Z"/>
+      <path class="il-g" d="M160 100 L170 104"/>`,
+    // etiqueta de preço (data comercial, oferta, Black Friday)
+    etiqueta: `<path class="il-f" d="M56 40 H150 L192 75 L150 110 H56 Z"/><path class="il-i" d="M56 40 H150 L192 75 L150 110 H56 Z"/><rect class="il-g" x="160" y="70" width="10" height="10" rx="2"/>
+      <path class="il-g" d="M84 92 L122 58"/><rect class="il-g" x="80" y="56" width="10" height="10" rx="2"/><rect class="il-g" x="116" y="84" width="10" height="10" rx="2"/>
+      <path class="il-g il-dash" d="M170 75 Q206 60 220 30" opacity="0.6"/>`,
+  };
+
+  function renderIllus(name, place) {
+    if (!name || !ILLUS[name]) return "";
+    return `<div class="illus ${place}" data-illus="${name}"><svg viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg">${ILLUS[name]}</svg></div>`;
+  }
 
   function renderBarChart(v) {
     const bars = v.bars || [];
@@ -155,6 +243,7 @@
       const visualHtml = s.visual ? (s.visual.type === "stat" ? renderStat(s.visual) : renderBarChart(s.visual)) : "";
       inner = `
         <div class="content-top-space"></div>
+        ${renderIllus(s.illus, "capa")}
         ${s.tag ? `<span class="kicker-inline">${s.tag}</span>` : ""}
         <h2 class="serif headline capa">${s.headline}</h2>
         ${visualHtml}
@@ -168,6 +257,7 @@
       inner = `
         <div class="content-top-space"></div>
         ${opts.stepNumber ? `<div class="folio"><span class="folio-num">0${opts.stepNumber}</span><div class="folio-rule"></div></div>` : ""}
+        ${renderIllus(s.illus, "interior")}
         <h2 class="serif headline interior">${s.headline}</h2>
         <p class="body-text">${s.body}</p>
         <div class="content-bottom-space"></div>`;
@@ -184,6 +274,7 @@
       inner = `
         <div class="content-top-space"></div>
         <div class="cta-wrap">
+          ${renderIllus(s.illus || "aviao", "cta")}
           <h2 class="serif headline cta">${s.headline}</h2>
           <p class="body-text">${s.body || ""}</p>
           <div class="cta-btn">${s.ctaLabel}</div>
@@ -239,10 +330,16 @@
   // texto longo nunca estourar e cortar o rodapé/marcação de página.
   function fitSlide(slideEl) {
     const shrinkTargets = [slideEl.querySelector(".headline"), slideEl.querySelector(".stat-value")].filter(Boolean);
-    if (!shrinkTargets.length) return;
+    const illusEl = slideEl.querySelector(".illus");
+    if (!shrinkTargets.length && !illusEl) return;
     let guard = 0;
-    while (slideEl.scrollHeight > slideEl.clientHeight + 1 && guard < 60) {
+    while (slideEl.scrollHeight > slideEl.clientHeight + 1 && guard < 80) {
       let shrunkAny = false;
+      // a ilustração encolhe primeiro (até 60px), depois título/número junto
+      if (illusEl) {
+        const h = illusEl.getBoundingClientRect().height;
+        if (h > 60) { illusEl.style.height = (h - 4) + "px"; guard++; continue; }
+      }
       for (const el of shrinkTargets) {
         const cur = parseFloat(getComputedStyle(el).fontSize);
         const min = el.classList.contains("stat-value") ? 34 : 19;

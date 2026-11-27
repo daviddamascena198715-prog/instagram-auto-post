@@ -70,8 +70,29 @@ autoridade 6h"** (seções abaixo ficam só como referência de estilo/regras).
   creme #F3EFE4, dourado #C9A24B, Fraunces + Outfit, wordmark
   DAVIDARAUJOGESTOR, marca diagonal dourada). **Sem círculos/ícones
   redondos como selo** e nunca laranja.
-- **Revisão antes de publicar:** abrir cada PNG com Read — português
-  correto, legível, nada cortado, CTA certo, selo EXEMPLO onde houver conta.
+- **Ilustrações (pedido do usuário em 2026-11-27: posts mais bonitos, com
+  desenhos/figuras, sem ele precisar ajustar nada):** todo slide `capa` e
+  `interior` leva o campo `"illus"` com uma ilustração da biblioteca do
+  template, escolhida pelo sentido do texto do slide: `funil` (funil/etapas),
+  `ampulheta` (tempo de resposta/demora), `chat` (conversa/atendimento),
+  `grafico` (crescimento/resultado), `calendario` (data/prazo/follow-up),
+  `megafone` (anúncio/tráfego), `fluxo` (processo), `checklist` (lista/passos),
+  `escada` (meta/evolução), `lupa` (diagnóstico/medir), `ima` (atrair leads),
+  `aviao` (Direct/mensagem), `vazamento` (perda de lead/venda), `etiqueta`
+  (oferta/data comercial). Não repetir a mesma ilustração no mesmo carrossel.
+  Slide `chart` não leva ilustração (o gráfico já é o visual); `cta` usa
+  `aviao` por padrão. Stories também levam `illus` no slide `capa`.
+- **Revisão antes de publicar (sem o usuário — você mesmo revisa e corrige):**
+  1. Rode o render. Ele grava `qa.json` e sai com código 2 se algo não
+     coube, a manchete encolheu demais, a ilustração não existe ou o
+     conteúdo encosta no rodapé. Com alerta: encurte o texto/troque a
+     ilustração no `slides.json` e renderize de novo até sair "Checagem
+     automática OK".
+  2. Abra cada PNG com Read e confira como designer: português correto,
+     legível, nada cortado, hierarquia clara, ilustração combinando com o
+     texto, slide sem cara de vazio ou apertado, CTA certo, selo EXEMPLO
+     onde houver conta. Se algo não estiver bom, ajuste e renderize de novo
+     (até 3 rodadas). Só publique quando estiver bom.
 - **Registro:** adicionar `{data, formato, tema, postId, observacao}` em
   `scripts/content-bank/publicacoes-q4.json` (array, mais recente primeiro)
   e dar `git add` + `commit` + `push`. Se a data de hoje já estiver lá,

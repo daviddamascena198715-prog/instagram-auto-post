@@ -14,9 +14,12 @@
 //     { "type": "interior", "headline": "...", "body": "..." },
 //     { "type": "cta", "headline": "...", "body": "...", "ctaLabel": "..." }
 //   ]
-//   icon (só na capa): "target" (tráfego pago) | "briefcase" (comercial)
+//   illus (capa, interior, cta): nome de uma ilustração da biblioteca ILLUS do
+//   template — funil, ampulheta, chat, grafico, calendario, megafone, fluxo,
+//   checklist, escada, lupa, ima, aviao, vazamento, etiqueta (cta usa "aviao" se omitido)
 //
-// Saída: outDir/slide_1.png, slide_2.png, ... (1080x1350, 4:5)
+// Saída: outDir/slide_1.png, slide_2.png, ... (1080x1350, 4:5) + outDir/qa.json
+// (checagem automática; com alerta, sai com código 2)
 const { chromium } = require("playwright");
 const path = require("path");
 const fs = require("fs");
@@ -65,7 +68,32 @@ async function renderCarousel(slides, outDir, { story = false } = {}) {
   await page.goto("file:///" + tmpFile.replace(/\\/g, "/"));
   await page.waitForTimeout(2200);
 
+  // Checagem automática: conteúdo que não coube, manchete encolhida até o mínimo,
+  // ilustração com nome inexistente, elementos invadindo o rodapé.
+  const problems = await page.evaluate((slidesData) => {
+    const out = [];
+    document.querySelectorAll(".slide").forEach((el, i) => {
+      const n = i + 1;
+      if (el.scrollHeight > el.clientHeight + 1) out.push(`slide ${n}: conteúdo não coube (${el.scrollHeight - el.clientHeight}px a mais) — encurte o texto`);
+      const hl = el.querySelector(".headline");
+      if (hl && parseFloat(getComputedStyle(hl).fontSize) <= 19) out.push(`slide ${n}: manchete encolheu até o mínimo — encurte a manchete`);
+      const want = slidesData[i] && slidesData[i].illus;
+      if (want && !el.querySelector(`.illus[data-illus="${want}"]`)) out.push(`slide ${n}: ilustração "${want}" não existe na biblioteca`);
+      const footer = el.querySelector(".footer");
+      const content = el.querySelector(".content");
+      if (footer && content) {
+        const fTop = footer.getBoundingClientRect().top;
+        for (const c of content.querySelectorAll(".headline,.body-text,.illus,.chart-wrap,.stat-wrap,.cta-btn")) {
+          if (c.getBoundingClientRect().bottom > fTop + 1) { out.push(`slide ${n}: ${c.className.split(" ").pop()} encosta no rodapé`); break; }
+        }
+      }
+    });
+    return out;
+  }, slides);
+
   fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, "qa.json"), JSON.stringify({ ok: problems.length === 0, problems }, null, 2));
+  for (const p of problems) console.log(`  ALERTA: ${p}`);
   const slideEls = await page.$$(".slide");
   const outPaths = [];
   for (let i = 0; i < slideEls.length; i++) {
@@ -87,6 +115,7 @@ async function renderCarousel(slides, outDir, { story = false } = {}) {
 
   await browser.close();
   fs.unlinkSync(tmpFile);
+  outPaths.problems = problems;
   return outPaths;
 }
 
@@ -99,5 +128,12 @@ if (require.main === module) {
     process.exit(1);
   }
   const slides = JSON.parse(fs.readFileSync(slidesPath, "utf-8"));
-  renderCarousel(slides, outDir, { story: flag === "--story" }).then(() => console.log("Concluído."));
+  renderCarousel(slides, outDir, { story: flag === "--story" }).then((paths) => {
+    if (paths.problems.length) {
+      console.log(`Concluído com ${paths.problems.length} alerta(s) — corrija o slides.json e renderize de novo (detalhes em qa.json).`);
+      process.exitCode = 2;
+    } else {
+      console.log("Concluído. Checagem automática OK.");
+    }
+  });
 }
