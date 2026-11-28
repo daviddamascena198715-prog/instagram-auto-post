@@ -1,5 +1,13 @@
 [
   {
+    "data": "2026-11-28",
+    "formato": "Stories",
+    "tema": "Pós-Black Friday: como organizar os leads que chegaram",
+    "postId": "18112867099901736",
+    "observacao": "Calendário editorial Q4 2026 (Semana 7, Ciclo Black Friday, etapa Meio). Formato do dia era Stories, tema de conteúdo (não é Enquete nem Caixinha). 1 imagem 1080x1920 (slide único 'capa', tag 'PÓS-BLACK FRIDAY', icon 'briefcase', illus 'funil'), renderizada localmente com render_authority_carousel.js --story (Playwright + authority-carousel-template.html, tom escuro, checagem automática OK). Conteúdo: 3 passos práticos pra organizar os leads que chegaram na Black Friday (separar quente/frio pelo nível de interesse demonstrado, responder os quentes nas primeiras horas, agendar retorno pros frios em 3-5 dias) — só lógica/processo comercial geral, nenhum número/estatística/resultado específico inventado ou apresentado como dado real de cliente, sem conta de exemplo (não precisou de selo EXEMPLO, pois não há cifra/percentual sendo citado como dado de mercado), sem rosto/pessoa real, sem prova social de cliente, sem promessa de resultado específico, sem escassez de vagas; não precisou de WebSearch (tema de processo comercial, não depende de dado de mercado). CTA do Direct embutido no corpo da própria arte ('Me chama no Direct e vamos bater um papo sobre como organizar os leads que chegaram.') — Stories não têm legenda na API, publicado só com --story, sem --caption. Revisão visual feita via Read antes de publicar: português correto, legível, nada cortado, hierarquia clara (tag/headline/corpo), ilustração 'funil' combinando com o tema de organizar/triar leads, CTA certo, wordmark davidaraujogestor visível, paleta azul-marinho/dourado/creme, dimensões 1080x1920 confirmadas. Checagem anti-duplicidade feita via publicacoes-q4.json (sem registro prévio pra 2026-11-28). Publicação sem erros/retries.",
+    "fonte_imagem": "fallback local (Playwright/render_authority_carousel.js) — fluxo padrão de Stories do calendário Q4, não usa Nano Banana/Higgsfield"
+  },
+  {
     "data": "2026-11-27",
     "formato": "Stories",
     "tema": "Black Friday: sequência de dicas rápidas do dia + convite pro Direct",
